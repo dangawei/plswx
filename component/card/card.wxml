@@ -1,0 +1,18 @@
+<view class="i-class i-card {{ full ? 'i-card-full' : '' }}">
+    <view class="i-class i-card-header">
+        <view class="i-card-header-content">
+            <image class="i-card-header-thumb" src="{{ thumb }}" mode="aspectFit" wx:if="{{ thumb }}" />
+            <!-- {{ title }} -->
+        </view>
+        <view class="card-header-detil">
+          <view class="card-header-content-title">{{title}}</view>
+          <view class="card-header-content-detail"><slot name="detail"></slot></view>
+          <view class="card-header-content-sup"><slot name="sup"></slot></view>
+        </view>
+        <view class="i-card-header-extra {{alignSelf?'align-self':''}}" wx:if="{{ extra }}">
+            <slot name="extra"></slot>
+        </view>
+    </view>
+    <view class="i-class i-card-body"><slot name="content"></slot></view>
+    <view class="i-class i-card-footer"><slot name="footer"></slot></view>
+</view>

@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/costDetail/costDetail",
+    "pages/pwdBorrow/pwdBorrow",
+    "pages/pwdReturn/pwdReturn",
+    "pages/useDetail/useDetail",
+    "pages/brfeedback/brfeedback",
+    "pages/returnSuccess/returnSuccess",
+    "pages/opfeedback/opfeedback"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "漂流伞",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

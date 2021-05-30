@@ -1,0 +1,60 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "计费规则",
+          "pathName": "pages/costDetail/costDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "立即借伞",
+          "pathName": "pages/pwdBorrow/pwdBorrow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "立即还伞",
+          "pathName": "pages/pwdReturn/pwdReturn",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "使用说明",
+          "pathName": "pages/useDetail/useDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "意见反馈",
+          "pathName": "pages/brfeedback/brfeedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "还伞成功",
+          "pathName": "pages/returnSuccess/returnSuccess",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "问题反馈",
+          "pathName": "pages/opfeedback/opfeedback",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

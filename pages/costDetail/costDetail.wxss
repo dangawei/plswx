@@ -1,0 +1,91 @@
+/* pages/costDetail/costDetail.wxss */
+.sd-box{
+  background-color: #F8F6F9;
+  box-sizing: border-box;
+}
+.sd-cell-top-box{
+  height: 50%;
+  background: linear-gradient( #FFC002, #F8F6F9);
+  padding: 30rpx 30rpx;
+}
+.sd-cell-top-title{
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 50rpx;
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+}
+.sd-cell-content-box{
+  min-height: 900rpx;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding:30rpx 30rpx 30rpx 50rpx;
+  position: relative;
+}
+/* 计费规则样式 */
+.sd-cell-content-text{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 40rpx;
+}
+.content {
+  position: relative;
+  margin-bottom: 61rpx;
+}
+.content.flag::after{
+  content: '限时优惠';
+}
+.content.flagfree::after{
+  content: '限时免费';
+}
+.content.flag::after,.content.flagfree::after{
+  /* content: '限时优惠'; */
+  position: absolute;
+  width:116rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  background:rgba(255,77,106,1);
+  border-radius:10rpx 10rpx 10rpx 0;
+  font-size:22rpx;
+  color: #fff;
+  top: -22rpx;
+}
+.content::before{
+  content: ' ';
+  display: inline-table;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -20rpx;
+  width:8rpx;
+  height:8rpx;
+  background:#FFC002;
+  border-radius:50%;
+}
+
+.sd-cell-bottom-box{
+  padding: 30rpx 50rpx 30rpx 30rpx;
+  position: absolute;
+  bottom: 30rpx;
+  width: 630rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.sd-cell-bottom-protocol{
+  width: 100%;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 58rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.sd-cell-bottom-protocol-txt{
+  color: #1C91F2;
+}

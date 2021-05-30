@@ -1,0 +1,20 @@
+.i-collapse-item{
+  padding:20rpx 8px;
+  border-bottom:2rpx solid #E5E5E5;
+}
+.i-collapse-item-title{
+  vertical-align:middle;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #666666;
+  line-height: 56rpx;
+}
+.fr{
+  float: right;
+}
+.i-collapse-item-title-wrap{padding:2px 0 0}
+.i-collapse-item-content{padding:6px;display:none}
+.i-collapse-item-show-content{display:block}
+.i-collapse-item-arrow{transition:transform .2s ease-in-out}
+.i-collapse-item-arrow-show{transition:transform .2s ease-in-out;transform:rotate(90deg)}

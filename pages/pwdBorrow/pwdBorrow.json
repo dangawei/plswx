@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "立即借伞",
+  "usingComponents": {
+    "ver-code": "/component/ver-code/ver-code",
+    "pls-modal": "/component/pls-modal/pls-modal"
+  }
+}

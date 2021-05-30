@@ -1,0 +1,29 @@
+<view style="height:{{height}}rpx" class="sd-box">
+  <view class="sd-cell-top-box">
+    <view class="sd-cell-top-title">
+      计费规则
+    </view>
+    <view class="sd-cell-content-box">
+      <view class="sd-cell-content-text">
+        <view class='content flagfree' wx:if="{{dataInfo.free}}">{{dataInfo.free}}</view>
+        <view class='content flag' wx:if="{{dataInfo.discounts}}">{{dataInfo.discounts}}</view>
+        <view class='content' wx:if="{{dataInfo.start_cost}}">{{dataInfo.start_cost}}</view>
+        <view class='content' wx:if="{{dataInfo.cost}}">{{dataInfo.cost}}</view>
+        <view class='content' wx:if="{{dataInfo.beyond_deposit}}">{{dataInfo.beyond_deposit}}</view>
+        <view class='content' wx:if="{{dataInfo.free_deposit}}">{{dataInfo.free_deposit}}</view>
+      </view>
+      <view class="sd-cell-bottom-box">
+        <view class="sd-cell-bottom-protocol">
+          <text>确定借伞代表您已阅读并同意</text>
+          <text class="sd-cell-bottom-protocol-txt">《用户协议》</text>
+        </view>
+        <view class="sd-cell-bottom-btn">
+          <button-type btnTitle="确认借伞" butType="{{true}}" />
+        </view>
+      </view>
+      <view>
+
+      </view>
+    </view>
+  </view>
+</view>

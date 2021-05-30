@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "使用说明",
+  "navigationBarBackgroundColor":  "#FFC002",
+  "navigationBarTextStyle":"white",
+  "usingComponents": {
+    "i-collapse": "/component/collapse/index",
+    "i-collapse-item": "/component/collapse-item/index"
+  }
+}

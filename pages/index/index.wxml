@@ -1,0 +1,161 @@
+<!-- <view style='overflow: hidden;height:{{pageHeight}}rpx;'>
+  <button class='btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即登录</button>
+  <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称fil </button>
+  <button wx:else open-type="getPhoneNumber" bindgetphonenumber="bindgetphonenumber"> 获取手机号 </button>
+</view> -->
+<view class="home-wrapper" style='overflow: hidden;height:{{pageHeight}}rpx;'>
+  <view class="hw-part">
+    <!-- <image class='bg' mode="scaleToFill" src='/images/indexBg.png'>
+    </image> -->
+    <view class="logo-wrapper" animation="{{animationLogo}}">
+      <image class='logo' src='/images/img_logo.png'>
+      </image>
+    </view>
+    <!-- 广告 -->
+    <!-- <view class="packet-wrapper" wx:if="{{adverShow}}">
+      <image class='packet-logo' catchtap="interAdver" src='{{banner_url}}'>
+      </image>
+    </view> -->
+
+    <view class="btn-wrapper btn-borrow btn-buy" data-btntype="buy" catchtap="clickBorrow">
+      <button-type size="middle" btnTitle="{{buyBtnText}}" bs="0 0 18rpx 10rpx #F4F4F4" />
+    </view>
+    <!-- 开通vip -->
+    <!-- <view wx:if="{{!isRenewUser && pageType.type === 'newPWD' && open_renew_card && !is_deny_borrow}}" class="btn-wrapper btn-renew" data-btntype="borrow" data-btnvip="buyvip" catchtap="clickBorrow">
+      <button-type type="default" size="middle" btnTitle="免费借伞" />
+    </view> -->
+    <!-- 会员借伞 -->
+    <!-- <view class="btn-wrapper btn-borrow" data-btntype="borrow" catchtap="clickBorrow">
+      <button-type wx:if="{{isRenewUser}}" size="middle" btnTitle="会员借伞" />
+      <button-type wx:else size="middle" plain="{{pageType.type}}" btnTitle="{{pageType.name}}" />
+    </view> -->
+    
+    <view data-btntype="return" catchtap="clickReturn" class="btn-wrapper btn-return">
+      <button-type size="middle" btnTitle="立即还伞" bs="0 0 18rpx 10rpx #F4F4F4" />
+    </view>
+    <view class="btn-wrapper order">
+      <view class="btn-right btn-cell" catchtap="clickMap">
+        <item-nav fs-size="34" title="使用说明" />
+      </view>
+      <view class="btn-center btn-cell">
+        
+      </view>
+      <view class="btn-center btn-cell" catchtap="clickOrder">
+        <item-nav fs-size="34" title="查看订单" />
+      </view>
+    </view>
+    <view class="bgc-box">
+      <image class='bgc-bottom' mode="widthFix" src='/images/index/login_pic2x.png'></image>
+    </view>
+  </view>
+  <!-- 会员有未还的雨伞 -->
+  <pls-modal show="{{isVipModel}}" top-image-size="sm" show-close bind:modalClose="hideVip">
+    <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
+      <view class="title-saide">
+        <view class="modal-title fs_28 f_w_4">您在当前伞点存有未归还的订单</view>
+        <view class="modal-title fs_28 f_w_4">请您确认后续动作</view>
+      </view>
+    </view>
+    <view slot="footer">
+      <view data-btntype="borrow" catchtap="continueBorrow" class="mod-btn-wrapper">
+        <button-type btnTitle="取伞成功，继续借伞" butType="{{true}}" />
+      </view>
+      <view catchtap="getBorrowCode" class="mod-btn-wrap">
+        <button-type btnTitle="取伞未成功，获取上次取伞码" bgc="#EFEFEF" />
+      </view>
+      <view data-btntype="borrow" catchtap="continueBorrow">
+        <button-type btnTitle="取伞异常已反馈，继续借伞" bgc="#EFEFEF" />
+      </view>
+    </view>
+  </pls-modal>
+</view>
+
+<!-- <pls-modal show="{{showModal}}" top-image-size="sm" show-close onModalClose="hideModal" top-image="https://cdn.piaoliusan.com/img/icon_warning.png">
+    <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
+      <view class="title-saide">
+        <view class="modal-title fs_28 f_w_4">您在当前伞点存有未归还的订单</view>
+        <view class="modal-title fs_28 f_w_4">请您确认后续动作</view>
+      </view>
+    </view>
+    <view slot="footer" catchtap="sumbitFeedback">
+      <view data-btntype="borrow" catchtap="mobrellaType" class="mod-btn-wrapper">
+        <button-type btnTitle="取伞成功，继续借伞" />
+      </view>
+      <view catchtap="getBorrowCode" class="mod-btn-wrap">
+        <button-type btnTitle="取伞未成功，获取上次取伞码" />
+      </view>
+      <view data-btntype="borrow" catchtap="mobrellaType">
+        <button-type btnTitle="取伞异常已反馈，继续借伞" />
+      </view>
+    </view>
+</pls-modal> -->
+<!-- 伞桶和点位没绑定弹窗 -->
+<!-- <pls-modal show="{{isBandSite}}" top-image-size="sm" show-close onModalClose="hideBandSite" top-image="https://cdn.piaoliusan.com/img/icon_warning.png">
+    <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
+      <view class="title-saide">
+        <view class="modal-title fs_28 f_w_4">亲，抱歉！当前伞点正在维护中，暂时无法为你提供借还伞服务，请到附近伞点！</view>
+      </view>
+    </view>
+    <view slot="footer">
+      <view data-btntype="borrow" catchtap="backMap" class="mod-btn-wrapper">
+        <button-type btnTitle="展示附近伞点" />
+      </view>
+      <view hidden="{{advanceModalShow}}" catchtap="advanceReturn" data-btntype="return" class="mod-btn-wrap">
+        <button-type btnTitle="伞已推入设备" />
+      </view>
+    </view>
+</pls-modal> -->
+<!-- 会员有未还的雨伞 -->
+<!-- <pls-modal show="{{isVipModel}}" top-image-size="sm" show-close onModalClose="hideVip">
+    <view slot="header">
+      <view>温馨提示</view>
+      <view class="title-saide">
+        <view class="modal-title fs_28 f_w_4" wx:if="{{isRenewUser}}">会员用户一个时间段只能借伞一把，你需先归还在借的雨伞后才能继续免费借伞！</view>
+        <view class="modal-title fs_28 f_w_4" wx:else>亲，抱歉！你有未归还的订单，暂时不能再次借伞，请先归还！</view>
+      </view>
+    </view>
+</pls-modal> -->
+<!-- 会员优惠借伞超过15分钟有未还的雨伞 -->
+<!-- <pls-modal show="{{isBuyRenewModel}}" top-image-size="sm" show-close onModalClose="hideRenew" top-image="https://cdn.piaoliusan.com/img/icon_warning.png">
+    <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
+      <view class="title-saide">
+        <view class="modal-title fs_28 f_w_4">亲，抱歉！你有未归还的订单，暂时不能使用会员借伞，请先归还！</view>
+      </view>
+    </view>
+    <view slot="footer">
+    </view>
+</pls-modal> -->
+<!-- vip借伞 -->
+<!-- <pls-modal show="{{showVipModal}}" top-image-size="sm" show-close onModalClose="hideVipModal" top-image="https://cdn.piaoliusan.com/img/icon_warning.png">
+  <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
+    <view class="title-saide">
+      <view class="modal-title fs_28 f_w_4">您在当前伞点存有未归还的订单</view>
+      <view class="modal-title fs_28 f_w_4">请您确认后续动作</view>
+    </view>
+  </view>
+  <view slot="footer" catchtap="sumbitFeedback">
+    <view catchtap="getBorrowCode" class="mod-btn-wrapper">
+      <button-type btnTitle="取伞未成功，获取上次取伞码" />
+    </view>
+    <view catchtap="goBrFeedBack" class="mod-btn-wrap" wx:if="{{isRenewUser}}">
+      <button-type btnTitle="反馈异常,结束订单" />
+    </view>
+    <view catchtap="clickReturn" class="mod-btn-wrap">
+      <button-type btnTitle="立即还伞" />
+    </view>
+    <view catchtap="hideVipModal">
+      <button-type btnTitle="关闭" />
+    </view>
+  </view>
+</pls-modal> -->
+<!-- 新用户弹窗 -->
+<!-- <pls-modal show="{{isNewShow}}" class="new-wrapper" class-footer="{{classFooter}}" class-header="class-header">
+  <view class="new-img" slot="header">
+    <image src="/images/index/icon_close2x.png" />
+  </view>
+  <view slot="footer" catchtap="sumbitFeedback">
+    <view catchtap="goUse" class="mod-btn-wrapper">
+      <button-type btnTitle="立即使用" />
+    </view>
+  </view>
+</pls-modal> -->

@@ -1,0 +1,55 @@
+<!--pages/useDetail/useDetail.wxml-->
+<view style="height:{{height}}rpx" class="ud-box">
+  <view class="ud-top-box">
+    <view class="ud-top-title-box">
+      <view class="nav-item {{current == 0 ? 'current' : ''}}" data-index='0' catchtap="selectItem">
+        <view class="ud-top-title-img">
+          <image src="/images/useDetail/icon_rhjs.png" mode="widthFix"></image>
+        </view>
+        <view class="ud-top-title-text">
+          如何借伞
+        </view>
+      </view>
+      <view class="nav-item {{current == 1 ? 'current' : ''}}" data-index='1' catchtap="selectItem">
+        <view class="ud-top-title-img">
+          <image src="/images/useDetail/icon_rhhs.png" mode="widthFix"></image>
+        </view>
+        <view class="ud-top-title-text">
+          如何还伞
+        </view>
+      </view>
+      <view class="nav-item {{current == 2 ? 'current' : ''}}" data-index='2' catchtap="selectItem">
+        <view class="ud-top-title-img">
+          <image src="/images/useDetail/icon_rhgm.png" mode="widthFix"></image>
+        </view>
+        <view class="ud-top-title-text">
+          如何购买
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 猜你想问 -->
+  <view class="ud-content-box">
+    <view class="ud-content-title">
+      <image src="/images/useDetail/when.png"></image>
+    </view>
+    <view class="caption-wrap">
+      <i-collapse name="{{name}}">
+          <i-collapse-item wx:for="{{listData}}" wx:key="{{index}}" title="{{item.title}}" name="name{{index}}">
+              <view slot="content" class="ud-col-content">
+                  {{item.content}}
+              </view>
+          </i-collapse-item>
+      </i-collapse>
+    </view>
+  </view>
+  <!-- 意见反馈 -->
+  <view class="btn-tip-box">
+    <view class="btn-tip-img">
+      <image src="/images/useDetail/feedback.png"></image>
+    </view>
+    <view class="btn-tip-text">
+      意见反馈
+    </view>
+  </view>
+</view>

@@ -1,0 +1,95 @@
+.ud-box{
+  background-color: #F8F6F9;
+  overflow-y: scroll;
+}
+.ud-top-box{
+  background-color: #FFC002;
+  height: 200rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+.ud-top-title-box{
+  background: #FFFFFF;
+  border-radius: 14px;
+  position: absolute;
+  bottom: -100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 690rpx;
+  padding: 20rpx 50rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  z-index: 999;
+}
+.nav-item{
+  width: 130rpx;
+  text-align: center;
+  color: #968C90;
+  /* flex: 1; */
+}
+.nav-item image{
+  width: 130rpx;
+}
+.ud-top-title-text{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  line-height: 48rpx;
+}
+.nav-item.current{
+  color: #2CB7FB;
+}
+/* 猜你想问 */
+.ud-content-box{
+  background-color: #fff;
+  width: 690rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 350rpx;
+  padding: 30rpx 30rpx;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.ud-content-title{
+  width: 178rpx;
+  height: 54rpx;
+}
+.ud-content-title image{
+  width: 178rpx;
+  height: 54rpx;
+}
+/* 折叠面板 */
+.ud-col-content{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 52rpx;
+}
+/* 意见反馈 */
+.btn-tip-box{
+  position: fixed;
+  right: 0;
+  bottom: 200rpx;
+  width: 216rpx;
+  height: 72rpx;
+  z-index: 999;
+}
+.btn-tip-img image{
+  width: 216rpx;
+  height: 72rpx;
+}
+.btn-tip-text{
+  position: absolute;
+  right: 28rpx;
+  top:18rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 36rpx;
+}

@@ -1,0 +1,20 @@
+<view class="modal-wrapper {{isModal ? '' : 'no-bg'}}" wx:if="{{show}}">
+  <view class="modal-tip flex-column {{size}} {{isClass}}" catchTap>
+    <view wx:if="{{topImage}}" class="am-modal-image am-modal-image-{{topImageSize}}">
+			<image src="{{topImage}}" />
+		</view>
+    <view class="modal-header {{classHeader}}">
+      <slot name="header"></slot>
+      
+    </view>
+    <view>
+      <slot name="content" />
+    </view>
+    <view class="footer {{classFooter}}">
+      <slot name="footer"  />
+    </view>
+    <view catchtap="onModalClose">
+      <image wx:if="{{showClose}}" class="icon-cloose" src="/images/index/icon_close2x.png" />
+    </view>
+  </view>
+</view>

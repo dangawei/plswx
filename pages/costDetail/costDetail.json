@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "计费规则",
+  "navigationBarBackgroundColor":  "#FFC002",
+  "navigationBarTextStyle":"white",
+  "usingComponents": {
+    "button-type": "/component/button-type/button-type"
+  }
+}

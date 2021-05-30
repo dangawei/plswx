@@ -1,0 +1,157 @@
+.home-wrapper{
+  overflow: hidden;
+  height: 100%;
+}
+.hw-part{
+  width: 100%;
+  height: 100%;
+}
+.bg{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1106rpx;
+  margin-top: 114rpx;
+}
+.logo-wrapper{
+  position: absolute;
+  top: 210rpx; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+.logo{
+  width: 250rpx;
+  height: 130rpx; 
+}
+.packet-wrapper{
+  position: absolute;
+  top: 390rpx; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+.packet-logo{
+  width: 670rpx;
+  height: 202rpx; 
+}
+.home-wrapper .btn-wrapper{
+  width: 70%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.home-wrapper .btn-wrapper.btn-borrow.btn-buy{
+  /* bottom:603rpx; */
+  top:563rpx;
+}
+.home-wrapper .btn-wrapper.btn-borrow{
+  /* bottom: 463rpx;   */
+  top:758rpx;
+}
+.home-wrapper .btn-wrapper.btn-return{
+  /* bottom: 320rpx;  */
+  top:700rpx;
+}
+.btn-wrapper.order{
+  /* bottom:240rpx; */
+  top: 1020rpx;
+  display: flex;
+}
+.btn-cell{
+  flex: 1;
+  text-align: center;
+  width: 136rpx;
+}
+
+/* .home-wrapper .btn-wrapper.btn-buy::before{
+  content: '无需还伞';
+  display: block;
+  width:167rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  background:rgba(255,84,113,1);
+  border-radius:20rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 110rpx;
+} */
+.home-wrapper .btn-wrapper.btn-buy::after{
+  content: ' ';
+  display: block;
+  width:26rpx;
+  height:16rpx;
+  /* background: url('res/img/icon-triangle.png') no-repeat; */
+  background-size:100%; 
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100rpx;
+}
+
+/* 弹窗 */
+.modal-title{
+  color: #999;
+  margin-top: 20rpx;
+}
+.title-saide{
+  padding-top: 8rpx;
+}
+.mod-btn-wrapper{
+  margin: -40rpx 0 40rpx 0;
+}
+.mod-btn-wrap{
+  padding-bottom: 40rpx;
+}
+/* 弹窗结束 */
+.header{
+  padding-top:30rpx;
+}
+.adjust-wrapper{
+  position: absolute;
+  bottom: 50rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.adjust-cell{
+  color: #2891EB;
+}
+.new-img{
+  width: 100%;
+  height: 700rpx;
+}
+.new-img image{
+  width: 100%;
+  height: 100%;
+}
+.modal-wrapper .modal-tip .footer.new-btn{
+  margin-top: -120rpx;
+}
+.new-btn .mod-btn-wrapper{
+  margin: 0rpx 0rpx;
+}
+.class-header{
+  position: relative;
+  z-index: -1;
+}
+
+.btn-renew {
+  top: 633rpx;
+}
+.packet-buy-logo{
+  width: 664rpx;
+  height: 164rpx;
+}
+
+.bgc-box{
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+}
+.bgc-box image{
+  width: 100%;
+  margin-bottom: -8rpx;
+}

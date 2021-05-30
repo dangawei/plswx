@@ -1,0 +1,53 @@
+<!--pages/pwdBorrow/pwdBorrow.wxml-->
+<view style="height:{{height}}rpx" class="pb-box">
+  <view class="pb-cell-top">
+    请在伞桩上输入以下借伞码
+  </view>
+  <view class="pb-cell-content-box">
+    <view class="pb-cell-content-ver">
+      <ver-code></ver-code>
+    </view>
+    <view class="pb-cell-content-text">
+      <text>请尽快在伞桩上输入借伞码,如有问题,点击</text>
+      <text class="pb-cell-content-text-color">快速反馈</text>
+    </view>
+  </view>
+  <view class="pb-cell-vice-box">
+    <view class="pb-cell-content-vice">
+      <text class="pb-cell-cv-title">订单编号：</text>
+      <text class="pb-cell-cv-detail">{{orderNumber}}</text>
+      <text class="pb-cell-cv-btn">复制</text>
+    </view>
+    <view class="pb-cell-content-vice pb-cell-content-both">
+      <text class="pb-cell-cv-title">借伞时间：</text>
+      <text class="pb-cell-cv-detail">{{orderNumber}}</text>
+      <text class="pb-cell-cv-info">计费使用中</text>
+      <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="pb-cell-bottom-box">
+    <text catchtap="howBR">如何借还伞?</text>
+    <text> | </text>
+    <text>返回首页</text>
+  </view>
+  <view class="pb-cell-img-box">
+    <image src="/images/pwdBorrow/banner.png" class="pb-cell-img"  mode="widthFix"></image>
+  </view>
+  <!-- 计费规则 -->
+  <pls-modal show="{{isVipModel}}" top-image-size="sm" show-close bind:modalClose="hideVip">
+    <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">
+      <view class="modal-title-style">
+        计费规则
+      </view>
+      <view class="sd-cell-content-text">
+        <view class='content flagfree' wx:if="{{dataInfo.free}}">{{dataInfo.free}}</view>
+        <view class='content flag' wx:if="{{dataInfo.discounts}}">{{dataInfo.discounts}}</view>
+        <view class='content' wx:if="{{dataInfo.start_cost}}">{{dataInfo.start_cost}}</view>
+        <view class='content' wx:if="{{dataInfo.cost}}">{{dataInfo.cost}}</view>
+        <view class='content' wx:if="{{dataInfo.beyond_deposit}}">{{dataInfo.beyond_deposit}}</view>
+        <view class='content' wx:if="{{dataInfo.free_deposit}}">{{dataInfo.free_deposit}}</view>
+      </view>
+    </view>
+    <view slot="footer"></view>
+  </pls-modal>
+</view>

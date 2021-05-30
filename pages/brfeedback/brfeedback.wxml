@@ -1,0 +1,42 @@
+<!--pages/brfeedback/brfeedback.wxml-->
+<import src ="/component/upLoadImg/upLoadImg.wxml"/>
+<view style="min-height:{{height}}rpx" class="brf-box">
+  <view class="brf-top-box">
+    <view class="brf-detail-box">
+      <view class="brf-title">
+        <text class="brf-title-main">问题描述</text>
+        <text class="brf-title-vice"> (必填) </text>
+      </view>
+      <view class="brf-textarea-box">
+        <textarea class="brf-textarea" placeholder="请输入文本" maxlength="200" />
+        <view class="brf-textarea-counter">0/200</view>
+      </view>
+    </view>
+    <view class="brf-detail-box">
+      <view class="brf-title">
+        <text class="brf-title-main">上传图片</text>
+        <text class="brf-title-vice"> ({{pictureLength}} / 3) </text>
+      </view>
+      <view class="brf-textarea-box">
+        <template is='upLoadImg' data='{{data:picture,type:"picture",imgLength:3,isShow:isShow,hiddeTip:isHiddeTip}}' />
+      </view>
+    </view>
+    <view class="brf-detail-box">
+      <view class="brf-title">
+        <text class="brf-title-main">联系方式</text>
+        <text class="brf-title-vice"> (必填) </text>
+      </view>
+      <view class="brf-textarea-box">
+        <input class="brf-input" type="number" maxlength="11" placeholder="请输入手机号" />
+      </view>
+    </view>
+  </view>
+  <view class="brf-phone-box">
+    <image src="/images/feedback/icon_phone.png" class="brf-phone-img"></image>
+    <text class="color999999">客服电话：</text>
+    <text class="color00ADFA">4006069966</text>
+  </view>
+  <view class="brf-bottom-box">
+    <button-type btnTitle="立即提交" butType="{{true}}" />
+  </view>
+</view>
