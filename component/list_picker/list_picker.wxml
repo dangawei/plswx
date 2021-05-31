@@ -89,8 +89,6 @@
         <input wx:if="{{!showName}}" class='showStyle' style="color:rgba(153,153,153,1)" value="请先选择客户地址" name='{{name}}' disabled='true'/>
         <input wx:else class='showStyle' value="{{showName || '/'}}" name='{{name}}' disabled='true'/>
       </view>
-
-
   </view>
 
 

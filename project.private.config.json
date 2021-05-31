@@ -53,6 +53,12 @@
           "pathName": "pages/opfeedback/opfeedback",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
         }
       ]
     }

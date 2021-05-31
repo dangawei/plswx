@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cell-group": "/component/cell-group/index",
+    "cell": "/component/cell/index",
+    "avatar": "/component/avatar/index"
+  }
+}

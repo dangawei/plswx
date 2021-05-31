@@ -7,7 +7,9 @@
     "pages/useDetail/useDetail",
     "pages/brfeedback/brfeedback",
     "pages/returnSuccess/returnSuccess",
-    "pages/opfeedback/opfeedback"
+    "pages/opfeedback/opfeedback",
+    "pages/my/my",
+    "pages/useDetail/useInfo/useInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

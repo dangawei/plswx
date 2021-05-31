@@ -1,0 +1,21 @@
+<!--pages/my/my.wxml-->
+<view style="height:{{height}}rpx" class="my-box">
+  <view class="my-top-box">
+    <avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" wid="144" heig="144" shape="circle"></avatar>
+    <view class="my-top-name">
+      小红帽
+    </view>
+    <view class="my-top-phone">
+      <text>18437981236</text>
+    </view>
+  </view>
+  <view class="my-content-box">
+    <cell-group>
+      <cell imgs="/images/my/order.png" title="我的订单" is-link></cell>
+      <cell imgs="/images/my/explain.png" title="使用说明" is-link url="/pages/useDetail/useDetail"></cell>
+      <cell imgs="/images/my/packet.png" title="红包明细" is-link url="/pages/index/index"></cell>
+      <cell imgs="/images/my/vip.png" title="会员权益" is-link url="/pages/index/index"></cell>
+      <cell imgs="/images/my/coupon.png" title="优惠券" is-link url="/pages/index/index"></cell>
+    </cell-group>
+  </view>
+</view>

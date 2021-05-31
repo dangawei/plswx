@@ -1,0 +1,36 @@
+/* pages/my/my.wxss */
+.my-box{
+  background-color: #F8F8F8;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+/* top */
+.my-top-box{
+  width: 690rpx;
+  text-align: center;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  box-sizing: border-box;
+}
+.my-top-name{
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 50rpx;
+  margin-top:30rpx;
+  margin-bottom: 30rpx;
+}
+.my-top-phone{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 34rpx;
+  letter-spacing: 1px;
+}
+
+.my-content-box{
+  border-radius: 20rpx;
+  overflow: hidden;
+}
