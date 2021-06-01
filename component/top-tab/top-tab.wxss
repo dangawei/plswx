@@ -1,0 +1,24 @@
+/* component/topTab/topTab.wxss */
+.tab-box{
+  width: 750rpx;
+  height: 100rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  background-color: #F8F8F8;
+}
+.tab-cell-title{
+  display: inline-block;
+  width: 166rpx;
+  text-align: center;
+  color: #666666;
+}
+.tab-cell-title-text{
+  display: inline-block;
+  font-weight: 400;
+  height: 96rpx;
+}
+.border-color-FFC002{
+  font-weight: 500;
+  color: #000000;
+  border-bottom: 4rpx solid #FFC002;
+}

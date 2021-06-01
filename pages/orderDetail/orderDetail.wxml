@@ -1,0 +1,68 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="od-box">
+  <view class="od-top-box">
+    
+  </view>
+  <view class="od-content-box">
+    <view class="rs-cell-content-text">
+      <view class="rs-cell-content-info flex1 tac left-border">
+        <view class="rs-cell-content-main">
+          <text class="fw600 fz56">2</text>
+          <text class="color999999">元</text>
+        </view>
+        <view class="rs-cell-content-vice color999999">
+          计费规则
+        </view>
+      </view>
+      <!-- <view class="ver-line flex1"> | </view> -->
+      <view class="rs-cell-content-info flex1 tac">
+        <view class="rs-cell-content-main">
+          <text class="fw600 fz56">0</text>
+          <text class="color999999">天</text>
+          <text class="fw600 fz56">20</text>
+          <text class="color999999">小时</text>
+        </view>
+        <view class="rs-cell-content-vice color999999">
+          使用时长
+        </view>
+      </view>
+    </view>
+    <view class="rs-cell-content-info">
+      <view>
+        <text class="od-dec-title">借伞时间: </text>
+        <text class="od-dec-info">2019-4-10 10:53:21</text>
+      </view>
+      <view>
+        <text class="od-dec-title">还伞时间: </text>
+        <text class="od-dec-info">2019-4-10 10:53:21</text>
+      </view>
+      <view>
+        <text class="od-dec-title">借伞地点: </text>
+        <text class="od-dec-info">2019-4-10 10:53:21</text>
+      </view>
+      <view>
+        <text class="od-dec-title">订单编号: </text>
+        <text class="od-dec-info">20190411XXXXX12341</text>
+      </view>
+      <view>
+        <text class="od-dec-title">应付金额: </text>
+        <text class="od-dec-info">2019-4-10 10:53:21</text>
+      </view>
+      <view>
+        <text class="od-dec-title">红包抵扣: </text>
+        <text class="od-dec-info">2019-4-10 10:53:21</text>
+      </view>
+    </view>
+  </view>
+  <view class="od-bottom-box">
+    <button-type btnTitle="去支付" butType="{{true}}" />
+  </view>
+  <view class="od-footer-box">
+    <view class="left-border flex1 tac">
+      <text class="color999999">费用疑问</text>
+    </view>
+    <view class="flex1 tac">
+      <text class="color999999">意见反馈</text>
+    </view>
+  </view>
+</view>

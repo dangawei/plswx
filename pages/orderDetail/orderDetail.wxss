@@ -1,0 +1,45 @@
+/* pages/orderDetail/orderDetail.wxss */
+.od-top-box{
+  width: 750rpx;
+  height: 380rpx;
+  background-color: #ccc;
+}
+.od-content-box{
+  padding: 30rpx;
+}
+/* 说明 */
+.rs-cell-content-text{
+  display: flex;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.rs-cell-content-info{
+  padding:20rpx 30rpx;
+}
+.od-dec-title{
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 60rpx;
+}
+.od-dec-info{
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 60rpx;
+}
+
+.od-bottom-box{
+  width: 500rpx;
+  margin-left: 125rpx;
+}
+.od-footer-box{
+  position: fixed;
+  bottom: 100rpx;
+  left: 125rpx;
+  display: flex;
+  width: 500rpx;
+}

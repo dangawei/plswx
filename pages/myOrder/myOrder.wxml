@@ -1,0 +1,89 @@
+<!--pages/myOrder/myOrder.wxml-->
+<view style="height:{{height}}rpx" class="mo-box">
+  <view class="mo-top-box">
+    <view class="mo-top-bgi">
+      <image src="/images/my/bgi.png"></image>
+      <view class="mo-tb-left">
+        <view class="mo-tb-left-img">
+          <image src="/images/my/vip_order.png"></image>
+          <text class="mo-tb-left-text">会员卡</text>
+        </view>
+        <view class="mo-tb-left-bottom">
+          <text class="mo-tb-left-color">未开通</text>
+        </view>
+      </view>
+      <view class="mo-tb-right">
+        <text>已使用</text>
+        <text class="mo-tb-right-num"> 0 </text>
+        <text>次</text>
+      </view>
+    </view>
+  </view>
+  <view class="mo-tab-box">
+    <top-tab dataArr="{{dataArr}}" bColor="{{bColor}}" bind:clickTitle="clickTitle"></top-tab>
+  </view>
+  <view wx:if="{{selTitle==0}}">
+    <scroll-view  scroll-y='true' style="height:{{scrollyHeight}}rpx" bindscrolltolower='scrollBottom'>
+      <view class="pb-cell-vice-box">
+        <view class="pb-cell-content-vice border-bottom">
+          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
+        </view>
+        <view class="pb-cell-content-vice">
+          <text class="pb-cell-cv-title">时长:6个小时</text>
+          <text class="pb-cell-cv-info">已还</text>
+          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
+        </view>
+      </view>
+      <view class="pb-cell-vice-box">
+        <view class="pb-cell-content-vice border-bottom">
+          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
+        </view>
+        <view class="pb-cell-content-vice">
+          <text class="pb-cell-cv-title">时长:6个小时</text>
+          <text class="pb-cell-cv-info">已还</text>
+          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
+        </view>
+      </view>
+      <view class="pb-cell-vice-box">
+        <view class="pb-cell-content-vice border-bottom">
+          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
+        </view>
+        <view class="pb-cell-content-vice">
+          <text class="pb-cell-cv-title">时长:6个小时</text>
+          <text class="pb-cell-cv-info">已还</text>
+          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
+        </view>
+      </view>
+      <view class="pb-cell-vice-box">
+        <view class="pb-cell-content-vice border-bottom">
+          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
+        </view>
+        <view class="pb-cell-content-vice">
+          <text class="pb-cell-cv-title">时长:6个小时</text>
+          <text class="pb-cell-cv-info">已还</text>
+          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
+        </view>
+      </view>
+      <view class="pb-cell-vice-box">
+        <view class="pb-cell-content-vice border-bottom">
+          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
+        </view>
+        <view class="pb-cell-content-vice">
+          <text class="pb-cell-cv-title">时长:6个小时</text>
+          <text class="pb-cell-cv-info">已还</text>
+          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
+        </view>
+      </view>
+      <view class="pb-cell-vice-box">
+        <view class="pb-cell-content-vice border-bottom">
+          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
+        </view>
+        <view class="pb-cell-content-vice">
+          <text class="pb-cell-cv-title">时长:6个小时</text>
+          <text class="pb-cell-cv-info">已还</text>
+          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

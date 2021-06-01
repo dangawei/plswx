@@ -41,3 +41,6 @@ page {
 .fz56{
   font-size: 56rpx;
 }
+.border-color-FFC002 {
+    border-bottom: 2px solid #FFC002;
+}

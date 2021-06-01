@@ -9,7 +9,9 @@
     "pages/returnSuccess/returnSuccess",
     "pages/opfeedback/opfeedback",
     "pages/my/my",
-    "pages/useDetail/useInfo/useInfo"
+    "pages/useDetail/useInfo/useInfo",
+    "pages/myOrder/myOrder",
+    "pages/orderDetail/orderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
