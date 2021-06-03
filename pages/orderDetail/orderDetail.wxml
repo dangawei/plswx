@@ -1,7 +1,7 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class="od-box">
   <view class="od-top-box">
-    
+    <map style="width:750rpx;" name="" scale="{{18}}" markers="{{markers}}"></map>
   </view>
   <view class="od-content-box">
     <view class="rs-cell-content-text">

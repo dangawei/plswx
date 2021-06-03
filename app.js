@@ -13,7 +13,7 @@ App({
     //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
     //   }
     // })
-    if(!wx.getStorageSync('app_token')){
+    // if(!wx.getStorageSync('app_token')){
       wx.login({
         success (res) {
           if (res.code) {
@@ -29,7 +29,7 @@ App({
           }
         }
       })
-    }
+    // }
     wx.getSystemInfo({
       success:  (res) => {
         wx.setStorage({ key: 'height', data: (750 / res.windowWidth) * res.windowHeight })

@@ -15,7 +15,7 @@
         {
           "name": "计费规则",
           "pathName": "pages/costDetail/costDetail",
-          "query": "",
+          "query": "pail_no=M700007423",
           "scene": null
         },
         {

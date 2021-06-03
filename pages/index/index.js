@@ -1,4 +1,4 @@
-const { login,getPhone } = require('../../api/api.js');
+const { getPhone,sitePail } = require('../../api/api.js');
 // index.js
 // 获取应用实例
 const app = getApp()
@@ -8,9 +8,11 @@ Page({
     pageHeight:'',
     canIUseGetUserProfile:false,
     buyBtnText: "立即借伞",
-    isVipModel:false
+    isVipModel:false,
+    pail_no:'M700007423',
+    isPhone:false
   },
-  onLoad() {
+  onLoad(e) {
     wx.getSystemInfo({
       success:  (res) => {
         this.setData({
@@ -18,12 +20,18 @@ Page({
         })
       }
     })
+    if(!wx.getStorageSync('phone')){
+      console.log(123)
+      this.setData({
+        isPhone:true
+      })
+    }
     // if (wx.getUserProfile) {
     //   this.setData({
     //     canIUseGetUserProfile: true
     //   })
     // }
-    
+    // this.getUserProfile()
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -49,54 +57,70 @@ Page({
     })
   },
   // 获取手机号
-  bindgetphonenumber(e){
+  getPhone(e){
     console.log(e)
-    console.log(e.detail)
+    console.log(e.detail.details)
     var that=this
-    wx.checkSession({
-      success () {
-        console.log("session_key 未过期")
-        //session_key 未过期，并且在本生命周期一直有效
-        const params={
-          encrypted_data:e.detail.encryptedData,
-          iv:e.detail.iv,
-          code:''
+    if(!wx.getStorageSync('phone')){
+      wx.checkSession({
+        success () {
+          console.log("session_key 未过期")
+          //session_key 未过期，并且在本生命周期一直有效
+          const params={
+            encrypted_data:e.detail.details.encryptedData,
+            iv:e.detail.details.iv,
+            code:''
+          }
+          //发起网络请求
+          getPhone(params).then((result) => {
+            console.log(result)
+            if(result.code && result.code==202){
+              // that.getUserProfile()
+            }else{
+              that.clickBorrow()//请求借伞
+              wx.setStorage({ key: 'phone', data: result.phone })
+            }
+          })
+        },
+        fail () {
+          // session_key 已经失效，需要重新执行登录流程
+          console.log("session_key 已过期")
+          wx.login({
+            success (res) {
+              const params={
+                encrypted_data:e.detail.details.encryptedData,
+                iv:e.detail.details.iv,
+                code:res.code
+              }
+              if (res.code) {
+                //发起网络请求
+                getPhone(params).then((result) => {
+                  this.clickBorrow()//请求借伞
+                  wx.setStorage({ key: 'phone', data: result.phone })
+                })
+              }
+            }
+          })
         }
-        //发起网络请求
-        getPhone(params).then((result) => {
-          console.log(result)
-          if(result.code && result.code==202){
-            that.getUserProfile()
-          }else{
-            wx.setStorage({ key: 'phone', data: result.phone })
-          }
-        })
-      },
-      fail () {
-        // session_key 已经失效，需要重新执行登录流程
-        console.log("session_key 已过期")
-        wx.login({
-          success (res) {
-            const params={
-              encrypted_data:e.detail.encryptedData,
-              iv:e.detail.iv,
-              code:res.code
-            }
-            if (res.code) {
-              //发起网络请求
-              getPhone(params).then((result) => {
-                wx.setStorage({ key: 'phone', data: result.phone })
-              })
-            }
-          }
-        })
-      }
-    })
+      })
+    }else{
+      this.clickBorrow()
+    }
+    
   },
   // 点击借伞
   clickBorrow(){
-    this.setData({
-      isVipModel:true
+    var params={
+      pail_no:this.data.pail_no
+    }
+    sitePail(params).then((res)=>{
+      if(res.code && res.code==103){
+
+      }else{
+        wx.navigateTo({
+          url: '/pages/costDetail/costDetail?pail_no='+this.data.pail_no,
+        })
+      }
     })
   },
   // 关闭弹窗

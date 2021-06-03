@@ -17,8 +17,11 @@
       </image>
     </view> -->
 
-    <view class="btn-wrapper btn-borrow btn-buy" data-btntype="buy" catchtap="clickBorrow">
-      <button-type size="middle" btnTitle="{{buyBtnText}}" bs="0 0 18rpx 10rpx #F4F4F4" />
+    <view class="btn-wrapper btn-borrow btn-buy" data-btntype="buy" wx:if="{{isPhone}}">
+      <button-type size="middle" btnTitle="{{buyBtnText}}" isPhone="{{isPhone}}" bind:getPhone="getPhone" bs="0 0 18rpx 10rpx #F4F4F4" />
+    </view>
+    <view wx:else class="btn-wrapper btn-borrow btn-buy" data-btntype="buy" catchtap="clickBorrow">
+      <button-type size="middle" btnTitle="{{buyBtnText}}" isPhone="{{isPhone}}" bs="0 0 18rpx 10rpx #F4F4F4" />
     </view>
     <!-- 开通vip -->
     <!-- <view wx:if="{{!isRenewUser && pageType.type === 'newPWD' && open_renew_card && !is_deny_borrow}}" class="btn-wrapper btn-renew" data-btntype="borrow" data-btnvip="buyvip" catchtap="clickBorrow">

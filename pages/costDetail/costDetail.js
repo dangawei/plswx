@@ -1,3 +1,4 @@
+const { rentInfo } = require('../../api/api.js');
 // pages/costDetail/costDetail.js
 Page({
 
@@ -6,14 +7,8 @@ Page({
    */
   data: {
     height:wx.getStorageSync('height'),
-    dataInfo:{
-      beyond_deposit:"订单大于押金时，订单自动结束计费扣除押金作为租赁费用",
-      cost:"0.01元/小时",
-      deposit:"0.01元",
-      free_deposit:"芝麻信用分满550分免0.01元押金（以支付宝的返回结果为准）",
-      is_deny_borrow:false,
-      suitable:""
-    },
+    pail_no:'',
+    dataInfo:{},
   },
 
   /**
@@ -21,8 +16,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-
+      pail_no:options.pail_no
     })
+    this.getRentInfo()
   },
 
   /**
@@ -39,6 +35,23 @@ Page({
 
   },
 
+  //得到计费规则
+  getRentInfo(){
+    const params={
+      pail_no:this.data.pail_no
+    }
+    rentInfo(params).then(res=>{
+      console.log(res)
+      this.setData({
+        dataInfo:res
+      })
+      wx.setStorage({ key: 'rentInfo', data: res })
+    })
+  },
+  // 确定借伞
+  clickBorrow(){
+    
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

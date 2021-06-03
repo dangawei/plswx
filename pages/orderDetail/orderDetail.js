@@ -5,14 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    markers:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      height: 20,
+      width: 17,
+      iconPath: "/images/orderDetail/icon_borrow.png",
+      latitude: '30.275909',
+      longitude: '120.124039',
+    })
   },
 
   /**
@@ -20,7 +26,7 @@ Page({
    */
   onReady: function () {
 
-  },
+  }, 
 
   /**
    * 生命周期函数--监听页面显示

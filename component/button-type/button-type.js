@@ -45,6 +45,10 @@ Component({
       type: Boolean,
       value: false
     },
+    isPhone: {
+      type: Boolean,
+      value: false
+    },
   },
 
   /**
@@ -70,6 +74,10 @@ Component({
   methods: {
     btnClick() {
       this.triggerEvent('btnEvent', { text: '', size: this.properties.size, btnNum: this.properties.btnNum })
-    }
+    },
+    bindgetphonenumber(e) {
+      console.log(e)
+      this.triggerEvent('getPhone',{details:e.detail})
+    },
   }
 })

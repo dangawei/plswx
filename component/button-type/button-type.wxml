@@ -1,4 +1,8 @@
-<button style="background-color:{{bgc}};box-shadow:{{bs}};border:{{borders}}" hover-class='btn-hover' data-num="{{btnNum}}" class="btn-class {{butType?'btn-type':'btn-type-no'}} size-{{size}} {{!isDisabled ? 'btn-disabled' : ''}} {{ghost && 'ghost'}} {{clickBool ? 'click' : ''}}" bindtap='btnClick' disabled="{{!isDisabled}}">
+<button style="background-color:{{bgc}};box-shadow:{{bs}};border:{{borders}}" hover-class='btn-hover' data-num="{{btnNum}}" class="btn-class {{butType?'btn-type':'btn-type-no'}} size-{{size}} {{!isDisabled ? 'btn-disabled' : ''}} {{ghost && 'ghost'}} {{clickBool ? 'click' : ''}}" bindtap='btnClick' disabled="{{!isDisabled}}" wx:if="isPhone">
+  <text class="btn-text">{{titleOne?titleOne:''}}</text>
+  {{titleTwo?titleTwo:btnTitle}}
+</button>
+<button style="background-color:{{bgc}};box-shadow:{{bs}};border:{{borders}}" hover-class='btn-hover' data-num="{{btnNum}}" class="btn-class {{butType?'btn-type':'btn-type-no'}} size-{{size}} {{!isDisabled ? 'btn-disabled' : ''}} {{ghost && 'ghost'}} {{clickBool ? 'click' : ''}}" bindtap='btnClick' disabled="{{!isDisabled}}" open-type="getPhoneNumber" bindgetphonenumber="bindgetphonenumber" wx:else>
   <text class="btn-text">{{titleOne?titleOne:''}}</text>
   {{titleTwo?titleTwo:btnTitle}}
 </button>
