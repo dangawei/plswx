@@ -39,7 +39,7 @@ export const wxRequest =(params, method)=> {
               }
             }
           })
-        } else if (data.code == '1002' || data.code == '1001' || data.code == '1102' || data.code == '1103'|| data.code == '103') {
+        } else if ( data.code == '104'|| data.code == '103') {
           resolve(data)
         }else{
           // resolve(data.data)

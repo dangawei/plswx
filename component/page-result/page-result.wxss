@@ -1,0 +1,26 @@
+/* component/page-result/page-result.wxss */
+.pr-box{
+  vertical-align: middle;
+  text-align: center;
+  /* display: flex;
+  align-items: center; */
+  display: table;
+  text-align: center;
+  width: 100%;
+}
+.img-box{
+  max-width: 500rpx;
+  display: table-cell;
+  vertical-align: middle;
+  
+}
+.img-cell{
+  margin-bottom: 20rpx;
+}
+.txt-cell{
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 36rpx;
+}

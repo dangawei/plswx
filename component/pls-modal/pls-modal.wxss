@@ -59,8 +59,8 @@
 }
 .modal-wrapper .modal-tip .footer{
   margin-top: 56rpx;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 .modal-wrapper .modal-tip .icon-cloose{
   width: 60rpx;

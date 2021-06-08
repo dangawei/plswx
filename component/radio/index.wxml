@@ -1,0 +1,9 @@
+<view class="i-class i-radio" catchtap="radioChange">
+    <i-cell i-class="i-radio-cell">
+        <view class="radio-cell-box">
+            <radio value="{{value}}" checked="{{checked}}" color="{{checked?color:''}}" disabled="{{disabled}}" class="i-radio-radio {{positionCls}}" />
+            <view class="i-radio-title">{{value}}</view>
+            <view wx:if="{{info}}" class="i-radio-info">时长: {{info}}</view>
+        </view>
+    </i-cell>
+</view>

@@ -1,4 +1,5 @@
 // pages/brfeedback/brfeedback.js
+const { commonPolicy,userFeedback } =require('../../api/api')
 const { previewSign, chooseImages, meetArrays, satisfy} = require('../../utils/util.js')
 Page({
 
@@ -11,7 +12,11 @@ Page({
     isShow:true,
     picture:[],//上传的图片
     pictureLength:0,
-    picID:[],
+    remark:'',//问题描述
+    mobile:0,//手机号
+    arrLength: 1,//正在上传第几张图片
+    pictureID:[],//上传图片的id
+    picID:'',//上传图片的id
   },
 
   /**
@@ -34,6 +39,31 @@ Page({
   onShow: function () {
 
   },
+  // 文本输入
+  bindinput(e){
+    this.setData({
+      remark:e.detail.value
+    })
+  },
+  // 联系方式
+  bindKeyInput: function (e) {
+    this.setData({
+      mobile: e.detail.value
+    })
+  },
+  // 点击立即提交
+  clickSumbit(){
+    var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
+    if (!myreg.test(this.data.mobile)) {
+      wx.showToast({
+        icon:'none',
+        title: '手机号格式不正确',
+        duration: 2000
+      })
+      return
+    }
+    this.needImgUp()
+  },
   /**
    * 通过判断data-type值给相对应的模块添加照片
    */
@@ -48,10 +78,10 @@ Page({
       })
     }else{
       chooseImages().then(res =>{
-        console.log(res)
         let isdelArray = meetArrays(res.tempFiles)//不能大于10MB
         isdelArray = satisfy(isdelArray)
         let images = this.data[sign].concat(isdelArray.arrays)
+        console.log(images)
         if(images.length>3){
           wx.showToast({
             icon:'none',
@@ -100,11 +130,11 @@ Page({
    * 将需要上传的图片找出来
    */
   needImgUp(){
-    let imgData = this.data.picID.length > 0 ? 
-                  this.data.picture.slice(this.data.picID.length, this.data.picture.length) : 
+    let imgData = this.data.pictureID.length > 0 ? 
+                  this.data.picture.slice(this.data.pictureID.length, this.data.picture.length) : 
                   this.data.picture
     if (imgData.length == 0) {
-      this.params.picture = JSON.stringify(this.data.picID)
+      this.data.picID = JSON.stringify(this.data.pictureID)
       this.postUrl()
       return 
     }
@@ -119,14 +149,14 @@ Page({
    * 将确定需要上传的图片进行上传
    */
   testUpload: function (imgArrs) {
-    policy({fc:1}).then(res =>{
+    commonPolicy().then(res =>{
       let uploadData = res;
       const uploadTask = wx.uploadFile({
         url: uploadData.auth.host, //仅为示例，非真实的接口地址
         filePath: imgArrs[this.data.arrLength - 1] + '',
         name: "file",
         formData: {
-          key: uploadData.files[0] + "." + imgArrs[this.data.arrLength - 1].split(".")[imgArrs[this.data.arrLength - 1].split(".").length - 1],
+          key: uploadData.filename + "." + imgArrs[this.data.arrLength - 1].split(".")[imgArrs[this.data.arrLength - 1].split(".").length - 1],
           policy: uploadData.auth.policy,
           signature: uploadData.auth.signature,
           OSSAccessKeyId: uploadData.auth.accessid,
@@ -139,7 +169,7 @@ Page({
           })
           let idData = res.data ? JSON.parse(res.data) : {}
           if (idData.Status == "Ok") {
-            this.data.picID.push(idData.id)
+            this.data.pictureID.push(idData.id)
             console.log('成功上传第：' + this.data.arrLength + '张')
             ++this.data.arrLength
             this.setData({
@@ -149,10 +179,9 @@ Page({
             if (imgArrs.length < this.data.arrLength) {
               console.log('所有图片上传完毕')
               this.setData({
-                showModals: false//将提示上传图片进度的模态框关闭
+                showModals: false,//将提示上传图片进度的模态框关闭
+                picID:JSON.stringify(this.data.pictureID)
               })
-
-              this.params.picture = JSON.stringify(this.data.picID)
               this.postUrl()
               return 
             } 
@@ -182,6 +211,49 @@ Page({
 
       })
     })
+  },
+  // 提交反馈
+  postUrl(){
+    var params={
+      source_type:0,
+      mobile:this.data.mobile,
+      remark:this.data.remark,
+      img_id:this.data.picID
+    }
+    userFeedback(params).then(res=>{
+      wx.showModal({
+        title: '提示',
+        content: '提交成功，我们会尽快处理',
+        showCancel:false,
+        success (res) {
+          if (res.confirm) {
+            wx.reLaunch({
+              url: '/pages/index/index',
+            })
+          }
+        }
+      })
+      
+    })
+  },
+  // 拨打电话
+  callPhone(){
+    wx.showModal({
+      title: '',
+      content: '4006069966',
+      showCancel:true,
+      confirmText:'呼叫',
+      success (res) {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: '4006069966',
+          })
+        }else if (res.cancel) {
+          
+        }
+      }
+    })
+    
   },
   /**
    * 生命周期函数--监听页面隐藏

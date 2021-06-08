@@ -10,7 +10,7 @@
           还伞成功!
         </view>
         <view class="rs-cell-top-vice">
-          订单编号：7761111543797
+          订单编号：{{order_no}}
         </view>
       </view>
     </view>
@@ -18,7 +18,7 @@
       <view class="rs-cell-content-text">
         <view class="rs-cell-content-info flex1 tac left-border">
           <view class="rs-cell-content-main">
-            <text class="fw600 fz56">0.5</text>
+            <text class="fw600 fz56">{{pay}}</text>
             <text class="color999999">元</text>
           </view>
           <view class="rs-cell-content-vice color999999">
@@ -28,10 +28,10 @@
         <!-- <view class="ver-line flex1"> | </view> -->
         <view class="rs-cell-content-info flex1 tac">
           <view class="rs-cell-content-main">
-            <text class="fw600 fz56">0</text>
-            <text class="color999999">天</text>
-            <text class="fw600 fz56">20</text>
-            <text class="color999999">小时</text>
+            <label wx:for="{{used_time}}" wx:key="index" >
+              <text class="fw600 fz56">{{item.time}}</text>
+              <text class="color999999">{{item.title}}</text>
+            </label>
           </view>
           <view class="rs-cell-content-vice color999999">
             还伞成功
@@ -42,8 +42,8 @@
         <view class="rs-cell-bottom-btn">
           <button-type btnTitle="查看订单" butType="{{true}}" />
         </view>
-        <view class="rs-cell-bottom-btn">
-          <button-type btnTitle="返回地图" butType="{{false}}" bgc="#fff" borders="2rpx solid #FFB600" />
+        <view class="rs-cell-bottom-btn" catchtap="back">
+          <button-type btnTitle="返回首页" butType="{{false}}" bgc="#fff" borders="2rpx solid #FFB600" />
         </view>
       </view>
       <view>

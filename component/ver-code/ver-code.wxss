@@ -16,6 +16,9 @@
 .input-item.border-color {
   border-image: linear-gradient(90deg, rgba(255, 194, 0, 1), rgba(255, 179, 0, 1)) 1 1;
 }
+.input-item.border-color.border-color-red {
+  border: 1px solid #F64D3C;
+}
 /* .input-item:not(:first-child) {
   margin-left: 15rpx;
 } */

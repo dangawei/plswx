@@ -1,0 +1,9 @@
+<!--component/page-result/page-result.wxml-->
+<view class="pr-box" style="height:{{heightBox}}rpx">
+  <view style="width:{{wid}}rpx;" class="img-box">
+    <image style="width:{{wid}}rpx;" src="{{imgSrc}}" mode="widthFix" class="img-cell"></image>   
+    <view>
+      <text class="txt-cell">{{textValue}}</text>
+    </view>
+  </view>
+</view>

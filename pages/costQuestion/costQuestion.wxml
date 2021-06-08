@@ -1,0 +1,47 @@
+<!--pages/costQuestion/costQuestion.wxml-->
+<wxs src="../../utils/filter.wxs" module="filter" />
+<view class="cost-question flex-column">
+  <view class='cost-title bottom-border f_pf_rer flex_line_c_m'>
+    <text class='cost-head fs_32 f_pf_rer f_w_4'>费用明细</text>
+    <view class='cost-content'>
+      <view class="left ">使用时长</view>
+      <text class='right'>{{filter.isContent(filter.normalTime(details.used_time,'day'))}}</text>
+    </view>
+    <view class='cost-content'>
+      <view class="left ">借伞费用</view>
+      <view class='right'>{{details.amount ? details.amount : '0'}}元</view>
+    </view>
+  </view> 
+  <view class='cost-title bottom-border f_pf_rer flex_line_c_m'>
+    <view class='cost-head fs_32 f_pf_rer f_w_4'>计费规则</view>
+    <view class='cost-content'>
+      <view class="left ">借伞优惠 </view>
+      <view class='right'>{{filter.isContent(details.rent_info.suitable)}}</view>
+    </view>
+    <view class='cost-content'>
+      <view class="left ">借伞租金</view>
+      <view class='right'>{{filter.isContent(details.rent_info.cost)}}</view>
+    </view>
+    <view class='cost-content'>
+      <view class="left ">封顶价格</view>
+      <view class='right'>{{filter.isContent(details.rent_info.cap)}}</view>
+    </view>
+    <view class='cost-content'>
+      <view class="left">借伞押金</view>
+      <view class='right'>{{filter.isContent(details.rent_info.deposit)}}</view>
+    </view>
+  </view>
+  <view class='cost-title f_pf_rer flex_line_c_m'>
+    <view class='cost-head fs_32 f_pf_rer f_w_4'>费用异议</view>
+    <view class="yiyi f_pf_lt f_w_3">
+      <view>如您对本次费用有异议，可以点击下方按钮</view>
+      <view>进行问题反馈我们会及时跟进。</view>
+    </view>
+  </view>
+  <!-- <navigator class="wrapper-btn" url="/pages/feedback/feedback?order_no={{details.order_no}}">
+    <button-type btn-text="问题反馈" />
+  </navigator> -->
+  <view catchtap="gobf">
+    <button-type btnTitle="问题反馈" butType="{{true}}" />
+  </view>
+</view>

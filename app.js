@@ -1,18 +1,7 @@
 // app.js
-const { login } = require('./api/api.js');
+const { login,orderBorrowStatus } = require('./api/api.js');
 App({
   onLaunch() {
-    // 展示本地存储能力
-    // const logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-
-    // // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // })
     // if(!wx.getStorageSync('app_token')){
       wx.login({
         success (res) {
@@ -36,7 +25,36 @@ App({
       }
     })
   },
+  onShow: function(res) {
+    // 展示本地存储能力
+    console.log("我进入了app.js的onshow")
+    if (res.scene === 1038 || res.referrerInfo.appId =='wxd8f3793ea3b935b8') { // 场景值1038：从被打开的小程序返回,但安卓手机返回的是10001，所以只能根据appid去识别支付分的。
+        console.log("我进入了返回商家小程序")
+        this.globalData.userTouch =1;
+        this.borrowStatus()
+    }
+  },
+  borrowStatus(){
+    console.log("请求订单状态")
+    const params={
+      order_no:wx.getStorageSync('order_no')
+    }
+    orderBorrowStatus(params).then(res=>{
+      if(res.is_doing){
+        this.globalData.isSuccessOrder =true;
+        wx.setStorage({ key: 'borrow_code', data: res.borrow_code })
+        wx.navigateTo({
+          url: '/pages/pwdBorrow/pwdBorrow?borrow_code='+res.borrow_code,
+        })
+      }
+      
+    })
+  },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    userTouch:0,//押金按钮显示问题
+    isSuccessOrder:false,
+    pail_no:'',
+    order_no:'',
   }
 })

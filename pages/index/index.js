@@ -20,8 +20,8 @@ Page({
         })
       }
     })
+    console.log(wx.getStorageSync('phone'))
     if(!wx.getStorageSync('phone')){
-      console.log(123)
       this.setData({
         isPhone:true
       })
@@ -59,7 +59,7 @@ Page({
   // 获取手机号
   getPhone(e){
     console.log(e)
-    console.log(e.detail.details)
+    
     var that=this
     if(!wx.getStorageSync('phone')){
       wx.checkSession({
@@ -110,6 +110,7 @@ Page({
   },
   // 点击借伞
   clickBorrow(){
+    console.log("点击立即借伞")
     var params={
       pail_no:this.data.pail_no
     }
@@ -138,69 +139,10 @@ Page({
   getBorrowCode(){
     console.log("获取上次传伞码")
   },
-  // 获取用户信息
-  // getUserInfo:function(res){
-  //   console.log(res.detail)
-  //   // console.log(app.code)
-  //   var that = this
-    
-  //   // if(wx.getStorageSync("getUserInfo")){
-  //   //   console.log('aaaa')
-  //   // }else{
-  //   //   console.log(res.detail.errMsg.indexOf("ok"))
-  //     // if (res.detail.errMsg.indexOf("ok")>0){
-  //     //   wx.setStorageSync("getUserInfo", res.detail.userInfo)
-  //     //   wx.setStorageSync("encryptedData", res.detail.encryptedData)
-  //     //   wx.setStorageSync("iv", res.detail.iv)
-        
-  //       wx.getUserInfo({
-  //         success: function(sys) {
-  //           console.log(sys)
-  //           // newapi.login({
-  //           //   method: 'POST',
-  //           //   data: {
-  //           //     code: app.code,
-  //           //     encryptedData: res.detail.encryptedData,
-  //           //     iv: res.detail.iv,
-  //           //     model: sys.model,
-  //           //     system: sys.system,
-  //           //     platform: sys.platform,
-  //           //     sdkversion: sys.SDKVersion
-  //           //   },
-  //           //   success: function (result) {
-  //           //     console.log(result)
-  //           //     if (result.data.code == "0") {
-  //           //       wx.setStorageSync("s_token", result.data.data.s_token)
-
-  //           //       // wx.getStorageSync("getUserInfo")
-  //           //       if (!result.data.data.phone) {
-  //           //         that.setData({
-  //           //           userIphone: true
-  //           //         })
-  //           //       } else {
-  //           //         // pail_no = "pls00000000003"
-  //           //         wx.setStorageSync("getUserInfo", res.detail.userInfo)
-  //           //         if (that.data.types == 0) {
-  //           //           wx.reLaunch({
-  //           //             url: '../map/index',
-  //           //           })
-  //           //           return
-  //           //         }
-  //           //         wx.navigateTo({
-  //           //           url: '../pice/pice?pail_no=' + that.data.pail_no
-  //           //         })
-  //           //       }
-  //           //     }
-  //           //   }
-  //           // })
-  //         },
-  //       })
-  //     // }else{
-  //     //   wx.showModal({
-  //     //     title: '温馨提醒 ~',
-  //     //     content: '授权过后，才能借伞哦 ~',
-  //     //   })
-  //     // }
-  //   // }
-  // },
+  // 立即还伞
+  clickReturn(){
+    wx.navigateTo({
+      url: '/pages/pwdReturn/pwdReturn?pail_no='+this.data.pail_no,
+    })
+  }
 })

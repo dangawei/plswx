@@ -1,6 +1,6 @@
 .i-cell{
   position:relative;
-  padding:30rpx 30rpx;
+  padding:20rpx 20rpx;
   display:flex;
   background:#fff;
   align-items:center;

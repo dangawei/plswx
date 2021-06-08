@@ -15,10 +15,6 @@ export const getPhone = (data) => {
   const params = { url: newUrl + '/mina/user/updatePhone', data }
   return wxRequest(params);
 };
-export const eam_policy = (data) => {//上传图片
-  const params = { url:newUrl + '/eam/upload/policy', data: data }
-  return wxRequest(params);
-}
 export const orderUsing = (data) => {//未还订单列表
   const params = { url: newUrl + '/mina/order/using', data: data }
   return wxRequest(params);
@@ -29,5 +25,41 @@ export const sitePail = (data) => {//获取伞桶
 }
 export const rentInfo = (data) => {//获取计费规则
   const params = { url: newUrl + '/mina/site/rentInfo', data: data }
+  return wxRequest(params);
+}
+export const orderBorrow = (data) => {//借伞
+  const params = { url: newUrl + '/mina/order/borrow', data: data }
+  return wxRequest(params);
+}
+export const orderBorrowStatus = (data) => {//借伞状态
+  const params = { url: newUrl + '/mina/order/borrowStatus', data: data }
+  return wxRequest(params);
+}
+export const orderReturn = (data) => {//还伞
+  const params = { url: newUrl + '/mina/order/return', data: data }
+  return wxRequest(params);
+}
+export const orderList = (data) => {//订单列表
+  const params = { url: newUrl + '/mina/order/list', data: data }
+  return wxRequest(params);
+}
+export const orderDetail = (data) => {//订单详情
+  const params = { url: newUrl + '/mina/order/detail', data: data }
+  return wxRequest(params);
+}
+export const commonStatic = (data) => {//获取静态映射
+  const params = { url: newUrl + '/mina/common/static', data: data }
+  return wxRequest(params);
+}
+export const commonPolicy = (data) => {//获取上传参数
+  const params = { url: newUrl + '/mina/common/policy', data: data }
+  return wxRequest(params);
+}
+export const userFeedback= (data) => {//用户反馈
+  const params = { url: newUrl + '/mina/user/feedback', data: data }
+  return wxRequest(params);
+}
+export const orderBuy= (data) => {//一键购买
+  const params = { url: newUrl + '/mina/order/buy', data: data }
   return wxRequest(params);
 }

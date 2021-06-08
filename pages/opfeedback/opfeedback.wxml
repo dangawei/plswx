@@ -10,7 +10,7 @@
       </view>
       <view class="opf-cell-content-vice opf-cell-content-both">
         <text class="opf-cell-cv-title">{{whenText}}：</text>
-        <text class="opf-cell-cv-detail">{{orderNumber}}</text>
+        <text class="opf-cell-cv-detail">{{pailNo}}</text>
         <!-- <text class="opf-cell-cv-info">计费使用中</text> -->
         <!-- <image src="/images/pwdBorrow/btn_enter.png" class="opf-cell-cv-img" mode="widthFix"></image> -->
       </view>
@@ -19,14 +19,14 @@
   <view class="opf-top-box">
     <view class="opf-detail-box">
       <view>
-        <template is='pickerList' data='{{sign:1,title:"问题类型",click:"bindPickerChange",rangeData:problemData,rangeKey:"name",dataType:"problem",checkedValue:problem_name,nameValue:problem_id,dataType_name:"problem_id",placeholder:"其他原因",isShow:isShow,isClass:isClass}}' />
+        <template is='pickerList' data='{{sign:1,title:"问题类型",click:"bindPickerChange",rangeData:problemData,rangeKey:"name",dataType:"problem",checkedValue:problem_name,nameValue:problem_id,dataType_name:"problem_id",placeholder:"",isShow:isShow,isClass:isClass}}' />
       </view>
       <view class="opf-title">
         <text class="opf-title-main">问题描述</text>
         <text class="opf-title-vice"> (必填) </text>
       </view>
       <view class="opf-textarea-box">
-        <textarea class="opf-textarea" placeholder="请输入文本" maxlength="200" />
+        <textarea class="opf-textarea" placeholder="请输入文本" maxlength="200" bindinput="bindinput" />
         <view class="opf-textarea-counter">0/200</view>
       </view>
     </view>
@@ -45,16 +45,16 @@
         <text class="opf-title-vice"> (必填) </text>
       </view>
       <view class="opf-textarea-box">
-        <input class="opf-input" type="number" maxlength="11" placeholder="请输入手机号" />
+        <input class="opf-input" type="number" maxlength="11" placeholder="请输入手机号" bindinput="bindKeyInput" />
       </view>
     </view>
   </view>
   <view class="opf-phone-box">
     <image src="/images/feedback/icon_phone.png" class="opf-phone-img"></image>
     <text class="color999999">客服电话：</text>
-    <text class="color00ADFA">4006069966</text>
+    <text class="color00ADFA" catchtap="callPhone">4006069966</text>
   </view>
-  <view class="opf-bottom-box">
-    <button-type btnTitle="立即提交" butType="{{true}}" />
+  <view class="opf-bottom-box" catchtap="clickSumbit">
+    <button-type btnTitle="立即提交" butType="{{true}}" isDisabled="{{mobile && remark}}" />
   </view>
 </view>

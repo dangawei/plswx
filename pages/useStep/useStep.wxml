@@ -1,0 +1,27 @@
+<!--pages/useStep/useStep.wxml-->
+<view class="wrapper borrow-step flex-column">
+  <view class="con-wrapper flex-column">
+    <view class="title f_pf_mdm">{{stepData.title}}</view>
+    <swiper class="demo-swiper" previousMargin="0px"
+        indicator-dots
+        autoplay
+        circular interval="{{interval}}">
+      <block wx:for="{{stepData.imgUrl}}" wx:key="index">
+        <swiper-item>
+          <image class="img" src="https://cdn.piaoliusan.com/img/mobrella+/handleUse/{{item}}.png" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="btn-wrapper" wx:if="{{btnTitle}}">
+      <button-type btnTitle="去借伞" butType="{{true}}" />
+    </view>
+  </view>
+  <view class="contorl-radio">
+    <view class="radio-group" >
+      <view onTap="radioChange">
+        <radio class="radio" checked="{{checked}}" color="#FFB500" />
+        <text class="radio-text">不再提醒</text>
+      </view>
+    </view>
+  </view>
+</view>

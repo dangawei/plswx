@@ -1,23 +1,75 @@
-<view style="height:{{height}}rpx" class="pb-box">
-  <view class="pb-cell-top">
-    请先还伞，再输入伞桩上的借伞码
-  </view>
-  <view class="pb-cell-content-box">
-    <view class="pb-cell-content-ver">
-      <ver-code valueLength="4"></ver-code>
+<view class="pb-box" wx:if="{{isReturn}}">
+  <view>
+    <view class="pb-cell-top">
+      请先还伞，再输入伞桩上的借伞码
     </view>
-    <view class="pb-cell-content-text">
-      <text>还伞异常点此</text>
-      <text class="pb-cell-content-text-color">快速反馈,</text>
-      <text>结束订单</text>
+    <view class="pb-cell-content-box">
+      <view class="pb-cell-content-ver">
+        <ver-code valueLength="{{valueLength}}" bind:complated="sureReturn" codeNum="{{codeNum}}" bind:focusIndex="focusIndex"></ver-code>
+      </view>
+      <view class="pb-cell-content-text" wx:if="{{codeNum!=3}}">
+        <text>还伞异常点此</text>
+        <text class="pb-cell-content-text-color" catchtap="clickfb">快速反馈,</text>
+        <text>结束订单</text>
+      </view>
+      <view class="pb-cell-content-text color-red" wx:if="{{codeNum==3}}">
+        <text>还伞码输入错误，请确认后重新输入</text>
+      </view>
+    </view>
+    <view class="pb-cell-return-box">
+      <view class="pb-cr-title">
+        <text class="trans-line"></text>
+        <text class="pb-cr-title-txt">还伞步骤</text>
+        <text class="trans-line"></text>
+      </view>
+      <view class="pb-cr-info">
+        <view class="pb-cr-txt-1">
+          <image src="/images/1.png" class="pb-cr-img"></image>
+          <text class="pb-cr-txt">将伞收好，从左边还伞口推进去。</text>
+        </view>
+        <view class="pb-cr-img-bgi">
+          <image src="/images/return/hs1.png"></image>
+        </view>
+        <view class="pb-cr-txt-2">
+          <image src="/images/2.png" class="pb-cr-img"></image>
+          <text class="pb-cr-txt">将伞桩上的还伞码输入到手机，结束订单。</text>
+        </view>
+        <view class="pb-cr-img-bgi">
+          <image src="/images/return/hs2.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="pb-cell-bottom-box">
+      <text catchtap="howBR">如何借还伞?</text>
+      <text> | </text>
+      <text catchtap="back">返回首页</text>
     </view>
   </view>
-  <view class="pb-cell-bottom-box">
-    <text catchtap="howBR">如何借还伞?</text>
-    <text> | </text>
-    <text>返回首页</text>
-  </view>
-  <view class="pb-cell-img-box">
+ 
+  <!-- <view class="pb-cell-img-box">
     <image src="/images/pwdBorrow/banner.png" class="pb-cell-img"  mode="widthFix"></image>
-  </view>
+  </view> -->
+  <!-- 未还订单 -->
+  <pls-modal show="{{listModelShow}}" top-image-size="sm" show-close bind:modalClose="hideVip" showClose="{{false}}">
+    <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">
+      <view class="modal-title-style">
+        未还订单
+      </view>
+      <view class="sd-cell-content-text center">
+        <view>一次只能选择一把雨伞进行归还</view>
+        <view class="pr-mr-box">
+          <radio-group current="{{current}}" bindchange="handleChange">
+            <radio wx:for="{{listOrder}}" position="{{position}}" wx:key="index" value="{{item.order_no}}" info="{{item.used_time_text}}" color="#FFB507">
+            </radio>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+    <view slot="footer" catchtap="sureSecelt">
+      <button-type btnTitle="确认" butType="{{true}}" />
+    </view>
+  </pls-modal>
+</view>
+<view wx:else>
+  <page-result imgSrc="/images/null.png" textValue="暂无可还雨伞~" wid="{{150}}" heightBox="{{height}}"></page-result>
 </view>

@@ -1,11 +1,11 @@
 <!--pages/pwdBorrow/pwdBorrow.wxml-->
-<view style="height:{{height}}rpx" class="pb-box">
+<view class="pb-box">
   <view class="pb-cell-top">
     请在伞桩上输入以下借伞码
   </view>
   <view class="pb-cell-content-box">
     <view class="pb-cell-content-ver">
-      <ver-code></ver-code>
+      <ver-code valueLength="{{6}}" valueData="{{borrow_no}}"></ver-code>
     </view>
     <view class="pb-cell-content-text">
       <text>请尽快在伞桩上输入借伞码,如有问题,点击</text>
@@ -16,13 +16,13 @@
     <view class="pb-cell-content-vice">
       <text class="pb-cell-cv-title">订单编号：</text>
       <text class="pb-cell-cv-detail">{{orderNumber}}</text>
-      <text class="pb-cell-cv-btn">复制</text>
+      <text class="pb-cell-cv-btn" data-content="{{orderNumber}}" catchtap="copy">复制</text>
     </view>
     <view class="pb-cell-content-vice pb-cell-content-both">
       <text class="pb-cell-cv-title">借伞时间：</text>
       <text class="pb-cell-cv-detail">{{orderNumber}}</text>
-      <text class="pb-cell-cv-info">计费使用中</text>
-      <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
+      <text class="pb-cell-cv-info" catchtap="getRentInfo">计费使用中</text>
+      <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix" catchtap="getRentInfo"></image>
     </view>
   </view>
   <view class="pb-cell-bottom-box">

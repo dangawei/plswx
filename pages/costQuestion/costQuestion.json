@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "费用疑问",
+  "usingComponents": {
+    "button-type": "/component/button-type/button-type"
+  }
+}

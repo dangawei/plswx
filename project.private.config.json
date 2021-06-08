@@ -21,13 +21,13 @@
         {
           "name": "立即借伞",
           "pathName": "pages/pwdBorrow/pwdBorrow",
-          "query": "",
+          "query": "borrow_no=654987",
           "scene": null
         },
         {
           "name": "立即还伞",
           "pathName": "pages/pwdReturn/pwdReturn",
-          "query": "",
+          "query": "pail_no=M700007423",
           "scene": null
         },
         {
@@ -45,13 +45,13 @@
         {
           "name": "还伞成功",
           "pathName": "pages/returnSuccess/returnSuccess",
-          "query": "",
+          "query": "pay=1.5&used_time=12600&order_no=26546132658974665",
           "scene": null
         },
         {
           "name": "问题反馈",
           "pathName": "pages/opfeedback/opfeedback",
-          "query": "",
+          "query": "type=1&order_no=20210608164100001",
           "scene": null
         },
         {
@@ -69,6 +69,30 @@
         {
           "name": "订单详情",
           "pathName": "pages/orderDetail/orderDetail",
+          "query": "order_no=2106072009510313816374",
+          "scene": null
+        },
+        {
+          "name": "反馈成功",
+          "pathName": "pages/feedbackSuccess/feedbackSuccess",
+          "query": "order_no=2106071759390313816350&type=1",
+          "scene": null
+        },
+        {
+          "name": "费用疑问",
+          "pathName": "pages/costQuestion/costQuestion",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "借还伞步骤",
+          "pathName": "pages/useStep/useStep",
+          "query": "type=1",
+          "scene": null
+        },
+        {
+          "name": "使用说明",
+          "pathName": "pages/useDetail/useInfo/useInfo",
           "query": "",
           "scene": null
         }

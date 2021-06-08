@@ -1,4 +1,5 @@
-const { rentInfo } = require('../../api/api.js');
+const { rentInfo,orderBorrow } = require('../../api/api.js');
+const app=getApp().globalData
 // pages/costDetail/costDetail.js
 Page({
 
@@ -9,15 +10,19 @@ Page({
     height:wx.getStorageSync('height'),
     pail_no:'',
     dataInfo:{},
+    order_no:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       pail_no:options.pail_no
     })
+    app.pail_no=options.pail_no
+    wx.setStorage({ key: 'pail_no', data: options.pail_no })
     this.getRentInfo()
   },
 
@@ -50,7 +55,73 @@ Page({
   },
   // 确定借伞
   clickBorrow(){
-    
+    var that=this
+    var params={
+      pail_no:this.data.pail_no
+    }
+    orderBorrow(params).then(resu=>{
+      console.log(resu)
+      wx.navigateToMiniProgram({
+        appId: 'wxd8f3793ea3b935b8',
+        path: 'pages/use/use',
+        extraData: {
+            mch_id: resu.extraData.mch_id,
+            package: resu.extraData.package,
+            timestamp: resu.extraData.timestamp,
+            nonce_str: resu.extraData.nonce_str,
+            sign_type: resu.extraData.sign_type,
+            sign: resu.extraData.sign,
+            // service_id:resu.extraData.service_id,
+        },
+        success(res) {
+            //dosomething
+            // console.log(res)
+            // console.log("我进入了成功")
+            that.setData({
+              order_no:resu.order_no
+            })
+            app.order_no=resu.order_no
+            wx.setStorage({ key: 'order_no', data: resu.order_no })
+        },
+        fail(res) {
+            //dosomething
+            console.log("进入了失败函数")
+            console.log(res)
+            //dosomething
+        },
+        complete(res) {
+            console.log(res)
+            console.log("进入完成函数")
+        }
+      });
+    //   wx.openBusinessView({
+    //     businessType: 'wxpayScoreUse',
+    //     extraData: {
+    //       mch_id: res.extraData.mch_id,
+    //       package: res.extraData.package,
+    //       timestamp: res.extraData.timestamp,
+    //       nonce_str: res.extraData.nonce_str,
+    //       sign_type: res.extraData.sign_type,
+    //       sign: res.extraData.sign
+    //     },
+    //     success(res) {
+    //         //dosomething
+    //         console.log(res)
+    //         console.log("我进入了成功")
+    //     },
+    //     fail(res) {
+    //         //dosomething
+    //         console.log("进入了失败函数")
+    //         console.log(res)
+    //         //dosomething
+    //     },
+    //     complete(res) {
+    //         //dosomething
+    //         console.log(res)
+    //         console.log("进入完成函数")
+    //     }
+    //   })
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

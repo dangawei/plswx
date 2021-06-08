@@ -1,3 +1,4 @@
+const { normalTime } = require('../../utils/util');
 // pages/returnSuccess/returnSuccess.js
 Page({
 
@@ -6,23 +7,21 @@ Page({
    */
   data: {
     height:wx.getStorageSync('height'),
-    dataInfo:{
-      beyond_deposit:"订单大于押金时，订单自动结束计费扣除押金作为租赁费用",
-      cost:"0.01元/小时",
-      deposit:"0.01元",
-      free_deposit:"芝麻信用分满550分免0.01元押金（以支付宝的返回结果为准）",
-      is_deny_borrow:false,
-      suitable:""
-    },
+    dataInfo:{},
+    pay:'',
+    used_time:'',
+    order_no:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const t=normalTime(options.used_time,'special')
     this.setData({
-
+      order_no:options.order_no,
     })
+    console.log(this.data.used_time)
   },
 
   /**
@@ -39,6 +38,12 @@ Page({
 
   },
 
+  // 返回首页
+  back(){
+    wx.reLaunch({
+      url: '/pages/index/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

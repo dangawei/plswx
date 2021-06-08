@@ -2,7 +2,7 @@
 .od-top-box{
   width: 750rpx;
   height: 300rpx;
-  background-color: #ccc;
+  /* background-color: #ccc; */
 }
 .od-content-box{
   padding: 30rpx;
@@ -41,4 +41,55 @@
   left: 125rpx;
   display: flex;
   width: 500rpx;
+}
+.od-cell-content-vice{
+  font-size: 28rpx;
+}
+.od-cc-border{
+  border-bottom: 2rpx solid #333333;
+}
+/* 计费规则样式 */
+.sd-cell-content-text{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 40rpx;
+  text-align: left;
+}
+.content {
+  color: #333333;
+  position: relative;
+  margin-bottom: 61rpx;
+}
+.content.flag::after{
+  content: '限时优惠';
+}
+.content.flagfree::after{
+  content: '限时免费';
+}
+.content.flag::after,.content.flagfree::after{
+  /* content: '限时优惠'; */
+  position: absolute;
+  width:116rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  background:rgba(255,77,106,1);
+  border-radius:10rpx 10rpx 10rpx 0;
+  font-size:22rpx;
+  color: #fff;
+  top: -22rpx;
+}
+.content::before{
+  content: ' ';
+  display: inline-table;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -20rpx;
+  width:8rpx;
+  height:8rpx;
+  background:#FFC002;
+  border-radius:50%;
 }

@@ -1,0 +1,52 @@
+/* pages/useStep/useStep.wxss */
+.flex-column{
+  display:flex;
+  flex-direction:column;
+}
+.wrapper{
+  width:100%;
+  background:rgb(255, 255, 255);
+  position:fixed;
+  top:0px;
+  left:0px;
+  bottom:0px;
+}
+.borrow-step {
+  background:rgba(0,0,0,0.65);
+  align-items: center;
+  padding-top: 52rpx;
+}
+.borrow-step .con-wrapper{
+  align-items: center;
+  width: 92%;
+  height:980rpx;
+  background: #FCFEFB;
+  border-radius:10px;
+}
+.borrow-step .title{
+  font-size: 38rpx;
+  margin: 55rpx 0 43rpx 0;
+}
+.demo-swiper{
+  width: 620rpx;
+  height: 700rpx;
+  border-radius: 20rpx;
+}
+.borrow-step .img{
+  width: 620rpx;
+  height: 680rpx;
+  margin-bottom: 181rpx;
+}
+.btn-wrapper{
+  width: 600rpx;
+}
+.contorl-radio{
+  text-align: right;
+  width: 100%;
+  margin:66rpx 7% 0 0;
+}
+
+.radio-text{
+  font-size: 30rpx;
+  color: #fff;
+}

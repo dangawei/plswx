@@ -11,13 +11,14 @@
   color: #333333;
   line-height: 44rpx;
   padding-top:10rpx;
-  padding-bottom: 30rpx;
+  padding-bottom: 20rpx;
 }
 .pb-cell-content-box{
-  height: 200rpx;
+  height: 160rpx;
   background: #FFFFFF;
   border-radius: 8px;
-  padding: 50rpx 20rpx;
+  padding: 30rpx 20rpx;
+  box-shadow: 0 0 15rpx #EEEEEE;
 }
 .pb-cell-content-text{
   font-size: 28rpx;
@@ -25,11 +26,15 @@
   font-weight: 400;
   color: #ADADAD;
   line-height: 36rpx;
-  margin-top: 50rpx;
+  margin-top: 20rpx;
   text-align: center;
 }
 .pb-cell-content-text-color{
   color: #00ADFA;
+}
+.pb-cell-content-text.color-red{
+  color: #F64D3C;
+  text-align: right;
 }
 /* vice */
 .pb-cell-vice-box{
@@ -79,12 +84,12 @@
 /* 底部说明 */
 .pb-cell-bottom-box{
   text-align: center;
-  font-size: 36rpx;
+  font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #999999;
   line-height: 50rpx;
-  margin-top: 100rpx;
+  margin-top: 50rpx;
 }
 /* 底部背景图 */
 .pb-cell-img-box{
@@ -99,7 +104,7 @@
 .modal-title-style{
   color: #000000;
   font-weight: 600;
-  margin-bottom: 60rpx;
+  margin-bottom: 30rpx;
 }
 .modal-title{
   color: #333;
@@ -114,6 +119,9 @@
 .mod-btn-wrap{
   padding-bottom: 40rpx;
 }
+.pr-mr-box{
+  width: 100%;
+}
 /* 计费规则样式 */
 .sd-cell-content-text{
   font-size: 28rpx;
@@ -121,7 +129,6 @@
   font-weight: 400;
   color: #333333;
   line-height: 40rpx;
-  text-align: left;
 }
 .content {
   color: #333333;
@@ -158,4 +165,45 @@
   height:8rpx;
   background:#FFC002;
   border-radius:50%;
+}
+/* 还伞步骤 */
+.pb-cell-return-box{
+  text-align: center;
+  margin:20rpx 0;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 44rpx;
+}
+.pb-cr-title{
+  margin-bottom: 15rpx;
+}
+.pb-cr-txt-1{
+  text-align: left;
+  margin-bottom: 10rpx;
+}
+.pb-cr-txt-2{
+  text-align: left;
+  margin-bottom: 10rpx;
+}
+.pb-cr-img{
+  width: 40rpx;
+  height: 50rpx;
+  vertical-align: middle;
+}
+.pb-cr-txt{
+  margin-left: 15rpx;
+  vertical-align: middle;
+  line-height: 50rpx;
+  font-weight: 500;
+  color: #333333;
+}
+.pb-cr-img-bgi image{
+  width: 642rpx;
+  height: 272rpx;
+}
+.pb-cr-title-txt{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
 }

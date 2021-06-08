@@ -1,1 +1,38 @@
 /* pages/useDetail/useInfo/useInfo.wxss */
+page{
+  background-color: #fff;
+}
+.ui-content-box{
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.ui-content-table{
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx dashed #CECECE;
+}
+.pb-cr-txt-1{
+  text-align: left;
+  margin-bottom: 10rpx;
+}
+/* 步骤样式 */
+.ui-content-cell{
+  margin-bottom: 20rpx;
+}
+.step-icon{
+  width: 40rpx;
+  height: 50rpx;
+  vertical-align: middle;
+}
+.step-title{
+  font-size: 25rpx;
+  margin-left: 15rpx;
+  vertical-align: middle;
+  line-height: 50rpx;
+  font-weight: 500;
+  color: #333333;
+}
+.step-img{
+  width: 642rpx;
+  height: 272rpx;
+}

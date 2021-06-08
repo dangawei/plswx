@@ -7,22 +7,22 @@
     <view class="rs-cell-content-text">
       <view class="rs-cell-content-info flex1 tac left-border">
         <view class="rs-cell-content-main">
-          <text class="fw600 fz56">2</text>
+          <text class="fw500 fz56">{{orderInfo.payment_amount}}</text>
           <text class="color999999">元</text>
         </view>
-        <view class="rs-cell-content-vice color999999">
-          计费规则
+        <view class="od-cell-content-vice color999999">
+          <text class="od-cc-border" catchtap="clickRent">计费规则</text>
         </view>
       </view>
       <!-- <view class="ver-line flex1"> | </view> -->
       <view class="rs-cell-content-info flex1 tac">
         <view class="rs-cell-content-main">
-          <text class="fw600 fz56">0</text>
-          <text class="color999999">天</text>
-          <text class="fw600 fz56">20</text>
-          <text class="color999999">小时</text>
+          <label wx:for="{{orderInfo.used_times}}" wx:key="index" >
+            <text class="fw500 fz56">{{item.time}}</text>
+            <text class="color999999">{{item.title}}</text>
+          </label>
         </view>
-        <view class="rs-cell-content-vice color999999">
+        <view class="od-cell-content-vice color999999">
           使用时长
         </view>
       </view>
@@ -30,39 +30,56 @@
     <view class="rs-cell-content-info">
       <view>
         <text class="od-dec-title">借伞时间: </text>
-        <text class="od-dec-info">2019-4-10 10:53:21</text>
+        <text class="od-dec-info">{{orderInfo.borrow_time}}</text>
       </view>
       <view>
         <text class="od-dec-title">还伞时间: </text>
-        <text class="od-dec-info">2019-4-10 10:53:21</text>
+        <text class="od-dec-info">{{orderInfo.finish_time}}</text>
       </view>
       <view>
         <text class="od-dec-title">借伞地点: </text>
-        <text class="od-dec-info">2019-4-10 10:53:21</text>
+        <text class="od-dec-info">{{orderInfo.borrow_site_name}}</text>
       </view>
       <view>
         <text class="od-dec-title">订单编号: </text>
-        <text class="od-dec-info">20190411XXXXX12341</text>
+        <text class="od-dec-info">{{orderInfo.order_no}}</text>
       </view>
       <view>
         <text class="od-dec-title">应付金额: </text>
-        <text class="od-dec-info">2019-4-10 10:53:21</text>
+        <text class="od-dec-info">{{orderInfo.payment_amount_text}}</text>
       </view>
       <view>
         <text class="od-dec-title">红包抵扣: </text>
-        <text class="od-dec-info">2019-4-10 10:53:21</text>
+        <text class="od-dec-info">{{orderInfo.wallet_discount}}</text>
       </view>
     </view>
   </view>
-  <view class="od-bottom-box">
-    <button-type btnTitle="去支付" butType="{{true}}" />
+  <view class="od-bottom-box" wx:if="{{orderInfo.can_buy}}">
+    <button-type btnTitle="一键购买" butType="{{true}}" catchtap="clickBuy" />
   </view>
   <view class="od-footer-box">
-    <view class="left-border flex1 tac">
+    <view class="left-border flex1 tac" catchtap="goCostQues">
       <text class="color999999">费用疑问</text>
     </view>
-    <view class="flex1 tac">
+    <view class="flex1 tac" catchtap="brdf">
       <text class="color999999">意见反馈</text>
     </view>
   </view>
+  <!-- 计费规则 -->
+  <pls-modal show="{{isVipModel}}" top-image-size="sm" show-close bind:modalClose="hideVip">
+    <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">
+      <view class="modal-title-style">
+        计费规则
+      </view>
+      <view class="sd-cell-content-text">
+        <view class='content flagfree' wx:if="{{dataInfo.free}}">{{dataInfo.free}}</view>
+        <view class='content flag' wx:if="{{dataInfo.discounts}}">{{dataInfo.discounts}}</view>
+        <view class='content' wx:if="{{dataInfo.start_cost}}">{{dataInfo.start_cost}}</view>
+        <view class='content' wx:if="{{dataInfo.cost}}">{{dataInfo.cost}}</view>
+        <view class='content' wx:if="{{dataInfo.beyond_deposit}}">{{dataInfo.beyond_deposit}}</view>
+        <view class='content' wx:if="{{dataInfo.free_deposit}}">{{dataInfo.free_deposit}}</view>
+      </view>
+    </view>
+    <view slot="footer"></view>
+  </pls-modal>
 </view>

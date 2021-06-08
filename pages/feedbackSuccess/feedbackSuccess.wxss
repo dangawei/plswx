@@ -1,0 +1,43 @@
+/* pages/feedbackSuccess/feedbackSuccess.wxss */
+@import "../returnSuccess/returnSuccess.wxss";
+.fs-cell-top-box{
+  padding: 100rpx 30rpx;
+  text-align: center;
+}
+.fs-cell-top-title{
+  margin-bottom: 80rpx;
+  box-sizing: border-box;
+}
+.fs-ct-style{
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 550;
+  color: #333333;
+  line-height: 50rpx;
+  margin-bottom: 30rpx;
+}
+.fs-ct-vice{
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 50rpx;
+}
+/* .fs-cell-content-box{
+
+} */
+.fs-cell-top-img{
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.fs-cell-top-img image{
+  width: 124rpx;
+  height: 124rpx;
+}
+.fs-cell-bottom-box{
+  padding: 30rpx 30rpx 30rpx 30rpx;
+  width: 630rpx;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0 auto;
+}

@@ -1,0 +1,71 @@
+var filters ={
+  isContent:function(str){
+    return str ? str : '/'
+  },
+  // 时间
+  normalTime: function(time, type) {
+    if (time) {
+      var result
+      time = time * 1000
+      if (time < 0) return;
+      var d = parseInt(time / 60 / 60 / 1000 / 24);
+      var h = parseInt(time % (3600000 * 24) / 60 / 60 / 1000);
+      var m = Math.ceil((time % (3600000)) / 1000 / 60);
+      m = m ? m : 1;
+      if(m==60){
+        h=h+1
+        m=0
+      }
+      if(h==24){
+        d=d+1
+        h=0
+      }
+      switch (type) {
+        case 'special':
+          if(d==0 && h!=0){
+            result = [{
+              time: h,
+              title: '小时'
+            }, {
+              time: m,
+              title: '分钟'
+            }]
+          }else if(d==0 && h==0){
+            result = [{
+              time: m,
+              title: '分钟'
+            }]
+          }else{
+            result = [{
+              time: d,
+              title: '天'
+            }, {
+              time: h,
+              title: '小时'
+            }, {
+              time: m,
+              title: '分钟'
+            }]
+          }
+          break;
+        case 'day':
+          if(d==0 && h!=0){
+            result = h+'小时'+m+'分钟'
+          }else if(d==0 && h==0){
+            result = m+'分钟'
+          }else{
+            result = d+'天'+h+'小时'+m+'分钟'
+          }
+          break;
+        default:
+          result = d+'天'+h+'小时'+m+'分钟'
+      }
+      return result;
+    }
+  }
+}
+
+module.exports={
+  isContent:filters.isContent,
+  normalTime:filters.normalTime
+};

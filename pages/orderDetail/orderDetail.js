@@ -1,3 +1,5 @@
+const {orderDetail,orderBuy} =require('../../api/api')
+const { normalTime } = require('../../utils/util');
 // pages/orderDetail/orderDetail.js
 Page({
 
@@ -6,6 +8,10 @@ Page({
    */
   data: {
     markers:[],
+    order_no:'',
+    orderInfo:{},
+    dataInfo:{},//计费规则页面
+    isVipModel:false
   },
 
   /**
@@ -19,6 +25,10 @@ Page({
       latitude: '30.275909',
       longitude: '120.124039',
     })
+    this.setData({
+      order_no:options.order_no
+    })
+    this.getOrderDetail()
   },
 
   /**
@@ -32,9 +42,66 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
-
+  // 获取订单
+  getOrderDetail(){
+    var params={
+      order_no:this.data.order_no
+    }
+    orderDetail(params).then(res=>{
+      res.used_times=normalTime(res.used_time,'special')
+      this.setData({
+        orderInfo:res,
+        dataInfo:res.rent_info
+      })
+      wx.setStorageSync('orderDetail', res)
+    })
+  },
+  // 显示计费规则
+  clickRent(){
+    this.setData({
+      isVipModel:true
+    })
+  },
+  // 关闭弹窗
+  hideVip(e){
+    this.setData({
+      isVipModel:false
+    })
+  },
+  // 费用疑问
+  goCostQues(){
+    wx.navigateTo({
+      url: '/pages/costQuestion/costQuestion?order_no='+this.data.order_no,
+    })
+  },
+  // 意见反馈
+  brdf(){
+    wx.navigateTo({
+      url: '/pages/brfeedback/brfeedback',
+    })
+  },
+  // 一键购买
+  clickBuy(){
+    var that=this
+    var params={
+      order_no:this.data.order_no
+    }
+    orderBuy(params).then(res=>{
+      wx.showToast({
+        title: '购买成功',
+        icon: 'success',
+        duration: 2000,
+        // success:function(){
+        //   that.getOrderDetail()
+        // }
+      })
+    })
+    this.setData({
+      'orderInfo.can_buy':false
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

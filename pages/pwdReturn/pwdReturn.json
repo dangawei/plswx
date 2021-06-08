@@ -2,6 +2,10 @@
   "navigationBarTitleText": "立即还伞",
   "usingComponents": {
     "ver-code": "/component/ver-code/ver-code",
-    "pls-modal": "/component/pls-modal/pls-modal"
+    "pls-modal": "/component/pls-modal/pls-modal",
+    "page-result": "/component/page-result/page-result",
+    "radio-group": "/component/radio-group/index",
+    "radio": "/component/radio/index",
+    "button-type": "/component/button-type/button-type"
   }
 }

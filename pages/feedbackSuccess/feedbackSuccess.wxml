@@ -1,0 +1,34 @@
+<!--pages/feedbackSuccess/feedbackSuccess.wxml-->
+<view class="fs-box">
+  <view class="fs-cell-top-box fs-bgc">
+    <view class="fs-cell-top-title">
+      <view class="fs-cell-top-img">
+        <image src="/images/returnSuccess/success_black.png"></image>
+      </view>
+      <view class="fs-cell-top-text">
+        <view class="fs-ct-style">
+          反馈成功
+        </view>
+        <view class="fs-ct-vice">
+          订单编号：{{order_no}}
+        </view>
+      </view>
+    </view>
+    <view class="fs-cell-content-box">
+      <view class="fs-cell-bottom-box">
+        <view class="rs-cell-bottom-btn" catchtap="goOrder">
+          <button-type btnTitle="查看订单" butType="{{true}}" />
+        </view>
+        <view class="rs-cell-bottom-btn" catchtap="back">
+          <button-type btnTitle="返回首页" butType="{{false}}" bgc="#fff" borders="2rpx solid #FFB600" />
+        </view>
+      </view>
+      <view>
+
+      </view>
+    </view>
+  </view>
+  <view class="rs-cell-img-box">
+    <image src="/images/pwdBorrow/banner.png" class="rs-cell-img"  mode="widthFix"></image>
+  </view>
+</view>

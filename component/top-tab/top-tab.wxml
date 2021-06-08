@@ -1,5 +1,5 @@
 <!--component/topTab/topTab.wxml-->
-<view class="tab-box">
+<view class="tab-box" style="background-color:{{bgcolor}}">
     <view class="tab-cell-title" wx:for="{{dataArr}}" wx:key="index" data-num="{{index}}" catchtap="clickTitle">
       <text style="{{selTitle==index?'border-bottom:4rpx solid '+bColor:''}}" class="tab-cell-title-text">{{item.name}}</text>
     </view>

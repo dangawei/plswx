@@ -1,6 +1,7 @@
 /**app.wxss**/
 page {
   box-sizing: border-box;
+  background-color: #F8F8F8;
 }
 .container {
   height: 100%;
@@ -23,6 +24,9 @@ page {
 .fw500{
   font-weight: 500;
 }
+.fw550{
+  font-weight: 550;
+}
 .fw600{
   font-weight: 600;
 }
@@ -43,4 +47,15 @@ page {
 }
 .border-color-FFC002 {
     border-bottom: 2px solid #FFC002;
+}
+/* 分割线 */
+.trans-line{
+  background: #ddd;
+  display: inline-block;
+  width: 112rpx;
+  height: 2rpx;
+  vertical-align: middle;
+}
+.center{
+  text-align: center;
 }

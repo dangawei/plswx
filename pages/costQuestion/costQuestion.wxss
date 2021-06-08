@@ -1,0 +1,57 @@
+/* pages/costQuestion/costQuestion.wxss */
+.cost-question{
+  padding-top: 4rpx;
+  align-items: center;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.cost-title {
+  font-size: 30rpx;
+  color: rgba(153, 153, 153, 1);
+  font-weight: bold;
+  padding: 49rpx 0;
+}
+.cost-head {
+  color: #333;
+}
+
+.cost-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 51rpx;
+  width: 100%;
+}
+
+.cost-content .left {
+  width: 278rpx;
+  text-align: left;
+  color: #888;
+  font-size:30rpx;
+  font-weight:400;
+}
+
+.cost-content .right {
+  text-align: right;
+  color: #333;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+}
+
+.yiyi {
+  margin-top: 30rpx;
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+}
+
+.wrapper-btn {
+  margin-top: 30rpx;
+  padding-bottom: 80rpx;
+}

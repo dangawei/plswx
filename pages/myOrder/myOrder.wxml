@@ -24,63 +24,13 @@
   </view>
   <view wx:if="{{selTitle==0}}">
     <scroll-view  scroll-y='true' style="height:{{scrollyHeight}}rpx" bindscrolltolower='scrollBottom'>
-      <view class="pb-cell-vice-box">
+      <view class="pb-cell-vice-box" wx:for="{{orderList}}" wx:key="index" data-order="{{item.order_no}}" catchtap="goDetail">
         <view class="pb-cell-content-vice border-bottom">
-          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
+          <text class="pb-cell-cv-title">{{item.borrow_time}}</text>
         </view>
         <view class="pb-cell-content-vice">
-          <text class="pb-cell-cv-title">时长:6个小时</text>
-          <text class="pb-cell-cv-info">已还</text>
-          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
-        </view>
-      </view>
-      <view class="pb-cell-vice-box">
-        <view class="pb-cell-content-vice border-bottom">
-          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
-        </view>
-        <view class="pb-cell-content-vice">
-          <text class="pb-cell-cv-title">时长:6个小时</text>
-          <text class="pb-cell-cv-info">已还</text>
-          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
-        </view>
-      </view>
-      <view class="pb-cell-vice-box">
-        <view class="pb-cell-content-vice border-bottom">
-          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
-        </view>
-        <view class="pb-cell-content-vice">
-          <text class="pb-cell-cv-title">时长:6个小时</text>
-          <text class="pb-cell-cv-info">已还</text>
-          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
-        </view>
-      </view>
-      <view class="pb-cell-vice-box">
-        <view class="pb-cell-content-vice border-bottom">
-          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
-        </view>
-        <view class="pb-cell-content-vice">
-          <text class="pb-cell-cv-title">时长:6个小时</text>
-          <text class="pb-cell-cv-info">已还</text>
-          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
-        </view>
-      </view>
-      <view class="pb-cell-vice-box">
-        <view class="pb-cell-content-vice border-bottom">
-          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
-        </view>
-        <view class="pb-cell-content-vice">
-          <text class="pb-cell-cv-title">时长:6个小时</text>
-          <text class="pb-cell-cv-info">已还</text>
-          <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
-        </view>
-      </view>
-      <view class="pb-cell-vice-box">
-        <view class="pb-cell-content-vice border-bottom">
-          <text class="pb-cell-cv-title">2021-12-05 12:22:00</text>
-        </view>
-        <view class="pb-cell-content-vice">
-          <text class="pb-cell-cv-title">时长:6个小时</text>
-          <text class="pb-cell-cv-info">已还</text>
+          <text class="pb-cell-cv-title">时长:{{item.used_time_text}}</text>
+          <text class="pb-cell-cv-info">{{item.status_text}}</text>
           <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
         </view>
       </view>

@@ -1,3 +1,4 @@
+const { rentInfo } = require('../../api/api.js');
 // pages/pwdBorrow/pwdBorrow.js
 Page({
 
@@ -8,21 +9,18 @@ Page({
     height:wx.getStorageSync('height'),
     orderNumber:"20190411XXXXX12341",
     isVipModel:false,
-    dataInfo:{
-      beyond_deposit:"订单大于押金时，订单自动结束计费扣除押金作为租赁费用",
-      cost:"0.01元/小时",
-      deposit:"0.01元",
-      free_deposit:"芝麻信用分满550分免0.01元押金（以支付宝的返回结果为准）",
-      is_deny_borrow:false,
-      suitable:""
-    },
+    dataInfo:{},
+    borrow_no:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      borrow_no:options.borrow_no,
+      // dataInfo:wx.getStorageSync('rentInfo')
+    })
   },
 
   /**
@@ -37,6 +35,33 @@ Page({
    */
   onShow: function () {
 
+  },
+  //得到计费规则
+  getRentInfo(){
+    const params={
+      pail_no:wx.getStorageSync('pail_no')
+    }
+    rentInfo(params).then(res=>{
+      this.setData({
+        dataInfo:res,
+        isVipModel:true
+      })
+    })
+  },
+  // 复制
+  copy(e){
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.content,
+      success: function(res) {
+        wx.getClipboardData({
+          success: function() {
+            wx.showToast({
+              title: '复制成功',
+            })
+          }
+        })
+      }
+    })
   },
   // 点击如何借还伞
   howBR(){

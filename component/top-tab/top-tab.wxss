@@ -1,10 +1,9 @@
 /* component/topTab/topTab.wxss */
 .tab-box{
   width: 750rpx;
-  height: 100rpx;
+  height: 80rpx;
   font-size: 32rpx;
-  line-height: 100rpx;
-  background-color: #F8F8F8;
+  line-height: 80rpx;
 }
 .tab-cell-title{
   display: inline-block;
@@ -15,7 +14,7 @@
 .tab-cell-title-text{
   display: inline-block;
   font-weight: 400;
-  height: 96rpx;
+  height: 76rpx;
 }
 .border-color-FFC002{
   font-weight: 500;

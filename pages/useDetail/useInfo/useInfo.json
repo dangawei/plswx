@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "使用说明",
+  "usingComponents": {
+    "top-tab": "/component/top-tab/top-tab"
+  }
 }

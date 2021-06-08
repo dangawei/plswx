@@ -11,7 +11,10 @@
     "pages/my/my",
     "pages/useDetail/useInfo/useInfo",
     "pages/myOrder/myOrder",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/useStep/useStep",
+    "pages/costQuestion/costQuestion",
+    "pages/feedbackSuccess/feedbackSuccess"
   ],
   "window": {
     "backgroundTextStyle": "light",

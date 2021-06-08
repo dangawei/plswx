@@ -1,0 +1,11 @@
+.i-radio-cell::after{display:block}.i-radio-radio-left{float:left}.i-radio-radio-right{float:right}.i-radio-radio{vertical-align:middle}.i-radio-title{display:inline-block;vertical-align:middle}
+.radio-cell-box{
+  text-align: left;
+}
+.i-radio-info{
+  color: #999999;
+  line-height: 50rpx;
+}
+.i-radio-title{
+  margin-right: 10rpx;
+}

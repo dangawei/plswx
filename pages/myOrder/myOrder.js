@@ -1,3 +1,4 @@
+const {orderList}=require('../../api/api')
 // pages/myOrder/myOrder.js
 Page({
 
@@ -21,6 +22,9 @@ Page({
     scrollyHeight:100,//可滑动高度
     reachBottom:false,
     pagenum:1,
+    page:1,
+    pagesize:20,
+    orderList:[]
   },
 
   /**
@@ -30,6 +34,7 @@ Page({
     this.setData({
       scrollyHeight: wx.getStorageSync('height')-378
     })
+    this.getOrderList()
   },
 
   /**
@@ -44,6 +49,25 @@ Page({
    */
   onShow: function () {
 
+  },
+  // 获取订单列表
+  getOrderList(){
+    var params={
+      page:this.data.page,
+      pagesize:this.data.pagesize
+    }
+    orderList(params).then(res=>{
+      this.setData({
+        orderList:res.list
+      })
+    })
+  },
+  // 点击订单
+  goDetail(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/orderDetail/orderDetail?order_no='+e.currentTarget.dataset.order,
+    })
   },
   // 点击tab切换
   clickTitle(e){

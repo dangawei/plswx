@@ -329,6 +329,68 @@ function transfer_time(time){
   return new Date(time_ios).getTime() || new Date(time).getTime()
 }
 
+// 时间
+const normalTime = (time, type) => {
+  // hour:h ;minutes:m
+  if (time) {
+    let result
+    time = time * 1000
+    if (time < 0) return;
+    let d = parseInt(time / 60 / 60 / 1000 / 24);
+    let h = parseInt(time % (3600000 * 24) / 60 / 60 / 1000);
+    let m = Math.ceil((time % (3600000)) / 1000 / 60);
+    m = m ? m : 1;
+    if(m==60){
+      h=h+1
+      m=0
+    }
+    if(h==24){
+      d=d+1
+      h=0
+    }
+    switch (type) {
+      case 'special':
+        if(d==0 && h!=0){
+          result = [{
+            time: h,
+            title: '小时'
+          }, {
+            time: m,
+            title: '分钟'
+          }]
+        }else if(d==0 && h==0){
+          result = [{
+            time: m,
+            title: '分钟'
+          }]
+        }else{
+          result = [{
+            time: d,
+            title: '天'
+          }, {
+            time: h,
+            title: '小时'
+          }, {
+            time: m,
+            title: '分钟'
+          }]
+        }
+        break;
+      case 'day':
+        if(d==0 && h!=0){
+          result = `${h}小时${m}分钟`
+        }else if(d==0 && h==0){
+          result = `${m}分钟`
+        }else{
+          result = `${d}天${h}小时${m}分钟`
+        }
+        break;
+      default:
+        result = `${d}天${h}小时${m}分钟`
+    }
+    return result;
+  }
+}
 module.exports = {
   urlSplit,
   meetArrays,
@@ -342,5 +404,6 @@ module.exports = {
   upLoadImg,
   circulation,
   polishing_data,
-  transfer_time
+  transfer_time,
+  normalTime
 }

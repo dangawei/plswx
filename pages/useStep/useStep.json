@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "借伞指引",
+  "usingComponents": {
+    "button-type": "/component/button-type/button-type"
+  }
+}

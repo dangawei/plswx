@@ -8,6 +8,10 @@ Component({
       type:String,
       value: '#FFC002'
     },
+    bgcolor:{
+      type:String,
+      value: '#F8F8F8'
+    },
     dataArr:{
       type:Array,
       value:[]

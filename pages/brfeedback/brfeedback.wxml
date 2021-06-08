@@ -8,7 +8,7 @@
         <text class="brf-title-vice"> (必填) </text>
       </view>
       <view class="brf-textarea-box">
-        <textarea class="brf-textarea" placeholder="请输入文本" maxlength="200" />
+        <textarea class="brf-textarea" placeholder="请输入文本" maxlength="200" bindinput="bindinput" />
         <view class="brf-textarea-counter">0/200</view>
       </view>
     </view>
@@ -27,16 +27,16 @@
         <text class="brf-title-vice"> (必填) </text>
       </view>
       <view class="brf-textarea-box">
-        <input class="brf-input" type="number" maxlength="11" placeholder="请输入手机号" />
+        <input class="brf-input" type="number" maxlength="11" placeholder="请输入手机号" bindinput="bindKeyInput" />
       </view>
     </view>
   </view>
   <view class="brf-phone-box">
     <image src="/images/feedback/icon_phone.png" class="brf-phone-img"></image>
     <text class="color999999">客服电话：</text>
-    <text class="color00ADFA">4006069966</text>
+    <text class="color00ADFA" catchtap="callPhone">4006069966</text>
   </view>
-  <view class="brf-bottom-box">
-    <button-type btnTitle="立即提交" butType="{{true}}" />
+  <view class="brf-bottom-box" catchtap="clickSumbit">
+    <button-type btnTitle="立即提交" butType="{{true}}" isDisabled="{{mobile && remark && picture.length>0}}" />
   </view>
 </view>

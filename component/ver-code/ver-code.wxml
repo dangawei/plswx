@@ -1,8 +1,8 @@
 <!--component/ver-code/ver-code.wxml-->
 <view class="input">
-  <view class="input-item {{index < focusIndex ? 'border-color': ''}}" wx:for="{{valueLength}}" wx:key="index" data-index="{{index}}">
+  <view class="input-item {{index < focusIndex ? 'border-color': ''}} {{codeNum==3?'border-color-red':''}}" wx:for="{{valueLength}}" wx:key="index" data-index="{{index}}">
     <!-- <view class="input-value">{{password[index]}}</view> -->
     <view class="input-value">{{value[index]}}</view>
-    <view class="focus {{index === focusIndex ? 'show': 'hide'}}"></view>
+    <view class="focus {{index === focusIndex && !valueData ? 'show': 'hide'}}"></view>
  </view>
- <input class="input-password" maxlength="4" bindinput="setValue" bindblur="inputBlur" type="number" focus="{{focus}}"></input></view>
+ <input class="input-password" value="{{value}}" maxlength="{{valueLength}}" bindinput="setValue" bindblur="inputBlur" type="number" focus="{{focus}}"></input></view>
