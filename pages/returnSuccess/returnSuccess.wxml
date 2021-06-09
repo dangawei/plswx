@@ -22,7 +22,7 @@
             <text class="color999999">元</text>
           </view>
           <view class="rs-cell-content-vice color999999">
-            还伞成功
+            花费金额
           </view>
         </view>
         <!-- <view class="ver-line flex1"> | </view> -->
@@ -34,12 +34,12 @@
             </label>
           </view>
           <view class="rs-cell-content-vice color999999">
-            还伞成功
+            使用时长
           </view>
         </view>
       </view>
       <view class="rs-cell-bottom-box">
-        <view class="rs-cell-bottom-btn">
+        <view class="rs-cell-bottom-btn"  catchtap="clickOrder">
           <button-type btnTitle="查看订单" butType="{{true}}" />
         </view>
         <view class="rs-cell-bottom-btn" catchtap="back">

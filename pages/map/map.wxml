@@ -1,0 +1,21 @@
+<!--pages/map/map.wxml-->
+<view>
+  <view>
+    <map
+      id="myMap"
+      style="width: 100%; height: {{height}}rpx;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      scale="{{scale}}"
+      show-location
+    >
+      <cover-view class="cover-view">
+        <cover-view class="container-center">
+          <!-- <button-type btnTitle="扫码借还伞" butType="{{true}}" /> -->
+          <cover-view class="container-center-text">扫码借还伞</cover-view>
+        </cover-view>
+      </cover-view>
+    </map>
+  </view>
+</view>

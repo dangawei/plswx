@@ -13,9 +13,9 @@
     <cell-group>
       <cell imgs="/images/my/order.png" title="我的订单" is-link url="/pages/myOrder/myOrder"></cell>
       <cell imgs="/images/my/explain.png" title="使用说明" is-link url="/pages/useDetail/useDetail"></cell>
-      <cell imgs="/images/my/packet.png" title="红包明细" is-link url="/pages/index/index"></cell>
+      <!-- <cell imgs="/images/my/packet.png" title="红包明细" is-link url="/pages/index/index"></cell>
       <cell imgs="/images/my/vip.png" title="会员权益" is-link url="/pages/index/index"></cell>
-      <cell imgs="/images/my/coupon.png" title="优惠券" is-link url="/pages/index/index"></cell>
+      <cell imgs="/images/my/coupon.png" title="优惠券" is-link url="/pages/index/index"></cell> -->
     </cell-group>
   </view>
 </view>

@@ -20,8 +20,10 @@ Page({
     const t=normalTime(options.used_time,'special')
     this.setData({
       order_no:options.order_no,
+      used_time:t,
+      pay:options.pay
     })
-    console.log(this.data.used_time)
+    
   },
 
   /**
@@ -44,6 +46,14 @@ Page({
       url: '/pages/index/index',
     })
   },
+
+  // 查看订单
+  clickOrder(){
+    wx.navigateTo({
+      url: '/pages/myOrder/myOrder',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

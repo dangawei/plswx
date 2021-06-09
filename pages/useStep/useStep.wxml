@@ -8,17 +8,17 @@
         circular interval="{{interval}}">
       <block wx:for="{{stepData.imgUrl}}" wx:key="index">
         <swiper-item>
-          <image class="img" src="https://cdn.piaoliusan.com/img/mobrella+/handleUse/{{item}}.png" />
+          <image class="img" src="https://pls-wechat.piaoliusan.com/wechat/step/{{item}}.png" />
         </swiper-item>
       </block>
     </swiper>
-    <view class="btn-wrapper" wx:if="{{btnTitle}}">
-      <button-type btnTitle="去借伞" butType="{{true}}" />
+    <view class="btn-wrapper" wx:if="{{btnTitle}}" catchtap="nextStep">
+      <button-type btnTitle="{{btnTxt}}" butType="{{true}}" />
     </view>
   </view>
   <view class="contorl-radio">
     <view class="radio-group" >
-      <view onTap="radioChange">
+      <view catchtap="radioChange">
         <radio class="radio" checked="{{checked}}" color="#FFB500" />
         <text class="radio-text">不再提醒</text>
       </view>

@@ -38,6 +38,7 @@
   height: 100rpx;
   width: 100%;
   opacity: 0;
+  color: transparent;
 }
 .focus {
   width: 2rpx;

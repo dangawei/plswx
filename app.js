@@ -35,7 +35,6 @@ App({
     }
   },
   borrowStatus(){
-    console.log("请求订单状态")
     const params={
       order_no:wx.getStorageSync('order_no')
     }
@@ -43,8 +42,22 @@ App({
       if(res.is_doing){
         this.globalData.isSuccessOrder =true;
         wx.setStorage({ key: 'borrow_code', data: res.borrow_code })
-        wx.navigateTo({
-          url: '/pages/pwdBorrow/pwdBorrow?borrow_code='+res.borrow_code,
+        wx.setStorage({ key: 'borrow_time', data: res.borrow_time })
+        var borrow_step=wx.getStorageSync('borrow_step')
+        if(!borrow_step){
+          wx.navigateTo({
+            url: '/pages/useStep/useStep?pail_no='+wx.getStorageSync('pail_no')+'&type=1&borrow_code='+res.borrow_code+'&order_no='+res.order_no,
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/pwdBorrow/pwdBorrow?pail_no='+wx.getStorageSync('pail_no')+'&borrow_code='+res.borrow_code+'&order_no='+res.order_no,
+          })
+        }
+      }else{
+        wx.showToast({
+          title: '授权不成功,暂无法借伞',
+          icon: 'success',
+          duration: 3000,
         })
       }
       

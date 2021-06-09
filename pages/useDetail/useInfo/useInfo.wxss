@@ -36,3 +36,15 @@ page{
   width: 642rpx;
   height: 272rpx;
 }
+.ui-content-buy-table{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+.ui-content-buy-cell-1 image{
+  width: 324rpx;
+  height: 272rpx;
+}
+.ui-content-buy-cell{
+  margin-left: 15rpx;
+}

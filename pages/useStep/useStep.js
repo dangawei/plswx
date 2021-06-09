@@ -6,11 +6,13 @@ Page({
     stepData: {
       type: BORROW_STEP1,
       title: '新手借伞指引',
-      imgUrl: ['pwd-borrow-s1-update', 'pwd-borrow-s2-update'],
+      imgUrl: ['b1', 'b2'],
     },
     disabled:true,
     checked:false,
     // buryNum:3,//埋点标识 3借伞6还伞
+    type:1,//1借伞2还伞
+    btnTxt:'去借伞'
   },
   onLoad(query) {
     this.query = query
@@ -20,10 +22,12 @@ Page({
         title: '借伞步骤'
       });
       this.setData({
+        type:1,
+        btnTxt:'去借伞',
         stepData: {
           type: BORROW_STEP1,
           title: '新手借伞指引',
-          imgUrl: ['pwd-borrow-s1-update', 'pwd-borrow-s2-update'],
+          imgUrl: ['b1', 'b2'],
         },
         // buryNum:3
       })
@@ -32,10 +36,12 @@ Page({
         title: '还伞步骤'
       });
       this.setData({
+        type:2,
+        btnTxt:'去还伞',
         stepData: {
           type: BORROW_STEP1,
           title: '新手还伞指引',
-          imgUrl: ['pwd-return-s1-update', 'pwd-return-s2-update'],
+          imgUrl: ['r1', 'r2'],
         },
         // buryNum:6
       })
@@ -64,18 +70,24 @@ Page({
     const { stepData,checked } = this.data
     const { borrow_code, pail_no, order_no } = this.query
     
-    // if (borrow_code) {
-    //     wx.navigateTo({ url: `/pages/pwdBorrow/pwdBorrow?pail_no=${pail_no}&borrow_code=${borrow_code}&order_no=${order_no}` });
-    //     if(checked) wx.setStorage({key: 'pwd-borrow-step', data: true});
-    // } else {
-    //     wx.navigateTo({ url: `/pages/pwdReturn/pwdReturn?pail_no=${pail_no}` });
-    //     if(checked) wx.setStorage({ key: 'pwd-return-step', data: true });
-    // }
+    if (this.data.type==1) {
+        wx.navigateTo({ url: `/pages/pwdBorrow/pwdBorrow?pail_no=${pail_no}&borrow_code=${borrow_code}&order_no=${order_no}` });
+        if(checked) wx.setStorage({key: 'borrow_step', data: true});
+    } else {
+        wx.navigateTo({ url: `/pages/pwdReturn/pwdReturn?pail_no=${pail_no}` });
+        if(checked) wx.setStorage({ key: 'return_step', data: true });
+    }
   },
   radioChange:function(){
     const {checked} =this.data
     this.setData({
       checked:!checked
     })
+    // if(this.data.type==1){
+    //   wx.setStorageSync('borrow_step', this.data.checked)
+    // }else{
+    //   wx.setStorageSync('return_step', this.data.checked)
+    // }
+    
   }
 });

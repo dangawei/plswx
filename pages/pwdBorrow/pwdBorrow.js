@@ -7,10 +7,12 @@ Page({
    */
   data: {
     height:wx.getStorageSync('height'),
-    orderNumber:"20190411XXXXX12341",
     isVipModel:false,
     dataInfo:{},
     borrow_no:'',
+    order_no:'',
+    pail_no:'',
+    borrow_time:wx.getStorageSync('borrow_time')
   },
 
   /**
@@ -19,6 +21,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       borrow_no:options.borrow_no,
+      order_no:options.order_no,
+      pail_no:options.pail_no,
       // dataInfo:wx.getStorageSync('rentInfo')
     })
   },
@@ -65,8 +69,14 @@ Page({
   },
   // 点击如何借还伞
   howBR(){
-    this.setData({
-      isVipModel:true
+    wx.navigateTo({
+      url: '/pages/useDetail/useInfo/useInfo',
+    })
+  },
+  // 返回首页
+  back(){
+    wx.reLaunch({
+      url: '/pages/index/index',
     })
   },
   // 关闭弹窗
@@ -75,7 +85,12 @@ Page({
       isVipModel:false
     })
   },
-
+  // 点击快速反馈
+  clickfb(){
+    wx.navigateTo({
+      url: '/pages/opfeedback/opfeedback?type=1&order_no='+this.data.order_no+'&pail_no='+this.data.pail_no,
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

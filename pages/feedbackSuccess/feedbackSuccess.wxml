@@ -19,12 +19,20 @@
         <view class="rs-cell-bottom-btn" catchtap="goOrder">
           <button-type btnTitle="查看订单" butType="{{true}}" />
         </view>
-        <view class="rs-cell-bottom-btn" catchtap="back">
+        <view class="rs-cell-bottom-btn" catchtap="goReturn" wx:if="{{isContinue}}">
+          <button-type btnTitle="继续还伞" butType="{{false}}" bgc="#fff" borders="2rpx solid #FFB600" />
+        </view>
+        <view class="rs-cell-bottom-btn" catchtap="back" wx:else>
           <button-type btnTitle="返回首页" butType="{{false}}" bgc="#fff" borders="2rpx solid #FFB600" />
         </view>
       </view>
-      <view>
-
+      <view class="od-footer-box" wx:if="{{type==2}}">
+        <view class="left-border flex1 tac" catchtap="goCostQues">
+          <text class="color999999">费用疑问</text>
+        </view>
+        <view class="flex1 tac" catchtap="back">
+          <text class="color999999">返回首页</text>
+        </view>
       </view>
     </view>
   </view>

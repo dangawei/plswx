@@ -41,3 +41,16 @@
   text-align: center;
   margin: 0 auto;
 }
+/* footer */
+.od-footer-box{
+  margin: 0 auto;
+  bottom: 100rpx;
+  display: flex;
+  width: 500rpx;
+}
+.od-cell-content-vice{
+  font-size: 28rpx;
+}
+.od-cc-border{
+  border-bottom: 2rpx solid #333333;
+}

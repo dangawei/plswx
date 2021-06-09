@@ -1,9 +1,9 @@
 <!--pages/useDetail/useInfo/useInfo.wxml-->
 <view>
   <view>
-    <top-tab dataArr="{{dataArr}}" bColor="{{bColor}}" bgcolor="#fff" bind:clickTitle="clickTitle"></top-tab>
+    <top-tab dataArr="{{dataArr}}" bColor="{{bColor}}" selTitle="{{selTitle}}" bgcolor="#fff" bind:clickTitle="clickTitle"></top-tab>
   </view>
-  <view class="ui-content-box" wx:if="{{selTitle==0}}">
+  <view class="ui-content-box" wx:if="{{selTitle=='0'}}">
     <view wx:for="{{borrowData}}" wx:key="index" class="ui-content-table">
       <view class="ui-content-cell">
         <image src="{{item.icon}}" class="step-icon"></image>
@@ -14,7 +14,7 @@
       </view>
     </view>
   </view>
-  <view class="ui-content-box" wx:if="{{selTitle==1}}">
+  <view class="ui-content-box" wx:if="{{selTitle=='1'}}">
     <view wx:for="{{returnData}}" wx:key="index" class="ui-content-table">
       <view class="ui-content-cell">
         <image src="{{item.icon}}" class="step-icon"></image>
@@ -23,6 +23,18 @@
       <view class="ui-content-cell tac">
         <image src="{{item.img}}" class="step-img"></image>
       </view>
+    </view>
+  </view>
+  <view class="ui-content-box" wx:if="{{selTitle=='2'}}">
+    <view wx:for="{{buyData}}" wx:key="index" class="ui-content-table ui-content-buy-table">
+      <view class="ui-content-buy-cell-1">
+        <image src="{{item.img}}" class="step-img"></image>
+      </view>
+      <view class="ui-content-buy-cell">
+        <image src="{{item.icon}}" class="step-icon"></image>
+        <text class="step-title">{{item.title}}</text>
+      </view>
+      
     </view>
   </view>
 </view>

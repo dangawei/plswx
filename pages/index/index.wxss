@@ -155,3 +155,17 @@
   width: 100%;
   margin-bottom: -8rpx;
 }
+
+/* footer */
+.od-footer-box{
+  position: fixed;
+  bottom: 100rpx;
+  display: flex;
+  width: 500rpx;
+}
+.od-cell-content-vice{
+  font-size: 28rpx;
+}
+.od-cc-border{
+  border-bottom: 2rpx solid #333333;
+}

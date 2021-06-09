@@ -23,7 +23,7 @@ Page({
     codeNum:1,
     isCode:true,
     valueLength:4,//还伞码长度
-    isReturn:true,//是否有可还雨伞
+    isReturn:false,//是否有可还雨伞
     position:'right',
     listOrder:[],//可还雨伞列表
     current:'',
@@ -33,6 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // options.pail_no='M700007423'//todo
     this.setData({
       pail_no:options.pail_no
     })
@@ -64,12 +65,16 @@ Page({
       if(res.length>1){
         this.setData({
           listOrder:res,
-          listModelShow:true
+          listModelShow:true,
+          isReturn:true
         })
+        wx.setStorageSync('return_num', res.length)
       }else if(res.length==1){
         this.setData({
-          order_no:res[0].order_no
+          order_no:res[0].order_no,
+          isReturn:true
         })
+        wx.setStorageSync('return_num', res.length)
       }else{
         this.setData({
           isReturn:false
@@ -129,7 +134,7 @@ Page({
   // 点击快速反馈
   clickfb(){
     wx.navigateTo({
-      url: '/pages/opfeedback/opfeedback?type=2',
+      url: '/pages/opfeedback/opfeedback?type=2&order_no='+this.data.order_no+'&pail_no='+this.data.pail_no,
     })
   },
   // 返回首页

@@ -1,6 +1,5 @@
-const { getPhone,sitePail } = require('../../api/api.js');
-// index.js
-// 获取应用实例
+const { getPhone,sitePail,buryPoint } = require('../../api/api.js');
+const urlUtil = require('../../utils/util.js');
 const app = getApp()
 
 Page({
@@ -10,9 +9,26 @@ Page({
     buyBtnText: "立即借伞",
     isVipModel:false,
     pail_no:'M700007423',
-    isPhone:false
+    isPhone:false,
+    isBandSite:false,//伞点维修弹窗
+    showModal:false,
+    last_order_no:'',
+    last_borrow_code:'',
   },
-  onLoad(e) {
+  onLoad(options) {
+    if (options.q) {
+      let scan_url = decodeURIComponent(options.q);
+      //获取关联普通二维码的码值，放到全局变量qrCode中
+    
+      app.qrCode = scan_url;
+      const codes=urlUtil.urlSplit(app.qrCode)
+      this.setData({
+        pail_no:codes.params.id
+      })
+      wx.setStorageSync('pail_no', codes.params.id)
+    }else{
+      wx.setStorageSync('pail_no', this.data.pail_no)
+    }
     wx.getSystemInfo({
       success:  (res) => {
         this.setData({
@@ -20,18 +36,14 @@ Page({
         })
       }
     })
-    console.log(wx.getStorageSync('phone'))
     if(!wx.getStorageSync('phone')){
       this.setData({
         isPhone:true
       })
     }
-    // if (wx.getUserProfile) {
-    //   this.setData({
-    //     canIUseGetUserProfile: true
-    //   })
-    // }
-    // this.getUserProfile()
+  },
+  onShow: function () {
+    buryPoint({shop_site_id:123,action_type:12})
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -58,8 +70,6 @@ Page({
   },
   // 获取手机号
   getPhone(e){
-    console.log(e)
-    
     var that=this
     if(!wx.getStorageSync('phone')){
       wx.checkSession({
@@ -110,17 +120,28 @@ Page({
   },
   // 点击借伞
   clickBorrow(){
-    console.log("点击立即借伞")
     var params={
       pail_no:this.data.pail_no
     }
     sitePail(params).then((res)=>{
       if(res.code && res.code==103){
-
-      }else{
-        wx.navigateTo({
-          url: '/pages/costDetail/costDetail?pail_no='+this.data.pail_no,
+        this.setData({
+          isBandSite:true
         })
+      }else{
+        if(res.last_borrow_code){
+          this.setData({
+            showModal:true,
+            last_borrow_code:res.last_borrow_code,
+            last_order_no:res.last_order_no
+          })
+          wx.setStorage({ key: 'borrow_time', data: res.last_borrow_time })
+        }else{
+          wx.navigateTo({
+            url: '/pages/costDetail/costDetail?pail_no='+this.data.pail_no,
+          })
+        }
+        
       }
     })
   },
@@ -131,18 +152,66 @@ Page({
       isVipModel:false
     })
   },
+  // 关闭伞点维修弹窗
+  hideBandSite(){
+    this.setData({
+      isBandSite:false
+    })
+  },
+  // 点击展示附近伞点按钮
+  backMap(){
+
+  },
+  // 15分钟内借伞码弹窗
+
+  // 关闭15分钟内借伞码弹窗
+  hideModal(){
+    this.setData({
+      showModal:false
+    })
+  },
   //继续借伞
   continueBorrow(){
-    console.log("继续借伞")
+    wx.navigateTo({
+      url: '/pages/costDetail/costDetail?pail_no='+this.data.pail_no,
+    })
   },
   //获取上次传伞码
   getBorrowCode(){
-    console.log("获取上次传伞码")
+    wx.navigateTo({
+      url: '/pages/pwdBorrow/pwdBorrow?pail_no='+this.data.pail_no+'&borrow_code='+this.data.last_borrow_code+'&order_no='+this.data.last_order_no,
+    })
   },
   // 立即还伞
   clickReturn(){
+    var return_step=wx.getStorageSync('return_step')
+    if(!return_step){
+      wx.navigateTo({
+        url: '/pages/useStep/useStep?pail_no='+this.data.pail_no+'&type=2',
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/pwdReturn/pwdReturn?pail_no='+this.data.pail_no,
+      })
+    }
+    
+  },
+  // 查看订单
+  clickOrder(){
     wx.navigateTo({
-      url: '/pages/pwdReturn/pwdReturn?pail_no='+this.data.pail_no,
+      url: '/pages/myOrder/myOrder',
     })
-  }
+  },
+  // 点击使用说明
+  clickUse(){
+    wx.navigateTo({
+      url: '/pages/useDetail/useInfo/useInfo',
+    })
+  },
+  // 个人中心
+  goMy(){
+    wx.navigateTo({
+      url: '/pages/my/my',
+    })
+  },
 })

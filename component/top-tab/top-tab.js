@@ -12,6 +12,10 @@ Component({
       type:String,
       value: '#F8F8F8'
     },
+    selTitle:{
+      type:String,
+      value: 0
+    },
     dataArr:{
       type:Array,
       value:[]
@@ -22,7 +26,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    selTitle:0,
+    // selTitle:0,
   },
 
   /**

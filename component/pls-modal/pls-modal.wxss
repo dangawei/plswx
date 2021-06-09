@@ -29,14 +29,14 @@
 /* .am-modal-image-lg image {
   
 } */
-.am-modal-image-md image {
+/* .am-modal-image-md image {
   width: 327rpx;
   height: 318rpx;
 }
 .am-modal-image-sm image {
   width: 124rpx;
   height: 140rpx;
-}
+} */
 .modal-wrapper .modal-tip.middle{
     top: 320rpx;
 }

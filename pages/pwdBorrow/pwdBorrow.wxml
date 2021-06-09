@@ -9,18 +9,18 @@
     </view>
     <view class="pb-cell-content-text">
       <text>请尽快在伞桩上输入借伞码,如有问题,点击</text>
-      <text class="pb-cell-content-text-color">快速反馈</text>
+      <text class="pb-cell-content-text-color" catchtap="clickfb">快速反馈</text>
     </view>
   </view>
   <view class="pb-cell-vice-box">
     <view class="pb-cell-content-vice">
       <text class="pb-cell-cv-title">订单编号：</text>
-      <text class="pb-cell-cv-detail">{{orderNumber}}</text>
-      <text class="pb-cell-cv-btn" data-content="{{orderNumber}}" catchtap="copy">复制</text>
+      <text class="pb-cell-cv-detail">{{order_no}}</text>
+      <text class="pb-cell-cv-btn" data-content="{{order_no}}" catchtap="copy">复制</text>
     </view>
     <view class="pb-cell-content-vice pb-cell-content-both">
       <text class="pb-cell-cv-title">借伞时间：</text>
-      <text class="pb-cell-cv-detail">{{orderNumber}}</text>
+      <text class="pb-cell-cv-detail">{{borrow_time}}</text>
       <text class="pb-cell-cv-info" catchtap="getRentInfo">计费使用中</text>
       <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix" catchtap="getRentInfo"></image>
     </view>
@@ -28,7 +28,7 @@
   <view class="pb-cell-bottom-box">
     <text catchtap="howBR">如何借还伞?</text>
     <text> | </text>
-    <text>返回首页</text>
+    <text catchtap="back">返回首页</text>
   </view>
   <view class="pb-cell-img-box">
     <image src="/images/pwdBorrow/banner.png" class="pb-cell-img"  mode="widthFix"></image>

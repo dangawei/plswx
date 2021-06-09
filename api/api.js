@@ -1,10 +1,17 @@
 let app = getApp()
-import {wxRequest} from './http.js'
+import {wxRequest,getRequest} from './http.js'
 export const isDebug = true//正式环境
 export const isTest = true//是否是测试环境登录
 
 const newUrl = isDebug ? 'https://s-wechat.piaoliusan.com' : 'https://wapi.piaoliusan.com';
+const getUrl='https://s-data.piaoliusan.com/md'
 
+// 埋点
+export const buryPoint=(data)=>{
+  data.user_id=wx.getStorageSync('user_id')
+  const params = { url: getUrl, data }
+  return getRequest(params);
+}
 //登录
 export const login = (data) => {
   const params = { url: newUrl + '/mina/nologin/login', data }
@@ -61,5 +68,13 @@ export const userFeedback= (data) => {//用户反馈
 }
 export const orderBuy= (data) => {//一键购买
   const params = { url: newUrl + '/mina/order/buy', data: data }
+  return wxRequest(params);
+}
+export const getConfig= (data) => {//获取猜你想问的配置
+  const params = { url: newUrl + '/mina/nologin/config', data: data }
+  return wxRequest(params);
+}
+export const siteList= (data) => {//点位地图
+  const params = { url: newUrl + '/mini/site/list', data: data }
   return wxRequest(params);
 }

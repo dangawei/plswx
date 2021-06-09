@@ -35,7 +35,7 @@
     </view>
     <view class="caption-wrap">
       <i-collapse name="{{name}}">
-          <i-collapse-item wx:for="{{listData}}" wx:key="{{index}}" title="{{item.title}}" name="name{{index}}">
+          <i-collapse-item wx:for="{{listData}}" wx:key="index" title="{{item.title}}" name="name{{index}}">
               <view slot="content" class="ud-col-content">
                   {{item.content}}
               </view>

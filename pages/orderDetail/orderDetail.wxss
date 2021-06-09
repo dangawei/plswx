@@ -35,6 +35,7 @@
   width: 500rpx;
   margin-left: 125rpx;
 }
+/* footer */
 .od-footer-box{
   position: fixed;
   bottom: 100rpx;

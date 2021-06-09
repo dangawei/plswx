@@ -21,7 +21,7 @@
         {
           "name": "立即借伞",
           "pathName": "pages/pwdBorrow/pwdBorrow",
-          "query": "borrow_no=654987",
+          "query": "borrow_no=654987&pail_no=M700007423&order_no=20210109173500001",
           "scene": null
         },
         {
@@ -51,7 +51,7 @@
         {
           "name": "问题反馈",
           "pathName": "pages/opfeedback/opfeedback",
-          "query": "type=1&order_no=20210608164100001",
+          "query": "type=1&order_no=20210608164100001&pail_no=M700007423",
           "scene": null
         },
         {
@@ -75,7 +75,7 @@
         {
           "name": "反馈成功",
           "pathName": "pages/feedbackSuccess/feedbackSuccess",
-          "query": "order_no=2106071759390313816350&type=1",
+          "query": "order_no=2106071759390313816350&type=2",
           "scene": null
         },
         {
@@ -93,6 +93,12 @@
         {
           "name": "使用说明",
           "pathName": "pages/useDetail/useInfo/useInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "地图",
+          "pathName": "pages/map/map",
           "query": "",
           "scene": null
         }

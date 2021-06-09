@@ -40,9 +40,9 @@
   font-weight: 400;
   line-height: 48rpx;
 }
-.nav-item.current{
+/* .nav-item.current{
   color: #2CB7FB;
-}
+} */
 /* 猜你想问 */
 .ud-content-box{
   background-color: #fff;

@@ -35,7 +35,7 @@ Page({
     this.setData({
       type:options.type,
       orderNumber:options.order_no,
-      pailNo:wx.getStorageSync('pail_no')
+      pailNo:options.pail_no
     })
     if(options.type==1){
       this.setData({
@@ -74,8 +74,8 @@ Page({
       }else{
         this.setData({
           problemData:res.feedback_return_question_type,
-          problem_id:res.feedback_borrow_question_type[0].id,
-          problem_name:res.feedback_borrow_question_type[0].name
+          problem_id:res.feedback_return_question_type[0].id,
+          problem_name:res.feedback_return_question_type[0].name
         })
       }
     })

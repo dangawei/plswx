@@ -1,31 +1,34 @@
-// pages/costQuestion/costQuestion.js
+// pages/map/map.js
+const {siteList}=require('../../api/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    details:{}
+    height:wx.getStorageSync('height'),
+    latitude: 22.534777,   // 纬度
+    longitude: 114.022583, // 经度
+    markers: [{
+      id: 1,
+      latitude:22.534777,
+      longitude: 114.022583,
+      name: '莱茵达'
+    }],
+    scale: 15, // 缩放
+    timeoutId: null,
+    markers: [],
+    mapSetting: {},
+    buryNum:9,//埋点标识
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.order_no){
-      this.getOrderDetail(options.order_no)
-    }else{
-      this.setData({
-        details:wx.getStorageSync('orderDetail')
-      })
-    }
+    // this.siteList()
   },
-  // 问题反馈
-  gobf(){
-    wx.navigateTo({
-      url: '/pages/brfeedback/brfeedback',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -39,17 +42,14 @@ Page({
   onShow: function () {
 
   },
-
-  // 获取订单
-  getOrderDetail(e){
+  // 获取点位地图
+  siteList(){
     var params={
-      order_no:e
+      lat:this.data.latitude,
+      lng:this.data.longitude
     }
-    orderDetail(params).then(res=>{
-      res.used_times=normalTime(res.used_time,'special')
-      this.setData({
-        details:res
-      })
+    siteList(params).then(res=>{
+
     })
   },
   /**
