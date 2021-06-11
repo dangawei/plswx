@@ -4,8 +4,8 @@
   <button wx:else open-type="getPhoneNumber" bindgetphonenumber="bindgetphonenumber"> 获取手机号 </button>
 </view> -->
 <view class="home-wrapper" style='overflow: hidden;height:{{pageHeight}}rpx;'>
-  <view class="hw-part">
-    <!-- <image class='bg' mode="scaleToFill" src='/images/indexBg.png'>
+  <view class="hw-part" wx:if="{{route_type==1}}">
+    <!-- <image class='bg' mode="scaleToFill" src='https://pls-wechat.piaoliusan.com/wechat/indexBg.png'>
     </image> -->
     <view class="logo-wrapper" animation="{{animationLogo}}">
       <image class='logo' src='/images/img_logo.png'>
@@ -37,7 +37,7 @@
       <button-type size="middle" btnTitle="立即还伞" bs="0 0 18rpx 10rpx #F4F4F4" />
     </view>
     <view class="btn-wrapper order">
-      <!-- <view class="btn-right btn-cell" catchtap="clickMap">
+      <view class="btn-right btn-cell" catchtap="clickMap">
         <view fs-size="34" title="使用说明" />
       </view>
       <view class="btn-center btn-cell">
@@ -45,43 +45,26 @@
       </view>
       <view class="btn-center btn-cell" catchtap="clickOrder">
         <item-nav fs-size="34" title="查看订单" />
-      </view> -->
-      <view class="od-footer-box">
+      </view>
+      <!-- <view class="od-footer-box">
         <view class="left-border flex1 tac" catchtap="clickUse">
           <text class="color999999">使用说明</text>
         </view>
-        <!-- <view class="flex1 tac" catchtap="clickOrder">
-          <text class="color999999">查看订单</text>
-        </view> -->
         <view class="flex1 tac" catchtap="goMy">
           <text class="color999999">个人中心</text>
         </view>
-      </view>
+      </view> -->
     </view>
     <view class="bgc-box">
-      <image class='bgc-bottom' mode="widthFix" src='/images/index/login_pic2x.png'></image>
+      <image class='bgc-bottom' mode="widthFix" src='https://pls-wechat.piaoliusan.com/wechat/index/login_pic2x.png'></image>
     </view>
   </view>
-  <!-- 会员有未还的雨伞 -->
-  <!-- <pls-modal show="{{isVipModel}}" top-image-size="sm" show-close bind:modalClose="hideVip">
-    <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
-      <view class="title-saide">
-        <view class="modal-title fs_28 f_w_4">您在当前伞点存有未归还的订单</view>
-        <view class="modal-title fs_28 f_w_4">请您确认后续动作</view>
-      </view>
-    </view>
-    <view slot="footer">
-      <view data-btntype="borrow" catchtap="continueBorrow" class="mod-btn-wrapper">
-        <button-type btnTitle="取伞成功，继续借伞" butType="{{true}}" />
-      </view>
-      <view catchtap="getBorrowCode" class="mod-btn-wrap">
-        <button-type btnTitle="取伞未成功，获取上次取伞码" bgc="#EFEFEF" />
-      </view>
-      <view data-btntype="borrow" catchtap="continueBorrow">
-        <button-type btnTitle="取伞异常已反馈，继续借伞" bgc="#EFEFEF" />
-      </view>
-    </view>
-  </pls-modal> -->
+  <view class="route-type" wx:if="{{route_type==2}}">
+    <text class="route-type-text">请移步支付宝小程序去借还伞</text>
+  </view>
+  <view class="route-type" wx:if="{{route_type==3}}">
+    <button-type btnTitle="点击借还伞" butType="{{true}}" />
+  </view>
 </view>
 
 <pls-modal show="{{showModal}}" top-image-size="sm" show-close bind:modalClose="hideModal">
@@ -165,7 +148,7 @@
 <!-- 新用户弹窗 -->
 <!-- <pls-modal show="{{isNewShow}}" class="new-wrapper" class-footer="{{classFooter}}" class-header="class-header">
   <view class="new-img" slot="header">
-    <image src="/images/index/icon_close2x.png" />
+    <image src="https://pls-wechat.piaoliusan.com/wechat/index/icon_close2x.png" />
   </view>
   <view slot="footer" catchtap="sumbitFeedback">
     <view catchtap="goUse" class="mod-btn-wrapper">

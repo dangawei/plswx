@@ -1,4 +1,4 @@
-const {orderDetail,orderBuy} =require('../../api/api')
+const {orderDetail,orderBuy,buryPoint} =require('../../api/api')
 const { normalTime } = require('../../utils/util');
 // pages/orderDetail/orderDetail.js
 Page({
@@ -42,7 +42,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    buryPoint({action_type:111})
   },
   // 获取订单
   getOrderDetail(){
@@ -84,7 +84,7 @@ Page({
   },
   // 一键购买
   clickBuy(){
-    var that=this
+    buryPoint({action_type:138})
     var params={
       order_no:this.data.order_no
     }

@@ -1,4 +1,4 @@
-const { getPhone,sitePail,buryPoint } = require('../../api/api.js');
+const { getPhone,sitePail,buryPoint,getType } = require('../../api/api.js');
 const urlUtil = require('../../utils/util.js');
 const app = getApp()
 
@@ -14,8 +14,12 @@ Page({
     showModal:false,
     last_order_no:'',
     last_borrow_code:'',
+    route_type:0,//1本小程序,2去支付宝小程序,3跳别的小程序
   },
   onLoad(options) {
+    // options.pail_no="M700014823" //todo 1
+    // options.pail_no="M700044877" //todo 2
+    // options.pail_no="M700075190" //todo 3
     if (options.q) {
       let scan_url = decodeURIComponent(options.q);
       //获取关联普通二维码的码值，放到全局变量qrCode中
@@ -26,9 +30,17 @@ Page({
         pail_no:codes.params.id
       })
       wx.setStorageSync('pail_no', codes.params.id)
+    }else if(options.pail_no){//从map页面进入
+      this.setData({
+        pail_no:options.pail_no
+      })
     }else{
-      wx.setStorageSync('pail_no', this.data.pail_no)
+      this.setData({
+        pail_no:wx.getStorageSync('pail_no')
+      })
     }
+    this.getType()
+    console.log(this.data.pail_no)
     wx.getSystemInfo({
       success:  (res) => {
         this.setData({
@@ -43,7 +55,22 @@ Page({
     }
   },
   onShow: function () {
-    buryPoint({shop_site_id:123,action_type:12})
+    buryPoint({action_type:101})
+  },
+  // 获取小程序跳转类型
+  getType(){
+    var params={
+      pail_no:this.data.pail_no
+    }
+    getType(params).then(res=>{
+      // console.log(res)
+      this.setData({
+        route_type:res.route_type
+      })
+      wx.setNavigationBarTitle({
+        title: res.title
+      })
+    })
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -120,6 +147,7 @@ Page({
   },
   // 点击借伞
   clickBorrow(){
+    buryPoint({action_type:111})
     var params={
       pail_no:this.data.pail_no
     }
@@ -129,6 +157,7 @@ Page({
           isBandSite:true
         })
       }else{
+        wx.setStorage({ key: 'shop_site_id', data: res.shop_site_id })
         if(res.last_borrow_code){
           this.setData({
             showModal:true,
@@ -184,6 +213,7 @@ Page({
   },
   // 立即还伞
   clickReturn(){
+    buryPoint({action_type:128})
     var return_step=wx.getStorageSync('return_step')
     if(!return_step){
       wx.navigateTo({

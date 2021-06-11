@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "附近伞点",
+  "usingComponents": {
+    "card": "/component/card/card"
+  }
+}

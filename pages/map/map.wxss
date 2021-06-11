@@ -3,26 +3,137 @@
   position: absolute;
   background-color: #fff;
   width: 750rpx;
-  height: 200rpx;
+  height: 180rpx;
   bottom:0;
   left: 0;
   border-top-left-radius: 30rpx;
   border-top-right-radius: 30rpx;
+  z-index: 2;
   /* top: calc(50% - 150rpx);
   left: calc(50% - 300rpx); */
   /* opacity: .7; */
 }
+
 .container-center{
   width: 372rpx;
   height: 104rpx;
   background: linear-gradient(90deg, #FFC400 0%, #FFB200 100%);
   border-radius: 10px;
   position: absolute;
-  top: 48rpx;
+  top: 38rpx;
   left: 189rpx;
-  text-align: center;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.container-center-img{
+  width: 48rpx;
+  height: 42rpx;
 }
 .container-center-text{
   line-height: 104rpx;
+  margin-left: 15rpx;
+}
+.container-left{
+  position: absolute;
+  top: 44rpx;
+  left: 44rpx;
+}
+.container-img{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 36rpx;
+  margin-bottom: 20rpx;
+}
+.container-text{
+  font-size: 28rpx;
+  line-height: 28rpx;
+}
+.container-right{
+  position: absolute;
+  top: 44rpx;
+  right: 44rpx;
+}
+/* 点位弹窗 */
+/* .cover-view-window{
+  width: 750rpx;
+  height: 100vh;
+} */
+.cover-view.cover-view-site{
+  z-index: 3;
+  height: 230rpx;
+}
+.cover-site-img{
+  width: 32rpx;
+  height: 32rpx;
+}
+.container-left-bottom-box{
+  display: flex;
+}
+.container-left-bottom-cell{
+  display: flex;
+  justify-content: center;
+  /* align-items: left; */
+  font-size: 26rpx;
+  line-height: 32rpx;
+  margin-right: 50rpx;
+}
+.container-site-left{
+  position: absolute;
+  top: 44rpx;
+  left: 54rpx;
+  width: 500rpx;
+  border-right: 2rpx solid #F6F6F6;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.container-site-title{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 40rpx;
+  margin-bottom: 20rpx;
+}
+.container-site-text{
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 28rpx;
+  margin-bottom: 20rpx;
+}
+.container-site-right{
+  position: absolute;
+  top: 64rpx;
+  right: 54rpx;
+}
+.container-sr-img{
+  width: 52rpx;
+  height: 52rpx;
+  margin-bottom: 20rpx;
+}
+/* 右边小图案 */
+.cover-right-top{
+  position: fixed;
+  bottom: 500rpx;
+  right: 10rpx;
+  z-index: 1;
+  width: 144rpx;
+  height: 160rpx;
+}
+.cover-right-bottom{
+  position: fixed;
+  bottom: 380rpx;
+  right: 10rpx;
+  z-index: 1;
+  width: 144rpx;
+  height: 160rpx;
+}
+.cover-r-img{
+  width: 144rpx;
+  height: 160rpx;
 }

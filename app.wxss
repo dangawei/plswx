@@ -48,6 +48,9 @@ page {
 .border-color-FFC002 {
     border-bottom: 2px solid #FFC002;
 }
+.colorF64D3C{
+  color: #F64D3C;
+}
 /* 分割线 */
 .trans-line{
   background: #ddd;

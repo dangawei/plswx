@@ -2,6 +2,15 @@
   overflow: hidden;
   height: 100%;
 }
+.route-type{
+  width: 500rpx;
+  margin: 200rpx 125rpx;
+  text-align: center;
+}
+.route-type-text{
+  font-size: 32rpx;
+  font-weight: 600;
+}
 .hw-part{
   width: 100%;
   height: 100%;

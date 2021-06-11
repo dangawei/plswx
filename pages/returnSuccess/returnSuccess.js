@@ -1,3 +1,4 @@
+const { buryPoint } = require('../../api/api.js');
 const { normalTime } = require('../../utils/util');
 // pages/returnSuccess/returnSuccess.js
 Page({
@@ -37,7 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    buryPoint({action_type:132})
   },
 
   // 返回首页

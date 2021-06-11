@@ -1,4 +1,4 @@
-const { rentInfo } = require('../../api/api.js');
+const { rentInfo,buryPoint } = require('../../api/api.js');
 // pages/pwdBorrow/pwdBorrow.js
 Page({
 
@@ -9,7 +9,7 @@ Page({
     height:wx.getStorageSync('height'),
     isVipModel:false,
     dataInfo:{},
-    borrow_no:'',
+    borrow_code:'',
     order_no:'',
     pail_no:'',
     borrow_time:wx.getStorageSync('borrow_time')
@@ -20,7 +20,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      borrow_no:options.borrow_no,
+      borrow_code:options.borrow_code,
       order_no:options.order_no,
       pail_no:options.pail_no,
       // dataInfo:wx.getStorageSync('rentInfo')
@@ -38,7 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    buryPoint({action_type:104})
   },
   //得到计费规则
   getRentInfo(){

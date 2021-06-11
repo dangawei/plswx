@@ -6,6 +6,7 @@ Page({
    */
   data: {
     height:wx.getStorageSync('height'),
+    phone:wx.getStorageSync('phone') ,
   },
 
   /**

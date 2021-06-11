@@ -17,6 +17,9 @@ function urlSplit(url) {
     var params = pathWithParams.split('?')[1];
    
     var paramsArray = params.split('&');
+    var paramsObjs =paramsArray[0].split('=')
+    var paramsObj={}
+    paramsObj[paramsObjs[0]]=paramsObjs[1]
     
     return {
       protocol: protocolStr,
@@ -24,7 +27,8 @@ function urlSplit(url) {
       domain: pureDomain,
       pathParams: pathWithParams,
       port: port,
-      params: paramsArray,
+      params: paramsObj,
+      paramsArray: paramsArray,
     }
   }catch(err){
     wx.showModal({

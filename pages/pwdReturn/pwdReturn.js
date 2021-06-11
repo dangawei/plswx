@@ -1,4 +1,4 @@
-const { orderUsing,orderReturn } = require('../../api/api.js');
+const { orderUsing,orderReturn,buryPoint } = require('../../api/api.js');
 // pages/pwdReturn/pwdReturn.js
 Page({
 
@@ -51,7 +51,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    buryPoint({action_type:107})
   },
   // 点击如何借还伞
   howBR(){

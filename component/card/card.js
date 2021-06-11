@@ -10,6 +10,14 @@ Component({
           type: Boolean,
           value: false
       },
+      content: {
+          type: Boolean,
+          value: false
+      },
+      footer: {
+          type: Boolean,
+          value: false
+      },
       thumb: {
           type: String,
           value: ''

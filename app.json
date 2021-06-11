@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/map/map",
     "pages/index/index",
     "pages/costDetail/costDetail",
     "pages/pwdBorrow/pwdBorrow",
@@ -15,7 +16,7 @@
     "pages/useStep/useStep",
     "pages/costQuestion/costQuestion",
     "pages/feedbackSuccess/feedbackSuccess",
-    "pages/map/map"
+    "pages/nearSite/nearSite"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -28,14 +28,14 @@
           <text class="pb-cr-txt">将伞收好，从左边还伞口推进去。</text>
         </view>
         <view class="pb-cr-img-bgi">
-          <image src="/images/return/hs1.png"></image>
+          <image src="https://pls-wechat.piaoliusan.com/wechat/return/hs1.png"></image>
         </view>
         <view class="pb-cr-txt-2">
           <image src="/images/2.png" class="pb-cr-img"></image>
           <text class="pb-cr-txt">将伞桩上的还伞码输入到手机，结束订单。</text>
         </view>
         <view class="pb-cr-img-bgi">
-          <image src="/images/return/hs2.png"></image>
+          <image src="https://pls-wechat.piaoliusan.com/wechat/return/hs2.png"></image>
         </view>
       </view>
     </view>

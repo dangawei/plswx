@@ -4,7 +4,7 @@
     <view class="ud-top-title-box">
       <view class="nav-item {{current == 0 ? 'current' : ''}}" data-index='0' catchtap="selectItem">
         <view class="ud-top-title-img">
-          <image src="/images/useDetail/icon_rhjs.png" mode="widthFix"></image>
+          <image src="https://pls-wechat.piaoliusan.com/wechat/useDetail/icon_rhjs.png" mode="widthFix"></image>
         </view>
         <view class="ud-top-title-text">
           如何借伞
@@ -12,7 +12,7 @@
       </view>
       <view class="nav-item {{current == 1 ? 'current' : ''}}" data-index='1' catchtap="selectItem">
         <view class="ud-top-title-img">
-          <image src="/images/useDetail/icon_rhhs.png" mode="widthFix"></image>
+          <image src="https://pls-wechat.piaoliusan.com/wechat/useDetail/icon_rhhs.png" mode="widthFix"></image>
         </view>
         <view class="ud-top-title-text">
           如何还伞
@@ -20,7 +20,7 @@
       </view>
       <view class="nav-item {{current == 2 ? 'current' : ''}}" data-index='2' catchtap="selectItem">
         <view class="ud-top-title-img">
-          <image src="/images/useDetail/icon_rhgm.png" mode="widthFix"></image>
+          <image src="https://pls-wechat.piaoliusan.com/wechat/useDetail/icon_rhgm.png" mode="widthFix"></image>
         </view>
         <view class="ud-top-title-text">
           如何购买
@@ -31,7 +31,7 @@
   <!-- 猜你想问 -->
   <view class="ud-content-box">
     <view class="ud-content-title">
-      <image src="/images/useDetail/when.png"></image>
+      <image src="https://pls-wechat.piaoliusan.com/wechat/useDetail/when.png"></image>
     </view>
     <view class="caption-wrap">
       <i-collapse name="{{name}}">
@@ -46,7 +46,7 @@
   <!-- 意见反馈 -->
   <view class="btn-tip-box">
     <view class="btn-tip-img">
-      <image src="/images/useDetail/feedback.png"></image>
+      <image src="https://pls-wechat.piaoliusan.com/wechat/useDetail/feedback.png"></image>
     </view>
     <view class="btn-tip-text">
       意见反馈

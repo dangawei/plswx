@@ -1,5 +1,5 @@
 // pages/opfeedback/opfeedback.js
-const { commonPolicy,userFeedback,commonStatic } =require('../../api/api')
+const { commonPolicy,userFeedback,commonStatic,buryPoint } =require('../../api/api')
 const { previewSign, chooseImages, meetArrays, satisfy} = require('../../utils/util.js')
 Page({
 
@@ -60,7 +60,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.type==1){
+      buryPoint({action_type:105})
+    }else{
+      buryPoint({action_type:108})
+    }
+    
   },
   // 获取静态映射
   commonStatic(){
@@ -103,6 +108,11 @@ Page({
   },
   // 点击立即提交
   clickSumbit(){
+    if(this.data.type==1){
+      buryPoint({action_type:131})
+    }else{
+      buryPoint({action_type:135})
+    }
     var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
     if (!myreg.test(this.data.mobile)) {
       wx.showToast({

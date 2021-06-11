@@ -24,7 +24,7 @@ Page({
     borrowData:[
       {
         icon:'/images/1.png',
-        title:'打开微信“mobrella”小程序查看附近伞点。',
+        title:'打开微信“漂流伞”小程序查看附近伞点。',
         img:'https://pls-wechat.piaoliusan.com/wechat/useInfo/pic_step1.png'
       },
       {
@@ -46,7 +46,7 @@ Page({
     returnData:[
       {
         icon:'/images/1.png',
-        title:'打开微信“mobrella”小程序查看附近伞点。',
+        title:'打开微信“漂流伞”小程序查看附近伞点。',
         img:'https://pls-wechat.piaoliusan.com/wechat/useInfo/hs1.png'
       },
       {

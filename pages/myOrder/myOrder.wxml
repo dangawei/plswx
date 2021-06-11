@@ -1,4 +1,5 @@
 <!--pages/myOrder/myOrder.wxml-->
+<wxs src="../../utils/filter.wxs" module="filter" />
 <view style="height:{{height}}rpx" class="mo-box">
   <view class="mo-top-box">
     <view class="mo-top-bgi">
@@ -29,8 +30,8 @@
           <text class="pb-cell-cv-title">{{item.borrow_time}}</text>
         </view>
         <view class="pb-cell-content-vice">
-          <text class="pb-cell-cv-title">时长:{{item.used_time_text}}</text>
-          <text class="pb-cell-cv-info">{{item.status_text}}</text>
+          <text class="pb-cell-cv-title">时长:{{filter.isContent(filter.normalTime(item.used_time,'day'))}}</text>
+          <text class="pb-cell-cv-info {{item.status_text=='未还'?'colorF64D3C':''}}">{{item.status_text}}</text>
           <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix"></image>
         </view>
       </view>

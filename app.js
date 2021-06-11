@@ -1,23 +1,25 @@
 // app.js
 const { login,orderBorrowStatus } = require('./api/api.js');
 App({
-  onLaunch() {
+  onLaunch(options) {
     // if(!wx.getStorageSync('app_token')){
-      wx.login({
-        success (res) {
-          if (res.code) {
-            //发起网络请求
-            login({ code: res.code }).then((result) => {
-              console.log(result)
-              wx.setStorage({ key: 'code', data: res.code })
-              wx.setStorage({ key: 'app_token', data: result.app_token })
-              wx.setStorage({ key: 'show_id', data: result.show_id })
-            })
-          } else {
-            console.log('登录失败！' + res.errMsg)
-          }
-        }
-      })
+      // wx.login({
+      //   success (res) {
+      //     if (res.code) {
+      //       //发起网络请求
+      //       login({ code: res.code }).then((result) => {
+      //         console.log(result)
+      //         wx.setStorage({ key: 'code', data: res.code })
+      //         wx.setStorage({ key: 'app_token', data: result.app_token })
+      //         wx.setStorage({ key: 'show_id', data: result.show_id })
+      //         wx.setStorage({ key: 'user_id', data: result.user_id })
+      //       })
+      //       console.log(options)
+      //     } else {
+      //       console.log('登录失败！' + res.errMsg)
+      //     }
+      //   }
+      // })
     // }
     wx.getSystemInfo({
       success:  (res) => {

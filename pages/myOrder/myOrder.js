@@ -1,4 +1,4 @@
-const {orderList}=require('../../api/api')
+const {orderList,buryPoint}=require('../../api/api')
 // pages/myOrder/myOrder.js
 Page({
 
@@ -48,7 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    buryPoint({action_type:110})
   },
   // 获取订单列表
   getOrderList(){

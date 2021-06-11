@@ -5,7 +5,7 @@
   </view>
   <view class="pb-cell-content-box">
     <view class="pb-cell-content-ver">
-      <ver-code valueLength="{{6}}" valueData="{{borrow_no}}"></ver-code>
+      <ver-code valueLength="{{6}}" valueData="{{borrow_code}}"></ver-code>
     </view>
     <view class="pb-cell-content-text">
       <text>请尽快在伞桩上输入借伞码,如有问题,点击</text>

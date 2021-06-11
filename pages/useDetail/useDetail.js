@@ -1,5 +1,5 @@
 // pages/returnGuidance/returnGuidance.js
-const { getConfig } = require('../../api/api.js');
+const { getConfig,buryPoint } = require('../../api/api.js');
 let app = getApp()
 Page({
   data: {

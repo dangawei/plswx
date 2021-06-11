@@ -1,4 +1,5 @@
 const BORROW_STEP1 = 'borrowStep1', BORROW_STEP2 = 'borrowStep2', RETURN_STEP2 = 'returnStep2', RETURN_STEP1 = 'returnStep1'
+const { buryPoint } = require('../../api/api.js');
 let timer
 Page({
   data: {
@@ -16,6 +17,7 @@ Page({
   },
   onLoad(query) {
     this.query = query
+    console.log(query)
     // if (this.query.borrow_code) {
     if (this.query.type==1) {
       wx.setNavigationBarTitle({
@@ -49,7 +51,12 @@ Page({
     this.controlTime(this.query.borrow_code)
   },
   onShow(){
-    // filter.buryPointHttp(this.data.buryNum)
+    if(this.query.type==1){
+      buryPoint({action_type:103})
+    }else{
+      buryPoint({action_type:106})
+    }
+    
   },
   controlTime:function(isBorrow){
     let btnTime = 9
@@ -71,10 +78,10 @@ Page({
     const { borrow_code, pail_no, order_no } = this.query
     
     if (this.data.type==1) {
-        wx.navigateTo({ url: `/pages/pwdBorrow/pwdBorrow?pail_no=${pail_no}&borrow_code=${borrow_code}&order_no=${order_no}` });
+        wx.navigateTo({ url: '/pages/pwdBorrow/pwdBorrow?pail_no='+pail_no+'&borrow_code='+borrow_code+'&order_no='+order_no });
         if(checked) wx.setStorage({key: 'borrow_step', data: true});
     } else {
-        wx.navigateTo({ url: `/pages/pwdReturn/pwdReturn?pail_no=${pail_no}` });
+        wx.navigateTo({ url: '/pages/pwdReturn/pwdReturn?pail_no='+pail_no });
         if(checked) wx.setStorage({ key: 'return_step', data: true });
     }
   },

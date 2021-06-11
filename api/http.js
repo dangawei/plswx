@@ -27,6 +27,7 @@ export const wxRequest =(params, method)=> {
         if (data.code == 0) {
           resolve(data.data)
         } else if (data.code == '202' || data.code == '401') {
+          resolve(data)
           // wx.showModal({
           //   title: '提示',
           //   showCancel: false,

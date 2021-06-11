@@ -1,0 +1,34 @@
+<!--pages/nearSite/nearSite.wxml-->
+<view class="ns-box">
+  <view wx:for="{{markers}}" wx:key="index" class="ns-card-box">
+    <card title="{{item.shop_name}}" extra="{{true}}" footer="{{true}}" alignSelf="{{true}}" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+      <view slot="extra">
+        <view>
+          {{item.distance}}
+        </view>
+      </view>
+      <view slot="detail">
+        <view class="ns-card-detail">
+          <image src="/images/map/icon_sj.png" class='detail-img'></image>
+          <text>{{item.businesstime}}</text>
+        </view>
+        <view class="ns-card-detail" data-item="{{item}}" catchtap="clickNav">
+          <image src="/images/map/icon_dz.png" class='detail-img'></image>
+          <text>{{item.address}}</text>
+        </view>
+      </view>
+      <view slot="footer" class="ns-card-footer">
+        <view class="container-left-bottom-box">
+          <view class="container-left-bottom-cell">
+            <image src="/images/map/icon_borrow.png" class="cover-site-img"></image>
+            <view>可借 {{item.borrow_count}}</view>
+          </view>
+          <view class="container-left-bottom-cell">
+            <image src="/images/map/icon_return.png" class="cover-site-img"></image>
+            <view>可还 {{item.return_count}}</view>
+          </view>
+        </view>
+      </view>
+    </card>
+  </view>
+</view>

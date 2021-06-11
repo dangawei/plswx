@@ -1,4 +1,4 @@
-const { rentInfo,orderBorrow } = require('../../api/api.js');
+const { rentInfo,orderBorrow,buryPoint } = require('../../api/api.js');
 const app=getApp().globalData
 // pages/costDetail/costDetail.js
 Page({
@@ -37,7 +37,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    buryPoint({action_type:102})
   },
 
   //得到计费规则
@@ -55,6 +55,7 @@ Page({
   },
   // 确定借伞
   clickBorrow(){
+    buryPoint({action_type:129})
     var that=this
     var params={
       pail_no:this.data.pail_no

@@ -1,14 +1,22 @@
 let app = getApp()
 import {wxRequest,getRequest} from './http.js'
-export const isDebug = true//正式环境
-export const isTest = true//是否是测试环境登录
+export const isDebug = false//正式环境
+export const isTest = false//是否是测试环境登录
 
-const newUrl = isDebug ? 'https://s-wechat.piaoliusan.com' : 'https://wapi.piaoliusan.com';
-const getUrl='https://s-data.piaoliusan.com/md'
+const newUrl = isDebug ? 'https://s-wechat.piaoliusan.com' : 'https://wechat.piaoliusan.com';
+const getUrl= isDebug ? 'https://s-data.piaoliusan.com/md':'https://data.piaoliusan.com/md'
+const typeUrl=isDebug ? 'https://s-applet.piaoliusan.com' : 'https://applet.piaoliusan.com';
 
+// 获取跳转小程序类型
+export const getType = (data) => {
+  const params = { url: typeUrl + '/v1/common/wxRoute', data }
+  return wxRequest(params);
+};
 // 埋点
 export const buryPoint=(data)=>{
-  data.user_id=wx.getStorageSync('user_id')
+  data.user_id=wx.getStorageSync('user_id') || 0
+  var shop_site_id=wx.getStorageSync('shop_site_id')
+  data.shop_site_id=shop_site_id && typeof shop_site_id !=undefined ? shop_site_id: 0
   const params = { url: getUrl, data }
   return getRequest(params);
 }
@@ -75,6 +83,6 @@ export const getConfig= (data) => {//获取猜你想问的配置
   return wxRequest(params);
 }
 export const siteList= (data) => {//点位地图
-  const params = { url: newUrl + '/mini/site/list', data: data }
+  const params = { url: newUrl + '/mina/site/list', data: data }
   return wxRequest(params);
 }

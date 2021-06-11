@@ -6,7 +6,7 @@
       小红帽
     </view>
     <view class="my-top-phone">
-      <text>18437981236</text>
+      <text>{{phone}}</text>
     </view>
   </view>
   <view class="my-content-box">

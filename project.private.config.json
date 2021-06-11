@@ -21,7 +21,7 @@
         {
           "name": "立即借伞",
           "pathName": "pages/pwdBorrow/pwdBorrow",
-          "query": "borrow_no=654987&pail_no=M700007423&order_no=20210109173500001",
+          "query": "borrow_code=654987&pail_no=M700007423&order_no=20210109173500001",
           "scene": null
         },
         {
@@ -99,6 +99,18 @@
         {
           "name": "地图",
           "pathName": "pages/map/map",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "附近伞点",
+          "pathName": "pages/nearSite/nearSite",
           "query": "",
           "scene": null
         }

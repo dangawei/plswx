@@ -1,8 +1,7 @@
 {
-  "navigationBarTitleText": "漂流伞",
+  "navigationBarTitleText": "",
   "usingComponents": {
     "button-type": "/component/button-type/button-type",
-    "pls-modal": "/component/pls-modal/pls-modal",
-    "i-card": "/component/card/card"
+    "pls-modal": "/component/pls-modal/pls-modal"
   }
 }

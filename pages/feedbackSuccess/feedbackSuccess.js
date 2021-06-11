@@ -1,4 +1,5 @@
 // pages/feedbackSuccess/feedbackSuccess.js
+const { buryPoint } = require('../../api/api.js');
 Page({
 
   /**
@@ -44,7 +45,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    buryPoint({action_type:143})
   },
   // 查看订单
   goOrder(){

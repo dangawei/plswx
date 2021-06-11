@@ -1,5 +1,5 @@
 // pages/brfeedback/brfeedback.js
-const { commonPolicy,userFeedback } =require('../../api/api')
+const { commonPolicy,userFeedback,buryPoint } =require('../../api/api')
 const { previewSign, chooseImages, meetArrays, satisfy} = require('../../utils/util.js')
 Page({
 
