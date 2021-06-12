@@ -24,6 +24,11 @@
     "navigationBarTitleText": "漂流伞",
     "navigationBarTextStyle": "black"
   },
+  "permission": {
+    "scope.userLocation": {
+     "desc": "获取周围伞点"
+    }
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

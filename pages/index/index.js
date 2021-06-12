@@ -8,7 +8,7 @@ Page({
     canIUseGetUserProfile:false,
     buyBtnText: "立即借伞",
     isVipModel:false,
-    pail_no:'M700007423',
+    pail_no:'M700014823',
     isPhone:false,
     isBandSite:false,//伞点维修弹窗
     showModal:false,
@@ -244,4 +244,10 @@ Page({
       url: '/pages/my/my',
     })
   },
+  // 去地图页
+  backMap(){
+    wx.reLaunch({
+      url: '/pages/map/map',
+    })
+  }
 })

@@ -87,7 +87,7 @@ export const getRequest=(params)=>{
     // header: {apikey:'a37c01591e47494fe320137dbc0fd423'}, // 设置请求的 header
     success: function(res){
      // success
-     console.log(res)
+    //  console.log(res)
     },
     fail: function() {
      // fail

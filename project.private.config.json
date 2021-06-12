@@ -15,7 +15,7 @@
         {
           "name": "计费规则",
           "pathName": "pages/costDetail/costDetail",
-          "query": "pail_no=M700007423",
+          "query": "pail_no=M700014823",
           "scene": null
         },
         {
@@ -27,7 +27,7 @@
         {
           "name": "立即还伞",
           "pathName": "pages/pwdReturn/pwdReturn",
-          "query": "pail_no=M700007423",
+          "query": "pail_no=M700014823",
           "scene": null
         },
         {
@@ -69,7 +69,7 @@
         {
           "name": "订单详情",
           "pathName": "pages/orderDetail/orderDetail",
-          "query": "order_no=2106072009510313816374",
+          "query": "order_no=2106111555130574838838",
           "scene": null
         },
         {

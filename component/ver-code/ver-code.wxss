@@ -28,8 +28,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 32rpx;
-  font-weight: 600;
+  font-size: 70rpx;
+  font-weight: 700;
 }
 .input-password {
   position: absolute;

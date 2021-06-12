@@ -18,10 +18,10 @@
     </view> -->
 
     <view class="btn-wrapper btn-borrow btn-buy" data-btntype="buy" wx:if="{{isPhone}}">
-      <button-type size="middle" btnTitle="{{buyBtnText}}" isPhone="{{isPhone}}" bind:getPhone="getPhone" bs="0 0 18rpx 10rpx #F4F4F4" />
+      <button-type size="middle" btnTitle="{{buyBtnText}}" isPhone="{{isPhone}}" bind:getPhone="getPhone" bs="0 0 18rpx 10rpx #F4F4F4"  butType="{{true}}" />
     </view>
     <view wx:else class="btn-wrapper btn-borrow btn-buy" data-btntype="buy" catchtap="clickBorrow">
-      <button-type size="middle" btnTitle="{{buyBtnText}}" isPhone="{{isPhone}}" bs="0 0 18rpx 10rpx #F4F4F4" />
+      <button-type size="middle" btnTitle="{{buyBtnText}}" isPhone="{{isPhone}}" bs="0 0 18rpx 10rpx #F4F4F4"  butType="{{true}}" />
     </view>
     <!-- 开通vip -->
     <!-- <view wx:if="{{!isRenewUser && pageType.type === 'newPWD' && open_renew_card && !is_deny_borrow}}" class="btn-wrapper btn-renew" data-btntype="borrow" data-btnvip="buyvip" catchtap="clickBorrow">
@@ -37,7 +37,7 @@
       <button-type size="middle" btnTitle="立即还伞" bs="0 0 18rpx 10rpx #F4F4F4" />
     </view>
     <view class="btn-wrapper order">
-      <view class="btn-right btn-cell" catchtap="clickMap">
+      <!-- <view class="btn-right btn-cell" catchtap="clickMap">
         <view fs-size="34" title="使用说明" />
       </view>
       <view class="btn-center btn-cell">
@@ -45,15 +45,15 @@
       </view>
       <view class="btn-center btn-cell" catchtap="clickOrder">
         <item-nav fs-size="34" title="查看订单" />
-      </view>
-      <!-- <view class="od-footer-box">
-        <view class="left-border flex1 tac" catchtap="clickUse">
-          <text class="color999999">使用说明</text>
-        </view>
-        <view class="flex1 tac" catchtap="goMy">
-          <text class="color999999">个人中心</text>
-        </view>
       </view> -->
+      <view class="od-footer-box">
+        <view class="left-border flex1 tac" catchtap="backMap">
+          <text class="color999999">点位地图</text>
+        </view>
+        <view class="flex1 tac" catchtap="clickOrder">
+          <text class="color999999">查看订单</text>
+        </view>
+      </view>
     </view>
     <view class="bgc-box">
       <image class='bgc-bottom' mode="widthFix" src='https://pls-wechat.piaoliusan.com/wechat/index/login_pic2x.png'></image>
@@ -67,7 +67,7 @@
   </view>
 </view>
 
-<pls-modal show="{{showModal}}" top-image-size="sm" show-close bind:modalClose="hideModal">
+<pls-modal show="{{showModal}}" top-image-size="sm" showClose="{{true}}" bind:modalClose="hideModal">
     <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
       <view class="title-saide">
         <view class="modal-title fs_28 f_w_4">您在当前伞点存有未归还的订单</view>
@@ -87,7 +87,7 @@
     </view>
 </pls-modal>
 <!-- 伞桶和点位没绑定弹窗 -->
-<pls-modal show="{{isBandSite}}" top-image-size="sm" show-close bind:modalClose="hideBandSite">
+<pls-modal show="{{isBandSite}}" top-image-size="sm" showClose="{{true}}" bind:modalClose="hideBandSite">
     <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
       <view class="title-saide">
         <view class="modal-title fs_28 f_w_4">亲，抱歉！当前伞点正在维护中，暂时无法为你提供借还伞服务，请到附近伞点！</view>
@@ -103,7 +103,7 @@
     </view>
 </pls-modal>
 <!-- 会员有未还的雨伞 -->
-<!-- <pls-modal show="{{isVipModel}}" top-image-size="sm" show-close bind:modalClose="hideVip">
+<!-- <pls-modal show="{{isVipModel}}" top-image-size="sm" showClose="{{true}}" bind:modalClose="hideVip">
     <view slot="header">
       <view>温馨提示</view>
       <view class="title-saide">
@@ -113,7 +113,7 @@
     </view>
 </pls-modal> -->
 <!-- 会员优惠借伞超过15分钟有未还的雨伞 -->
-<!-- <pls-modal show="{{isBuyRenewModel}}" top-image-size="sm" show-close bind:modalClose="hideRenew" top-image="https://cdn.piaoliusan.com/img/icon_warning.png">
+<!-- <pls-modal show="{{isBuyRenewModel}}" top-image-size="sm" showClose="{{true}}" bind:modalClose="hideRenew" top-image="https://cdn.piaoliusan.com/img/icon_warning.png">
     <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
       <view class="title-saide">
         <view class="modal-title fs_28 f_w_4">亲，抱歉！你有未归还的订单，暂时不能使用会员借伞，请先归还！</view>
@@ -123,7 +123,7 @@
     </view>
 </pls-modal> -->
 <!-- vip借伞 -->
-<!-- <pls-modal show="{{showVipModal}}" top-image-size="sm" show-close bind:modalClose="hideVipModal" top-image="https://cdn.piaoliusan.com/img/icon_warning.png">
+<!-- <pls-modal show="{{showVipModal}}" top-image-size="sm" showClose="{{true}}" bind:modalClose="hideVipModal" top-image="https://cdn.piaoliusan.com/img/icon_warning.png">
   <view class="f_w_5 fs_32 header f_pf_mdm"  slot="header">温馨提示
     <view class="title-saide">
       <view class="modal-title fs_28 f_w_4">您在当前伞点存有未归还的订单</view>

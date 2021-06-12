@@ -13,7 +13,7 @@
       show-location
     >
       <view class="cover-right">
-        <view class="cover-right-top">
+        <view class="cover-right-top" catchtap="resetPosition">
           <image src="https://pls-wechat.piaoliusan.com/wechat/map/icon_site.png" class="cover-r-img"></image>
         </view>
         <view class="cover-right-bottom" catchtap="goUseInfo">

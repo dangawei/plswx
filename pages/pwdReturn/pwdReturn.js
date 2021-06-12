@@ -85,7 +85,8 @@ Page({
   // 选择要还的雨伞
   handleChange({ detail = {} }){
     this.setData({
-        current: detail.value
+        current: detail.value,
+        order_no:detail.value
     });
   },
   // 选择确定要还的雨伞

@@ -28,6 +28,7 @@
   color: #333333;
   line-height: 34rpx;
   letter-spacing: 1px;
+  margin-top: 30rpx;
 }
 
 .my-content-box{

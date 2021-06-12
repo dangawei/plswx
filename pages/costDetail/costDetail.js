@@ -75,9 +75,6 @@ Page({
             // service_id:resu.extraData.service_id,
         },
         success(res) {
-            //dosomething
-            // console.log(res)
-            // console.log("我进入了成功")
             that.setData({
               order_no:resu.order_no
             })
@@ -123,6 +120,10 @@ Page({
     //     }
     //   })
     })
+  },
+  // 点击协议
+  clickProcotol(){
+    
   },
   /**
    * 生命周期函数--监听页面隐藏

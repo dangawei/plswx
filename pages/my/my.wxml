@@ -1,10 +1,10 @@
 <!--pages/my/my.wxml-->
 <view style="height:{{height}}rpx" class="my-box">
   <view class="my-top-box">
-    <avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" wid="144" heig="144" shape="circle"></avatar>
-    <view class="my-top-name">
+    <avatar src="/images/user.png" wid="144" heig="144" shape="circle"></avatar>
+    <!-- <view class="my-top-name">
       小红帽
-    </view>
+    </view> -->
     <view class="my-top-phone">
       <text>{{phone}}</text>
     </view>

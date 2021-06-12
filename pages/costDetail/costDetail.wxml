@@ -15,7 +15,7 @@
       <view class="sd-cell-bottom-box">
         <view class="sd-cell-bottom-protocol">
           <text>确定借伞代表您已阅读并同意</text>
-          <text class="sd-cell-bottom-protocol-txt">《用户协议》</text>
+          <text class="sd-cell-bottom-protocol-txt" catchtap="clickProcotol">《用户协议》</text>
         </view>
         <view class="sd-cell-bottom-btn" catchtap="clickBorrow">
           <button-type btnTitle="确认借伞" butType="{{true}}" />

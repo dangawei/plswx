@@ -14,7 +14,7 @@
       <slot name="footer"  />
     </view>
     <view catchtap="onModalClose">
-      <image wx:if="{{showClose}}" class="icon-cloose" src="/images/index/icon_close2x.png" />
+      <image wx:if="{{showClose}}" class="icon-cloose" src="https://pls-wechat.piaoliusan.com/wechat/index/icon_close2x.png" />
     </view>
   </view>
 </view>

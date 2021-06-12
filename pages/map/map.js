@@ -10,34 +10,13 @@ Page({
     height:wx.getStorageSync('height'),
     latitude: 30.282195,   // 纬度
     longitude: 120.117858, // 经度
-    markers: [{
-      id: 1,
-      latitude:30.282195,
-      longitude: 120.117858,
-      name: '莱茵达',
-      iconPath:'/images/map/marker_icon.png',
-      width:26,
-      height:33
-    }],
+    markers: [],
     scale: 15, // 缩放
     timeoutId: null,
     mapSetting: {},
     buryNum:9,//埋点标识
     siteShow:false,
-    markerSite:{
-      address: "杭州市西湖区华星路96号",
-      borrow_count: 0,
-      businesstime: "9:00-17:00",
-      distance: "453.9m",
-      height: 33,
-      iconPath: "/images/map/marker_icon.png",
-      id: 9993,
-      latitude: "30.279203",
-      longitude: "120.121071",
-      return_count: 20,
-      shop_name: "互联网金融大厦B",
-      width: 26
-    },//点击伞点marker
+    markerSite:{},//点击伞点marker
     isClickMarker:false,//是否点击marker
   },
 
@@ -45,7 +24,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.siteList()
+    this.getLocation();
+    
   },
 
   /**
@@ -60,6 +40,23 @@ Page({
    */
   onShow: function () {
     buryPoint({action_type:109})
+  },
+  // 获取位置
+  getLocation(){
+    var that=this
+    wx.getLocation({
+      type: 'gcj02',
+      success (res) {
+        console.log(res)
+        that.setData({
+          latitude:res.latitude,
+          longitude:res.longitude,
+        })
+        wx.setStorageSync('latitude', res.latitude)
+        wx.setStorageSync('longitude', res.longitude)
+        that.siteList()
+      }
+    })
   },
   // 登录
   loginIn(){
@@ -97,10 +94,21 @@ Page({
       }else{
         res.forEach(ele => {
           ele.id=Number(ele.id)
-          ele.iconPath='/images/map/marker_icon.png'
+          ele.iconPath='https://pls-wechat.piaoliusan.com/wechat/map/marker_icon.png'
           ele.width=26,
           ele.height=33
         });
+        var obj={
+          id:0,
+          latitude:this.data.latitude,
+          longitude:this.data.longitude,
+          iconPath:'/images/my_position.png',
+          joinCluster:true,
+          zIndex:9,
+          width:22,
+          height:43
+        }
+        res.unshift(obj)
         this.setData({
           markers:res
         })
@@ -110,21 +118,22 @@ Page({
   },
   // 点击点位标记点
   clickMarker(e){
-    this.data.isClickMarker=true
-    var that=this
-    setTimeout(function(){
-      that.data.isClickMarker=false
-    },600)
-    for(let i=0,len=this.data.markers.length;i<len;i++){
-      if(e.detail.markerId==this.data.markers[i].id){
-        this.setData({
-          markerSite:this.data.markers[i],
-          siteShow:true
-        })
-        break
+    if(e.detail.markerId!=0){
+      this.data.isClickMarker=true
+      var that=this
+      setTimeout(function(){
+        that.data.isClickMarker=false
+      },600)
+      for(let i=0,len=this.data.markers.length;i<len;i++){
+        if(e.detail.markerId==this.data.markers[i].id){
+          this.setData({
+            markerSite:this.data.markers[i],
+            siteShow:true
+          })
+          break
+        }
       }
     }
-    console.log()
   },
   // 隐藏点位标记点弹窗
   hideSiteShow(){
@@ -174,6 +183,10 @@ Page({
         wx.setStorageSync('pail_no', codes.params.id)
       }
     })
+  },
+  //重置定位
+  resetPosition(){
+    this.getLocation()
   },
   // 跳转使用说明
   goUseInfo(){

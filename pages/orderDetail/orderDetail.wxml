@@ -1,7 +1,13 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class="od-box">
   <view class="od-top-box">
-    <map style="width:750rpx;" scale="{{18}}" markers="{{markers}}"></map>
+    <map style="width:750rpx;" 
+      latitude="{{latitude}}"
+      longitude="{{longitude}}" 
+      markers="{{markers}}"
+      scale="{{17}}" 
+      polyline="{{polyline}}">
+    </map>
   </view>
   <view class="od-content-box">
     <view class="rs-cell-content-text">
@@ -34,7 +40,7 @@
       </view>
       <view>
         <text class="od-dec-title">还伞时间: </text>
-        <text class="od-dec-info">{{orderInfo.finish_time}}</text>
+        <text class="od-dec-info">{{orderInfo.finish_time || '/'}}</text>
       </view>
       <view>
         <text class="od-dec-title">借伞地点: </text>

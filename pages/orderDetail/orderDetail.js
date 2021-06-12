@@ -7,24 +7,21 @@ Page({
    * 页面的初始数据
    */
   data: {
+    latitude: 30.282195,
+    longitude: 120.117858,
     markers:[],
     order_no:'',
     orderInfo:{},
     dataInfo:{},//计费规则页面
-    isVipModel:false
+    isVipModel:false,
+    polyline:[],//地图划线配置
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      height: 20,
-      width: 17,
-      iconPath: "/images/orderDetail/icon_borrow.png",
-      latitude: '30.275909',
-      longitude: '120.124039',
-    })
+   
     this.setData({
       order_no:options.order_no
     })
@@ -51,10 +48,48 @@ Page({
     }
     orderDetail(params).then(res=>{
       res.used_times=normalTime(res.used_time,'special')
+      var polylineData=[{
+        points: [{
+          latitude: Number(res.borrow_lat),
+          longitude: Number(res.borrow_lng)
+          
+        }, 
+        {
+          latitude: Number(res.return_lng),
+          longitude: Number(res.return_lat)
+        }],
+        // color: "#ff6600",
+        colorList:["#239CF3","#52E7FF"],
+        width: 4,
+      }]
       this.setData({
+        latitude:res.borrow_lat,
+        longitude:res.borrow_lng,
         orderInfo:res,
-        dataInfo:res.rent_info
+        dataInfo:res.rent_info,
+        polyline:polylineData,
+        markers:[
+          {
+            id:1,
+            latitude:Number(res.borrow_lat),
+            longitude:Number(res.borrow_lng),
+            iconPath:'/images/orderDetail/icon_borrow.png',
+            zIndex:9,
+            width:22,
+            height:22
+          },
+          {
+            id:2,
+            latitude:Number(res.return_lat),
+            longitude:Number(res.return_lng),
+            iconPath:'/images/orderDetail/icon_borrow.png',
+            zIndex:9,
+            width:22,
+            height:22
+          },
+        ]
       })
+      console.log(this.data.polyline)
       wx.setStorageSync('orderDetail', res)
     })
   },
