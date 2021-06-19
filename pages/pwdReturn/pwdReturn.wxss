@@ -27,7 +27,7 @@
   color: #ADADAD;
   line-height: 36rpx;
   margin-top: 20rpx;
-  text-align: center;
+  text-align: right;
 }
 .pb-cell-content-text-color{
   color: #00ADFA;

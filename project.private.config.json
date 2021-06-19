@@ -69,7 +69,7 @@
         {
           "name": "订单详情",
           "pathName": "pages/orderDetail/orderDetail",
-          "query": "order_no=2106111555130574838838",
+          "query": "order_no=2106151605520574838826",
           "scene": null
         },
         {
@@ -111,6 +111,12 @@
         {
           "name": "附近伞点",
           "pathName": "pages/nearSite/nearSite",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "用户协议",
+          "pathName": "pages/protocol/protocol",
           "query": "",
           "scene": null
         }

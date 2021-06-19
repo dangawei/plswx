@@ -42,5 +42,11 @@ Page({
         listData:res.value
       })
     })
+  },
+  // 点击意见反馈
+  goBrfb(){
+    wx.navigateTo({
+      url: '/pages/brfeedback/brfeedback',
+    })
   }
 })

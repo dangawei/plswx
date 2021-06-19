@@ -34,4 +34,8 @@
 .my-content-box{
   border-radius: 20rpx;
   overflow: hidden;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
 }

@@ -18,6 +18,7 @@ Page({
     siteShow:false,
     markerSite:{},//点击伞点marker
     isClickMarker:false,//是否点击marker
+    initSite:true,
   },
 
   /**
@@ -47,20 +48,19 @@ Page({
     wx.getLocation({
       type: 'gcj02',
       success (res) {
-        console.log(res)
         that.setData({
           latitude:res.latitude,
-          longitude:res.longitude,
+          longitude:res.longitude
         })
         wx.setStorageSync('latitude', res.latitude)
         wx.setStorageSync('longitude', res.longitude)
-        that.siteList()
+        
+        that.siteList(res.latitude,res.longitude)
       }
     })
   },
   // 登录
   loginIn(){
-    console.log(321)
     return new Promise((resolve, reject) =>{
       wx.login({
         success (res) {
@@ -80,41 +80,45 @@ Page({
     
   },
   // 获取点位地图
-  siteList(){
+  siteList(lat,lng){
     var that=this
     var params={
-      lat:this.data.latitude,
-      lng:this.data.longitude
+      lat:lat,
+      lng:lng
     }
     siteList(params).then(res=>{
       if(res.code && res.code==202){
         this.loginIn().then(result=>{
-          that.siteList()
+          that.siteList(lat,lng)
         })
       }else{
-        res.forEach(ele => {
-          ele.id=Number(ele.id)
-          ele.iconPath='https://pls-wechat.piaoliusan.com/wechat/map/marker_icon.png'
-          ele.width=26,
-          ele.height=33
-        });
-        var obj={
-          id:0,
-          latitude:this.data.latitude,
-          longitude:this.data.longitude,
-          iconPath:'/images/my_position.png',
-          joinCluster:true,
-          zIndex:9,
-          width:22,
-          height:43
+        if(Object.keys(res).length>0){
+          res.forEach(ele => {
+            ele.id=Number(ele.id)
+            ele.iconPath='https://pls-wechat.piaoliusan.com/wechat/map/marker_icon.png'
+            ele.width=26,
+            ele.height=33
+          });
+          
+          this.setData({
+            // markers:this.data.markers.concat(res)
+            markers:res,
+            initSite:false
+          })
         }
-        res.unshift(obj)
-        this.setData({
-          markers:res
-        })
+        
       }
       
     })
+  },
+  // 视野发生改变时触发
+  regionchange(e){
+    if(this.data.initSite) return
+    if(e.type=='end'){
+      
+      const {latitude,longitude}=e.detail.centerLocation
+      this.siteList(latitude,longitude)
+    }
   },
   // 点击点位标记点
   clickMarker(e){
@@ -123,7 +127,7 @@ Page({
       var that=this
       setTimeout(function(){
         that.data.isClickMarker=false
-      },600)
+      },150)
       for(let i=0,len=this.data.markers.length;i<len;i++){
         if(e.detail.markerId==this.data.markers[i].id){
           this.setData({
@@ -141,7 +145,7 @@ Page({
       siteShow:false
     })
   },
-  // 点击地图poi
+  // 点击地图空白
   poitap(e){
     var that=this
     setTimeout(function(){
@@ -150,7 +154,7 @@ Page({
           siteShow:false
         })
       }
-    },300)
+    },100)
   },
   // 点击个人中心
   goMy(e){

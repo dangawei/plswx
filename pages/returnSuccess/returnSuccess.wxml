@@ -52,6 +52,6 @@
     </view>
   </view>
   <view class="rs-cell-img-box">
-    <image src="/images/pwdBorrow/banner.png" class="rs-cell-img"  mode="widthFix"></image>
+    <image src="/images/bgImage/rs_banner.png" class="rs-cell-img"  mode="widthFix"></image>
   </view>
 </view>

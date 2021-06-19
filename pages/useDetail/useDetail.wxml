@@ -35,16 +35,20 @@
     </view>
     <view class="caption-wrap">
       <i-collapse name="{{name}}">
-          <i-collapse-item wx:for="{{listData}}" wx:key="index" title="{{item.title}}" name="name{{index}}">
+          <i-collapse-item wx:for="{{listData}}" wx:key="index" isBbottom="{{listData.length-1>index?true:false}}" title="{{item.title}}" name="name{{index}}">
+            
               <view slot="content" class="ud-col-content">
-                  {{item.content}}
+                <view wx:for="{{item.content}}" wx:for-item="cell" wx:for-index="inds" wx:key="inds">
+                  {{cell}}
+                </view>
+                  
               </view>
           </i-collapse-item>
       </i-collapse>
     </view>
   </view>
   <!-- 意见反馈 -->
-  <view class="btn-tip-box">
+  <view class="btn-tip-box" catchtap="goBrfb">
     <view class="btn-tip-img">
       <image src="https://pls-wechat.piaoliusan.com/wechat/useDetail/feedback.png"></image>
     </view>

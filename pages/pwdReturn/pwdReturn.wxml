@@ -1,7 +1,7 @@
 <view class="pb-box" wx:if="{{isReturn}}">
   <view>
     <view class="pb-cell-top">
-      请先还伞，再输入伞桩上的借伞码
+      请先还伞，再输入伞桩上的还伞码
     </view>
     <view class="pb-cell-content-box">
       <view class="pb-cell-content-ver">

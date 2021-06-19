@@ -49,6 +49,10 @@ Component({
       type: Boolean,
       value: false
     },
+    fColor: {
+      type: String,
+      value: ''
+    },
   },
 
   /**

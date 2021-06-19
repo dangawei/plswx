@@ -43,10 +43,14 @@
 .contorl-radio{
   text-align: right;
   width: 100%;
-  margin:66rpx 7% 0 0;
+  margin:66rpx 0 0 0;
 }
 
+.radio-group{
+  text-align: center;
+}
 .radio-text{
-  font-size: 30rpx;
+  font-size: 34rpx;
   color: #fff;
+  margin-left: 10rpx;
 }

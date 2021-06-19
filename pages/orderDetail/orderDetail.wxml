@@ -20,7 +20,6 @@
           <text class="od-cc-border" catchtap="clickRent">计费规则</text>
         </view>
       </view>
-      <!-- <view class="ver-line flex1"> | </view> -->
       <view class="rs-cell-content-info flex1 tac">
         <view class="rs-cell-content-main">
           <label wx:for="{{orderInfo.used_times}}" wx:key="index" >
@@ -47,8 +46,13 @@
         <text class="od-dec-info">{{orderInfo.borrow_site_name}}</text>
       </view>
       <view>
+        <text class="od-dec-title">还伞地点: </text>
+        <text class="od-dec-info">{{orderInfo.return_site_name || '/'}}</text>
+      </view>
+      <view>
         <text class="od-dec-title">订单编号: </text>
         <text class="od-dec-info">{{orderInfo.order_no}}</text>
+        <text class="pb-cell-cv-btn" data-content="{{orderInfo.order_no}}" catchtap="copy">复制</text>
       </view>
       <view>
         <text class="od-dec-title">应付金额: </text>
@@ -64,11 +68,11 @@
     <button-type btnTitle="一键购买" butType="{{true}}" catchtap="clickBuy" />
   </view>
   <view class="od-footer-box">
-    <view class="left-border flex1 tac" catchtap="goCostQues">
-      <text class="color999999">费用疑问</text>
+    <view class="left-after flex1 tac" catchtap="goCostQues">
+      <text class="color999999 fz28">费用疑问</text>
     </view>
     <view class="flex1 tac" catchtap="brdf">
-      <text class="color999999">意见反馈</text>
+      <text class="color999999 fz28">意见反馈</text>
     </view>
   </view>
   <!-- 计费规则 -->

@@ -116,6 +116,6 @@
   right: 0rpx;
   top: 28rpx;
 }
-.border-bottom{
+/* .border-bottom{
   border-bottom:2rpx solid #E5E5E5;
-}
+} */

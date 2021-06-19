@@ -1,6 +1,6 @@
 // pages/opfeedback/opfeedback.js
 const { commonPolicy,userFeedback,commonStatic,buryPoint } =require('../../api/api')
-const { previewSign, chooseImages, meetArrays, satisfy} = require('../../utils/util.js')
+const { previewSign, chooseImages, meetArrays, satisfy,debounce} = require('../../utils/util.js')
 Page({
 
   /**
@@ -26,6 +26,8 @@ Page({
     pailNo:'',
     question_type:'',//选择问题id
     arrLength: 1,//正在上传第几张图片
+    textLength:0,
+    btnClick:false,
   },
 
   /**
@@ -88,7 +90,8 @@ Page({
   // 文本输入
   bindinput(e){
     this.setData({
-      remark:e.detail.value
+      remark:e.detail.value,
+      textLength:e.detail.value.length
     })
   },
   // 联系方式
@@ -107,7 +110,11 @@ Page({
     })
   },
   // 点击立即提交
-  clickSumbit(){
+  clickSumbit:function(){
+    if(this.data.btnClick){
+      return
+    }
+    
     if(this.data.type==1){
       buryPoint({action_type:131})
     }else{
@@ -122,6 +129,9 @@ Page({
       })
       return
     }
+    this.setData({
+      btnClick:true
+    })
     if(this.data.picture.length>0){
       this.needImgUp()
     }else{
@@ -130,6 +140,7 @@ Page({
   },
   // 提交反馈
   postUrl(){
+    var that=this
     var params={
       source_type:this.data.type,
       order_no:this.data.orderNumber,
@@ -140,14 +151,17 @@ Page({
       img_id:this.data.picID
     }
     userFeedback(params).then(res=>{
+      this.setData({
+        btnClick:false
+      })
       wx.showModal({
         title: '提示',
         content: '提交成功，我们会尽快处理',
         showCancel:false,
-        success (res) {
-          if (res.confirm) {
+        success (resu) {
+          if (resu.confirm) {
             wx.navigateTo({
-              url: '/pages/feedbackSuccess/feedbackSuccess?order_no='+this.data.orderNumber+'&type='+this.data.type,
+              url: '/pages/feedbackSuccess/feedbackSuccess?order_no='+that.data.orderNumber+'&type='+that.data.type,
             })
           }
         }
@@ -172,6 +186,7 @@ Page({
         let isdelArray = meetArrays(res.tempFiles)//不能大于10MB
         isdelArray = satisfy(isdelArray)
         let images = this.data[sign].concat(isdelArray.arrays)
+        console.log(1)
         if(images.length>3){
           wx.showToast({
             icon:'none',
@@ -179,6 +194,7 @@ Page({
             duration: 2000
           })
         }else{
+          console.log(2)
           this.setData({
             [sign]: images,
             [signLeng]:images.length
@@ -224,7 +240,9 @@ Page({
                   this.data.picture.slice(this.data.pictureID.length, this.data.picture.length) : 
                   this.data.picture
     if (imgData.length == 0) {
-      this.params.picID = JSON.stringify(this.data.pictureID)
+      this.setData({
+        picID:this.data.pictureID.toString()
+      })
       this.postUrl()
       return 
     }
@@ -270,12 +288,17 @@ Page({
               console.log('所有图片上传完毕')
               this.setData({
                 showModals: false,//将提示上传图片进度的模态框关闭
-                picID:JSON.stringify(this.data.pictureID)
+                picID:this.data.pictureID.toString()
               })
               this.postUrl()
               return 
             } 
             console.log('开始上传第' + this.data.arrLength + '张')
+            wx.showToast({
+              title: '开始上传第' + this.data.arrLength + '张',
+              icon: 'none',
+              duration: 2000
+            })
             this.testUpload(imgArrs)
           }
         },
@@ -288,7 +311,9 @@ Page({
             showCancel: false,
             title: '图片上传失败',
           })
-
+          this.setData({
+            btnClick:false
+          })
           this.data.isflag = true
         },
 

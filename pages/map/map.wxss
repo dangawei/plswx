@@ -3,15 +3,12 @@
   position: absolute;
   background-color: #fff;
   width: 750rpx;
-  height: 180rpx;
+  height: 168rpx;
   bottom:0;
   left: 0;
   border-top-left-radius: 30rpx;
   border-top-right-radius: 30rpx;
   z-index: 2;
-  /* top: calc(50% - 150rpx);
-  left: calc(50% - 300rpx); */
-  /* opacity: .7; */
 }
 
 .container-center{
@@ -20,7 +17,7 @@
   background: linear-gradient(90deg, #FFC400 0%, #FFB200 100%);
   border-radius: 10px;
   position: absolute;
-  top: 38rpx;
+  top: 26rpx;
   left: 189rpx;
   color: #fff;
   display: flex;
@@ -45,7 +42,7 @@
   width: 40rpx;
   height: 40rpx;
   margin-left: 36rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 16rpx;
 }
 .container-text{
   font-size: 28rpx;
@@ -93,10 +90,10 @@
 .container-site-title{
   font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
+  font-weight: 550;
   color: #333333;
   line-height: 40rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
 }
 .container-site-text{
   font-size: 24rpx;
@@ -136,4 +133,15 @@
 .cover-r-img{
   width: 144rpx;
   height: 160rpx;
+}
+/* 定位图片 */
+.marker-icon-box{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.marker-icon{
+  width: 44rpx;
+  height: 86rpx;
 }

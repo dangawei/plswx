@@ -27,7 +27,7 @@
       </view>
       <view class="opf-textarea-box">
         <textarea class="opf-textarea" placeholder="请输入文本" maxlength="200" bindinput="bindinput" />
-        <view class="opf-textarea-counter">0/200</view>
+        <view class="opf-textarea-counter">{{textLength}}/200</view>
       </view>
     </view>
     <view class="opf-detail-box">

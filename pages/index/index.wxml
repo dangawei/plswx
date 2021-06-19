@@ -34,7 +34,7 @@
     </view> -->
     
     <view data-btntype="return" catchtap="clickReturn" class="btn-wrapper btn-return">
-      <button-type size="middle" btnTitle="立即还伞" bs="0 0 18rpx 10rpx #F4F4F4" />
+      <button-type size="middle" btnTitle="立即还伞" borders="2rpx solid #FFB300" fColor="f-color" bs="0 0 18rpx 10rpx #F4F4F4" />
     </view>
     <view class="btn-wrapper order">
       <!-- <view class="btn-right btn-cell" catchtap="clickMap">
@@ -62,7 +62,7 @@
   <view class="route-type" wx:if="{{route_type==2}}">
     <text class="route-type-text">请移步支付宝小程序去借还伞</text>
   </view>
-  <view class="route-type" wx:if="{{route_type==3}}">
+  <view class="route-type" wx:if="{{route_type==3}}" catchtap="go">
     <button-type btnTitle="点击借还伞" butType="{{true}}" />
   </view>
 </view>

@@ -17,8 +17,8 @@
     </view>
   </view>
   <view class="contorl-radio">
-    <view class="radio-group" >
-      <view catchtap="radioChange">
+    <view class="radio-group-box" >
+      <view catchtap="radioChange" class="radio-group">
         <radio class="radio" checked="{{checked}}" color="#FFB500" />
         <text class="radio-text">不再提醒</text>
       </view>

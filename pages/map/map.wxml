@@ -10,8 +10,12 @@
       scale="{{scale}}"
       bindmarkertap="clickMarker"
       bindtap="poitap"
+      bindregionchange="regionchange"
       show-location
     >
+      <view class="marker-icon-box">
+        <image src="/images/my_position.png" class="marker-icon"></image>
+      </view>
       <view class="cover-right">
         <view class="cover-right-top" catchtap="resetPosition">
           <image src="https://pls-wechat.piaoliusan.com/wechat/map/icon_site.png" class="cover-r-img"></image>

@@ -26,7 +26,7 @@
   <view wx:if="{{selTitle==0}}">
     <scroll-view  scroll-y='true' style="height:{{scrollyHeight}}rpx" bindscrolltolower='scrollBottom'>
       <view class="pb-cell-vice-box" wx:for="{{orderList}}" wx:key="index" data-order="{{item.order_no}}" catchtap="goDetail">
-        <view class="pb-cell-content-vice border-bottom">
+        <view class="pb-cell-content-vice border-bottom-1">
           <text class="pb-cell-cv-title">{{item.borrow_time}}</text>
         </view>
         <view class="pb-cell-content-vice">

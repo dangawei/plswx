@@ -1,9 +1,10 @@
 /* component/ver-code/ver-code.wxss */
 .input {
   position: relative;
-  text-align: center;
+  text-align: left;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
 .input-item {
   position: relative;
@@ -12,6 +13,7 @@
   height: 110rpx;
   /* border-bottom: 2rpx solid #333; */
   border: 2rpx solid #ccc;
+  border-radius: 16rpx;
 }
 .input-item.border-color {
   border-image: linear-gradient(90deg, rgba(255, 194, 0, 1), rgba(255, 179, 0, 1)) 1 1;
@@ -33,10 +35,10 @@
 }
 .input-password {
   position: absolute;
-  left: 0rpx;
+  left: -100%;
   top: 0;
   height: 100rpx;
-  width: 100%;
+  width: 200%;
   opacity: 0;
   color: transparent;
 }

@@ -20,6 +20,11 @@ export const buryPoint=(data)=>{
   const params = { url: getUrl, data }
   return getRequest(params);
 }
+//判断是否登录
+export const userInfo = (data) => {
+  const params = { url: newUrl + '/mina/user/info', data }
+  return wxRequest(params);
+};
 //登录
 export const login = (data) => {
   const params = { url: newUrl + '/mina/nologin/login', data }

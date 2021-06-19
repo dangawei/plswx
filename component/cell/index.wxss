@@ -1,6 +1,6 @@
 .i-cell{
   position:relative;
-  padding:20rpx 20rpx;
+  padding:30rpx 0rpx;
   display:flex;
   background:#fff;
   align-items:center;
@@ -22,8 +22,6 @@
   box-sizing:border-box;
   border:0 solid #e9eaec;
   border-bottom-width:1px;
-  left:15px;
-  right:0;
 }
 .i-cell-last::after{
   display:none

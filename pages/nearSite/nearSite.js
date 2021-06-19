@@ -68,8 +68,8 @@ Page({
   siteList(){
     var that=this
     var params={
-      lat:this.data.latitude,
-      lng:this.data.longitude
+      lat:wx.getStorageSync('latitude'),
+      lng:wx.getStorageSync('longitude')
     }
     siteList(params).then(res=>{
       if(res.code && res.code==202){

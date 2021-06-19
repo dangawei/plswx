@@ -1,0 +1,4 @@
+<!--pages/protocol/protocol.wxml-->
+<view class="protocol-box">
+  <text>{{protocolData}}</text>
+</view>

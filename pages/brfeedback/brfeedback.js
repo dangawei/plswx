@@ -1,6 +1,6 @@
 // pages/brfeedback/brfeedback.js
 const { commonPolicy,userFeedback,buryPoint } =require('../../api/api')
-const { previewSign, chooseImages, meetArrays, satisfy} = require('../../utils/util.js')
+const { previewSign, chooseImages, meetArrays, satisfy,debounce} = require('../../utils/util.js')
 Page({
 
   /**
@@ -15,8 +15,10 @@ Page({
     remark:'',//问题描述
     mobile:0,//手机号
     arrLength: 1,//正在上传第几张图片
-    pictureID:[],//上传图片的id
-    picID:'',//上传图片的id
+    pictureID:[],//上传过图片的id
+    picID:'',//需要上传图片的id
+    textLength:0,
+    btnClick:false,
   },
 
   /**
@@ -42,7 +44,8 @@ Page({
   // 文本输入
   bindinput(e){
     this.setData({
-      remark:e.detail.value
+      remark:e.detail.value,
+      textLength:e.detail.value.length
     })
   },
   // 联系方式
@@ -52,7 +55,10 @@ Page({
     })
   },
   // 点击立即提交
-  clickSumbit(){
+  clickSumbit:function(){
+    if(this.data.btnClick){
+      return
+    }
     var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
     if (!myreg.test(this.data.mobile)) {
       wx.showToast({
@@ -62,6 +68,9 @@ Page({
       })
       return
     }
+    this.setData({
+      btnClick:true
+    })
     this.needImgUp()
   },
   /**
@@ -134,11 +143,12 @@ Page({
                   this.data.picture.slice(this.data.pictureID.length, this.data.picture.length) : 
                   this.data.picture
     if (imgData.length == 0) {
-      this.data.picID = JSON.stringify(this.data.pictureID)
+      this.setData({
+        picID:this.data.pictureID.toString()
+      })
       this.postUrl()
       return 
     }
-
     this.setData({
       showModals:true,
       pictureLength: imgData.length
@@ -180,7 +190,7 @@ Page({
               console.log('所有图片上传完毕')
               this.setData({
                 showModals: false,//将提示上传图片进度的模态框关闭
-                picID:JSON.stringify(this.data.pictureID)
+                picID:this.data.pictureID.toString()
               })
               this.postUrl()
               return 
@@ -198,7 +208,9 @@ Page({
             showCancel: false,
             title: '图片上传失败',
           })
-
+          this.setData({
+            btnClick:false
+          })
           this.data.isflag = true
         },
 
@@ -221,14 +233,17 @@ Page({
       img_id:this.data.picID
     }
     userFeedback(params).then(res=>{
+      this.setData({
+        btnClick:false
+      })
       wx.showModal({
         title: '提示',
         content: '提交成功，我们会尽快处理',
         showCancel:false,
-        success (res) {
-          if (res.confirm) {
+        success (resu) {
+          if (resu.confirm) {
             wx.reLaunch({
-              url: '/pages/index/index',
+              url: '/pages/map/map',
             })
           }
         }

@@ -5,7 +5,9 @@
   /* background-color: #ccc; */
 }
 .od-content-box{
-  padding: 30rpx;
+  padding: 30rpx 60rpx;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
 }
 /* 说明 */
 .rs-cell-content-text{
@@ -13,18 +15,18 @@
   margin-bottom: 30rpx;
 }
 
-.rs-cell-content-info{
-  padding:20rpx 30rpx;
-}
+/* .rs-cell-content-info{
+  padding:0rpx 10rpx;
+} */
 .od-dec-title{
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #999999;
   line-height: 60rpx;
 }
 .od-dec-info{
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #333333;
@@ -35,19 +37,39 @@
   width: 500rpx;
   margin-left: 125rpx;
 }
+
 /* footer */
 .od-footer-box{
   position: fixed;
   bottom: 100rpx;
-  left: 125rpx;
+  left: 175rpx;
   display: flex;
-  width: 500rpx;
+  width: 400rpx;
+  line-height: 42rpx;
 }
 .od-cell-content-vice{
   font-size: 28rpx;
 }
 .od-cc-border{
-  border-bottom: 2rpx solid #333333;
+  border-bottom: 2rpx solid #999999;
+}
+.left-after{
+  position: relative;
+}
+.left-after::after{
+  content:'';
+  position:absolute;
+  top:10rpx;
+  right:0;
+  /* width:200%;
+  height:200%;
+  transform:scale(.5); */
+  height: 26rpx;
+  transform-origin:0 0;
+  pointer-events:none;
+  box-sizing:border-box;
+  border:0 solid #e9eaec;
+  border-left-width:1px;
 }
 /* 计费规则样式 */
 .sd-cell-content-text{
@@ -93,4 +115,16 @@
   height:8rpx;
   background:#FFC002;
   border-radius:50%;
+}
+/* 复制 */
+.pb-cell-cv-btn{
+  color: #333333;
+  display: inline-block;
+  border-radius: 20rpx;
+  border: 2rpx solid #CCCCCC;
+  padding: 2rpx 8rpx;
+  font-size: 24rpx;
+  margin-left: 10rpx;
+  /* position: absolute;
+  right: 50rpx; */
 }

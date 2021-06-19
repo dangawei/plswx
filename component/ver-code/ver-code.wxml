@@ -4,5 +4,6 @@
     <!-- <view class="input-value">{{password[index]}}</view> -->
     <view class="input-value">{{value[index]}}</view>
     <view class="focus {{index === focusIndex && !valueData ? 'show': 'hide'}}"></view>
- </view>
- <input class="input-password" value="{{value}}" maxlength="{{valueLength}}" bindinput="setValue" bindblur="inputBlur" type="number" focus="{{focus}}"></input></view>
+  </view>
+  <input class="input-password" value="{{value}}" maxlength="{{valueLength}}" bindinput="setValue" bindblur="inputBlur" type="number" focus="{{focus}}"></input>
+</view>

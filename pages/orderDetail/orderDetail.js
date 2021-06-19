@@ -15,6 +15,7 @@ Page({
     dataInfo:{},//计费规则页面
     isVipModel:false,
     polyline:[],//地图划线配置
+    can_buy_text:'',
   },
 
   /**
@@ -52,44 +53,47 @@ Page({
         points: [{
           latitude: Number(res.borrow_lat),
           longitude: Number(res.borrow_lng)
-          
-        }, 
-        {
-          latitude: Number(res.return_lng),
-          longitude: Number(res.return_lat)
         }],
         // color: "#ff6600",
         colorList:["#239CF3","#52E7FF"],
         width: 4,
       }]
+      var markersData=[{
+        id:1,
+        latitude:Number(res.borrow_lat),
+        longitude:Number(res.borrow_lng),
+        iconPath:'/images/orderDetail/icon_borrow.png',
+        zIndex:9,
+        width:22,
+        height:22
+      }]
+      console.log(polylineData)
+      if(res.return_lat && res.return_lng){
+        var obj={
+          latitude: Number(res.return_lng),
+          longitude: Number(res.return_lat)
+        }
+        var marObj={
+          id:2,
+          latitude:Number(res.return_lat),
+          longitude:Number(res.return_lng),
+          iconPath:'/images/orderDetail/icon_return.png',
+          zIndex:9,
+          width:22,
+          height:22
+        }
+        polylineData[0].points.push(obj)
+        markersData.push(marObj)
+      }
       this.setData({
         latitude:res.borrow_lat,
         longitude:res.borrow_lng,
         orderInfo:res,
         dataInfo:res.rent_info,
         polyline:polylineData,
-        markers:[
-          {
-            id:1,
-            latitude:Number(res.borrow_lat),
-            longitude:Number(res.borrow_lng),
-            iconPath:'/images/orderDetail/icon_borrow.png',
-            zIndex:9,
-            width:22,
-            height:22
-          },
-          {
-            id:2,
-            latitude:Number(res.return_lat),
-            longitude:Number(res.return_lng),
-            iconPath:'/images/orderDetail/icon_borrow.png',
-            zIndex:9,
-            width:22,
-            height:22
-          },
-        ]
+        markers:markersData,
+        can_buy_text:res.can_buy_text,
       })
-      console.log(this.data.polyline)
       wx.setStorageSync('orderDetail', res)
     })
   },
@@ -119,22 +123,48 @@ Page({
   },
   // 一键购买
   clickBuy(){
+    var that=this
     buryPoint({action_type:138})
-    var params={
-      order_no:this.data.order_no
-    }
-    orderBuy(params).then(res=>{
-      wx.showToast({
-        title: '购买成功',
-        icon: 'success',
-        duration: 2000,
-        // success:function(){
-        //   that.getOrderDetail()
-        // }
-      })
+    wx.showModal({
+      content: this.data.can_buy_text,
+      confirmText:'确定购买',
+      cancelColor:'#1682FF',
+      confirmColor:'#1682FF',
+      success (resu) {
+        if (resu.confirm) {
+          var params={
+            order_no:that.data.order_no
+          }
+          orderBuy(params).then(res=>{
+            wx.showToast({
+              title: '购买成功',
+              icon: 'success',
+              duration: 2000,
+            })
+          })
+          that.setData({
+            'orderInfo.can_buy':false
+          })
+        } else if (resu.cancel) {
+          
+        }
+      }
     })
-    this.setData({
-      'orderInfo.can_buy':false
+    
+  },
+  // 复制
+  copy(e){
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.content,
+      success: function(res) {
+        wx.getClipboardData({
+          success: function() {
+            wx.showToast({
+              title: '复制成功',
+            })
+          }
+        })
+      }
     })
   },
   /**

@@ -395,6 +395,20 @@ const normalTime = (time, type) => {
     return result;
   }
 }
+/*函数防抖*/
+function debounce(fn, interval) {
+  var timer;
+  var gapTime = interval || 1000; //间隔时间 不传值默认为1000ms
+  return function() {
+    clearTimeout(timer);
+    var that = this;
+    var args = arguments; //保存arguments setTimeout是全局的 arguments不是防抖函数需要的
+    timer = setTimeout(function() {
+	  fn.call(that, args);
+    }, gapTime);
+  };
+}
+
 module.exports = {
   urlSplit,
   meetArrays,
@@ -409,5 +423,6 @@ module.exports = {
   circulation,
   polishing_data,
   transfer_time,
-  normalTime
+  normalTime,
+  debounce
 }

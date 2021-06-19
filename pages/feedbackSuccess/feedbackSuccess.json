@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "反馈成功",
-  "navigationBarTextStyle":"white",
   "usingComponents": {
     "button-type": "/component/button-type/button-type"
   }

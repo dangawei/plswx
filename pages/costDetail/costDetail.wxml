@@ -18,7 +18,20 @@
           <text class="sd-cell-bottom-protocol-txt" catchtap="clickProcotol">《用户协议》</text>
         </view>
         <view class="sd-cell-bottom-btn" catchtap="clickBorrow">
-          <button-type btnTitle="确认借伞" butType="{{true}}" />
+          <button-type btnTitle="免押金租借" butType="{{true}}" />
+        </view>
+        <view class="sd-cell-bottom-wx">
+          <view class="wxlogo-box fl">
+            <image src="/images/icon_wxlogo.png" class="wxlogo"></image>
+          </view>
+          <view class="fl flex1 tac" catchtap="goCostQues">
+            <text class="color999999">微信支付分</text>
+          </view>
+          <view class="fl line">
+          </view>
+          <view class="flex1 tac fl" catchtap="brdf">
+            <text class="color999999">550分及以上优享</text>
+          </view>
         </view>
       </view>
       <view>

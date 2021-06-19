@@ -9,7 +9,7 @@
     </view>
     <view class='cost-content'>
       <view class="left ">借伞费用</view>
-      <view class='right'>{{details.amount ? details.amount : '0'}}元</view>
+      <view class='right'>{{details.payment_amount ? details.payment_amount : '0'}}元</view>
     </view>
   </view> 
   <view class='cost-title bottom-border f_pf_rer flex_line_c_m'>

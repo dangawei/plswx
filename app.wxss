@@ -45,6 +45,9 @@ page {
 .fz56{
   font-size: 56rpx;
 }
+.fz28{
+  font-size: 28rpx;
+}
 .border-color-FFC002 {
     border-bottom: 2px solid #FFC002;
 }
@@ -61,4 +64,25 @@ page {
 }
 .center{
   text-align: center;
+}
+.fl{
+  float: left;
+}
+.c999{
+  color: #999;
+}
+/* 1rpx边线 */
+.border-bottom-1::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:200%;
+  height:200%;
+  transform:scale(.5);
+  transform-origin:0 0;
+  pointer-events:none;
+  box-sizing:border-box;
+  border:0 solid #e9eaec;
+  border-bottom-width:1px;
 }

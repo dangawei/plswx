@@ -1,5 +1,7 @@
 .i-collapse-item{
-  padding:20rpx 8px;
+  padding:20rpx 0px;
+}
+.b-bottom{
   border-bottom:2rpx solid #E5E5E5;
 }
 .i-collapse-item-title{
@@ -18,3 +20,6 @@
 .i-collapse-item-show-content{display:block}
 .i-collapse-item-arrow{transition:transform .2s ease-in-out}
 .i-collapse-item-arrow-show{transition:transform .2s ease-in-out;transform:rotate(90deg)}
+.icon-color{
+  color: #B7B7B7;
+}

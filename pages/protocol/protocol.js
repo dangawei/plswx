@@ -1,33 +1,21 @@
-// pages/costQuestion/costQuestion.js
-const { orderDetail } = require('../../api/api.js');
-const { normalTime } = require('../../utils/util');
+// pages/protocol/protocol.js
+const {getConfig} =require('../../api/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    details:{}
+    protocolData:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.order_no){
-      this.getOrderDetail(options.order_no)
-    }else{
-      this.setData({
-        details:wx.getStorageSync('orderDetail')
-      })
-    }
+    this.getConfig()
   },
-  // 问题反馈
-  gobf(){
-    wx.navigateTo({
-      url: '/pages/brfeedback/brfeedback',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -41,16 +29,11 @@ Page({
   onShow: function () {
 
   },
-
-  // 获取订单
-  getOrderDetail(e){
-    var params={
-      order_no:e
-    }
-    orderDetail(params).then(res=>{
-      res.used_times=normalTime(res.used_time,'special')
+  getConfig(){
+    getConfig({key:'user_service_protocol_wechat'}).then(res=>{
+      console.log(res.value)
       this.setData({
-        details:res
+        protocolData:res.value
       })
     })
   },

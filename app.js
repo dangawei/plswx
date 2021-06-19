@@ -1,7 +1,10 @@
 // app.js
-const { login,orderBorrowStatus } = require('./api/api.js');
+const { orderBorrowStatus } = require('./api/api.js');
 App({
   onLaunch(options) {
+    // console.log(wx.getStorageSync('phone'))
+    // console.log(!wx.getStorageSync('phone'))
+    
     // if(!wx.getStorageSync('app_token')){
       // wx.login({
       //   success (res) {
@@ -30,7 +33,7 @@ App({
   onShow: function(res) {
     // 展示本地存储能力
     console.log("我进入了app.js的onshow")
-    if (res.scene === 1038 || res.referrerInfo.appId =='wxd8f3793ea3b935b8') { // 场景值1038：从被打开的小程序返回,但安卓手机返回的是10001，所以只能根据appid去识别支付分的。
+    if (res.referrerInfo.appId =='wxd8f3793ea3b935b8') { // 场景值1038：从被打开的小程序返回,但安卓手机返回的是10001，所以只能根据appid去识别支付分的。
         console.log("我进入了返回商家小程序")
         this.globalData.userTouch =1;
         this.borrowStatus()
@@ -51,14 +54,14 @@ App({
             url: '/pages/useStep/useStep?pail_no='+wx.getStorageSync('pail_no')+'&type=1&borrow_code='+res.borrow_code+'&order_no='+res.order_no,
           })
         }else{
-          wx.navigateTo({
+          wx.reLaunch({
             url: '/pages/pwdBorrow/pwdBorrow?pail_no='+wx.getStorageSync('pail_no')+'&borrow_code='+res.borrow_code+'&order_no='+res.order_no,
           })
         }
       }else{
         wx.showToast({
           title: '授权不成功,暂无法借伞',
-          icon: 'success',
+          icon: 'none',
           duration: 3000,
         })
       }

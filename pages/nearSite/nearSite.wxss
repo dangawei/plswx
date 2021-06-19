@@ -12,6 +12,15 @@
 .detail-img{
   width: 26rpx;
   height: 26rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 10rpx;
+}
+.detail-img-site{
+  width: 26rpx;
+  height: 32rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
   margin-right: 10rpx;
 }
 .sd-collectno-img{
@@ -42,4 +51,8 @@
   width: 32rpx;
   height: 32rpx;
   margin-right: 10rpx;
+}
+/* 样式修改 */
+.ns-time-text{
+  font-size: 20rpx;
 }

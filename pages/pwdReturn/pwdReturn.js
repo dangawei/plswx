@@ -55,8 +55,8 @@ Page({
   },
   // 点击如何借还伞
   howBR(){
-    this.setData({
-      isVipModel:true
+    wx.navigateTo({
+      url: '/pages/useDetail/useInfo/useInfo',
     })
   },
   // 未还订单列表

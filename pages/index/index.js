@@ -1,4 +1,4 @@
-const { getPhone,sitePail,buryPoint,getType } = require('../../api/api.js');
+const { getPhone,sitePail,buryPoint,getType,login,userInfo } = require('../../api/api.js');
 const urlUtil = require('../../utils/util.js');
 const app = getApp()
 
@@ -15,11 +15,25 @@ Page({
     last_order_no:'',
     last_borrow_code:'',
     route_type:0,//1本小程序,2去支付宝小程序,3跳别的小程序
+    isClick:false,//是否点击按钮
+    appId:'',//禁毒小程序appid
+    path:'',//禁毒小程序路径
   },
   onLoad(options) {
+    // wx.removeStorage({
+    //   key: 'phone',
+    //   success (res) {
+    //   }
+    // })
+    // wx.removeStorage({
+    //   key: 'app_token',
+    //   success (res) {
+    //   }
+    // })
     // options.pail_no="M700014823" //todo 1
     // options.pail_no="M700044877" //todo 2
     // options.pail_no="M700075190" //todo 3
+    // options.q="https://scan.piaoliusan.com/borrow?id=M700121152&t=7" //todo 禁毒
     if (options.q) {
       let scan_url = decodeURIComponent(options.q);
       //获取关联普通二维码的码值，放到全局变量qrCode中
@@ -34,6 +48,7 @@ Page({
       this.setData({
         pail_no:options.pail_no
       })
+      wx.setStorageSync('pail_no', options.pail_no)
     }else{
       this.setData({
         pail_no:wx.getStorageSync('pail_no')
@@ -48,14 +63,44 @@ Page({
         })
       }
     })
+    
     if(!wx.getStorageSync('phone')){
       this.setData({
         isPhone:true
       })
     }
+    this.userInfo()
   },
   onShow: function () {
     buryPoint({action_type:101})
+  },
+  // 获取用户是否登录
+  userInfo(){
+    userInfo().then(res=>{
+      if(res.code && res.code==202){
+        this.loginIn()
+      }
+    })
+  },
+  // 登录
+  loginIn(){
+    return new Promise((resolve, reject) =>{
+      wx.login({
+        success (res) {
+          if (res.code) {
+            
+              login({ code: res.code }).then((result) => {
+                wx.setStorage({ key: 'code', data: res.code })
+                wx.setStorage({ key: 'app_token', data: result.app_token })
+                wx.setStorage({ key: 'show_id', data: result.show_id })
+                wx.setStorage({ key: 'user_id', data: result.user_id })
+                resolve(result)
+              })
+          }
+        }
+      })
+    })
+    
   },
   // 获取小程序跳转类型
   getType(){
@@ -65,7 +110,9 @@ Page({
     getType(params).then(res=>{
       // console.log(res)
       this.setData({
-        route_type:res.route_type
+        route_type:res.route_type,
+        appId: res.app_id,
+        path: res.home_url,
       })
       wx.setNavigationBarTitle({
         title: res.title
@@ -97,6 +144,8 @@ Page({
   },
   // 获取手机号
   getPhone(e){
+    if(this.data.isClick) return
+    this.data.isClick=true
     var that=this
     if(!wx.getStorageSync('phone')){
       wx.checkSession({
@@ -110,20 +159,18 @@ Page({
           }
           //发起网络请求
           getPhone(params).then((result) => {
-            console.log(result)
-            if(result.code && result.code==202){
-              // that.getUserProfile()
-            }else{
-              that.clickBorrow()//请求借伞
-              wx.setStorage({ key: 'phone', data: result.phone })
-            }
+            that.data.isClick=false
+            that.clickBorrow()//请求借伞
+            wx.setStorage({ key: 'phone', data: result.phone })
           })
         },
         fail () {
+          
           // session_key 已经失效，需要重新执行登录流程
           console.log("session_key 已过期")
           wx.login({
             success (res) {
+              console.log(2)
               const params={
                 encrypted_data:e.detail.details.encryptedData,
                 iv:e.detail.details.iv,
@@ -132,6 +179,7 @@ Page({
               if (res.code) {
                 //发起网络请求
                 getPhone(params).then((result) => {
+                  that.data.isClick=false
                   this.clickBorrow()//请求借伞
                   wx.setStorage({ key: 'phone', data: result.phone })
                 })
@@ -152,9 +200,14 @@ Page({
       pail_no:this.data.pail_no
     }
     sitePail(params).then((res)=>{
+      this.data.isClick=false
       if(res.code && res.code==103){
         this.setData({
           isBandSite:true
+        })
+      }else if(res.code && res.code==202){
+        this.loginIn().then(r=>{
+          this.clickBorrow()
         })
       }else{
         wx.setStorage({ key: 'shop_site_id', data: res.shop_site_id })
@@ -201,13 +254,13 @@ Page({
   },
   //继续借伞
   continueBorrow(){
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/costDetail/costDetail?pail_no='+this.data.pail_no,
     })
   },
   //获取上次传伞码
   getBorrowCode(){
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/pwdBorrow/pwdBorrow?pail_no='+this.data.pail_no+'&borrow_code='+this.data.last_borrow_code+'&order_no='+this.data.last_order_no,
     })
   },
@@ -248,6 +301,16 @@ Page({
   backMap(){
     wx.reLaunch({
       url: '/pages/map/map',
+    })
+  },
+  //点击去别的小程序
+  go(){
+    wx.navigateToMiniProgram({
+      appId: this.data.appId,
+      path: this.data.path,
+      extraData: {
+        pail_no: this.data.pail_no
+      }
     })
   }
 })

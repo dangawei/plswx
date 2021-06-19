@@ -9,8 +9,8 @@
       </view>
       <view class="brf-textarea-box">
         <textarea class="brf-textarea" placeholder="请输入文本" maxlength="200" bindinput="bindinput" />
-        <view class="brf-textarea-counter">0/200</view>
-      </view>
+        <view class="brf-textarea-counter">{{textLength}}/200</view>
+      </view> 
     </view>
     <view class="brf-detail-box">
       <view class="brf-title">
@@ -37,6 +37,7 @@
     <text class="color00ADFA" catchtap="callPhone">4006069966</text>
   </view>
   <view class="brf-bottom-box" catchtap="clickSumbit">
-    <button-type btnTitle="立即提交" butType="{{true}}" isDisabled="{{mobile && remark && picture.length>0}}" />
+    <!-- <button-type btnTitle="立即提交" butType="{{true}}" isDisabled="{{mobile && remark && picture.length>0}}" /> -->
+    <button-type btnTitle="立即提交" butType="{{true}}" />
   </view>
 </view>

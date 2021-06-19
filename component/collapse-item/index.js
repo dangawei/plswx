@@ -18,7 +18,11 @@ Component({
 
     properties: {
         title: String,
-        name: String
+        name: String,
+        isBbottom:{
+            type:Boolean,
+            value:true,
+        }
     },
 
     data: {

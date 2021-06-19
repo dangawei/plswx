@@ -9,7 +9,22 @@ page{
 .ui-content-table{
   padding-top: 20rpx;
   padding-bottom: 20rpx;
-  border-bottom: 2rpx dashed #CECECE;
+  /* border-bottom: 1rpx dashed #CECECE; */
+  position: relative;
+}
+.ui-content-table::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:200%;
+  height:200%;
+  transform:scale(.5);
+  transform-origin:0 0;
+  pointer-events:none;
+  box-sizing:border-box;
+  border:0 dashed #e9eaec;
+  border-bottom-width:3rpx;
 }
 .pb-cr-txt-1{
   text-align: left;

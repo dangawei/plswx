@@ -21,3 +21,7 @@
   color: #000000;
   border-bottom: 4rpx solid #FFC002;
 }
+.fw550{
+  color: #000000;
+  font-weight: 550;
+}

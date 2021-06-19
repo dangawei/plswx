@@ -22,7 +22,7 @@ Page({
       pail_no:options.pail_no
     })
     app.pail_no=options.pail_no
-    wx.setStorage({ key: 'pail_no', data: options.pail_no })
+    // wx.setStorage({ key: 'pail_no', data: options.pail_no })
     this.getRentInfo()
   },
 
@@ -123,7 +123,9 @@ Page({
   },
   // 点击协议
   clickProcotol(){
-    
+    wx.navigateTo({
+      url: '/pages/protocol/protocol',
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

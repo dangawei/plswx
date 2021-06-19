@@ -25,13 +25,20 @@
       <image src="/images/pwdBorrow/btn_enter.png" class="pb-cell-cv-img" mode="widthFix" catchtap="getRentInfo"></image>
     </view>
   </view>
-  <view class="pb-cell-bottom-box">
-    <text catchtap="howBR">如何借还伞?</text>
-    <text> | </text>
-    <text catchtap="back">返回首页</text>
+  <!-- <view class="pb-cell-bottom-box">
+    <text class="color999999 fz28" catchtap="howBR">如何借还伞?</text>
+    <text class="color999999 fz28" catchtap="back">返回首页</text>
+  </view> -->
+  <view class="od-footer-box">
+    <view class="left-after flex1 tac" catchtap="howBR">
+      <text class="color999999 fz28">如何借还伞</text>
+    </view>
+    <view class="flex1 tac" catchtap="back">
+      <text class="color999999 fz28">返回首页</text>
+    </view>
   </view>
   <view class="pb-cell-img-box">
-    <image src="/images/pwdBorrow/banner.png" class="pb-cell-img"  mode="widthFix"></image>
+    <image src="/images/bgImage/pb_banner.png" class="pb-cell-img"  mode="widthFix"></image>
   </view>
   <!-- 计费规则 -->
   <pls-modal show="{{isVipModel}}" top-image-size="sm" show-close bind:modalClose="hideVip">

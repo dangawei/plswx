@@ -59,26 +59,30 @@ Page({
     
   },
   controlTime:function(isBorrow){
-    let btnTime = 9
-    timer = setInterval(()=>{
-      this.setData({
-        btnTitle:isBorrow ? `开始借伞 ${--btnTime}` : `开始还伞 ${--btnTime}`
-      })
-      if(btnTime <=0){
-        clearInterval(timer)
-        this.setData({
-          disabled:false,
-          btnTitle:isBorrow? '去借伞' : '去还伞'
-        })
-      }
-    },1000)
+    // let btnTime = 9
+    // timer = setInterval(()=>{
+    //   this.setData({
+    //     btnTitle:isBorrow ? `开始借伞 ${--btnTime}` : `开始还伞 ${--btnTime}`
+    //   })
+    //   if(btnTime <=0){
+    //     clearInterval(timer)
+    //     this.setData({
+    //       disabled:false,
+    //       btnTitle:isBorrow? '去借伞' : '去还伞'
+    //     })
+    //   }
+    // },300)
+    this.setData({
+      disabled:false,
+      btnTitle:isBorrow? '去借伞' : '去还伞'
+    })
   },
   nextStep: function() {
-    const { stepData,checked } = this.data
+    const { checked } = this.data
     const { borrow_code, pail_no, order_no } = this.query
     
     if (this.data.type==1) {
-        wx.navigateTo({ url: '/pages/pwdBorrow/pwdBorrow?pail_no='+pail_no+'&borrow_code='+borrow_code+'&order_no='+order_no });
+        wx.reLaunch({ url: '/pages/pwdBorrow/pwdBorrow?pail_no='+pail_no+'&borrow_code='+borrow_code+'&order_no='+order_no });
         if(checked) wx.setStorage({key: 'borrow_step', data: true});
     } else {
         wx.navigateTo({ url: '/pages/pwdReturn/pwdReturn?pail_no='+pail_no });
